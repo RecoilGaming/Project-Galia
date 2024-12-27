@@ -2,9 +2,12 @@ extends Node
 
 ## =============== [ FIELDS ] ================
 
-# Global units array
+# Scenes
+@onready var main: Node2D = get_tree().root.get_node("Main")
+
+# Units
+var coins: int = 100
 var units: Array[Unit] = []
-var unit_cap: int = 5
 
 ## =============== [ METHODS ] ================
 
@@ -14,6 +17,14 @@ func add_unit(unit: Unit):
 
 # Spawn hydrogen
 func spawn_hydrogen(pos: Vector2):
-	var hydrogen: Unit = load("res://%Project/Characters/hydrogen.tscn").instantiate()
-	get_tree().root.add_child(hydrogen)
-	unit_cap -= 1
+	if coins >= 3:
+		# Instantiate hydrogen
+		var hydrogen: Hydrogen = load("res://%Project/Characters/hydrogen.tscn").instantiate()
+		hydrogen.position = pos
+		
+		# Add child
+		main.add_child(hydrogen)
+		main.move_child(hydrogen, 0)
+		
+		# Subtract cost
+		coins -= 3

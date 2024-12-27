@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://gfm27c0guicw"]
+[gd_scene load_steps=5 format=3 uid="uid://gfm27c0guicw"]
 
 [ext_resource type="PackedScene" uid="uid://cjvxppinyue2c" path="res://%Project/Characters/hydrogen.tscn" id="1_fl7er"]
 [ext_resource type="Texture2D" uid="uid://cpe0ds574sqks" path="res://Resources/shop_button1.png" id="2_3t6fu"]
 [ext_resource type="Script" path="res://%Project/%Scripts/shop_button.gd" id="3_ofui7"]
+[ext_resource type="PackedScene" uid="uid://14usl23dbv54" path="res://%Project/Characters/oxygen.tscn" id="4_aud5d"]
 
 [node name="Main" type="Node2D"]
 
@@ -24,5 +25,8 @@ position = Vector2(100, 0)
 
 [node name="Hydrogen3" parent="." instance=ExtResource("1_fl7er")]
 position = Vector2(100, 100)
+
+[node name="Oxygen" parent="." instance=ExtResource("4_aud5d")]
+position = Vector2(-100, -100)
 
 [connection signal="pressed" from="ShopButton" to="ShopButton" method="_on_pressed"]
