@@ -25,7 +25,6 @@ func _process(delta: float) -> void:
 	# Track target
 	if target:
 		var _position = global_position.move_toward(target.global_position, speed*delta)
-		
 		global_position = _position
 
 # Finds the nearest target
