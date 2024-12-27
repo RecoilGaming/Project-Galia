@@ -4,7 +4,7 @@ extends Node
 
 # Global units array
 var units: Array[Unit] = []
-var unit_cap = 5
+var unit_cap: int = 5
 
 ## =============== [ METHODS ] ================
 

@@ -30,8 +30,10 @@ func _process(delta: float) -> void:
 		var dir: Vector2 = target.global_position - global_position
 		velocity = dir.normalized() * speed * delta
 		
+	# Bounces back hydrogen on collision
 	if(collision):
-		velocity = Vector2.UP.rotated(collision.get_angle()) * collision_strength
+		velocity = collision.get_collider_velocity()
+		
 
 # Physics process
 func _physics_process(delta: float) -> void:
