@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 class_name Unit
 
 ## =============== [ FIELDS ] ================
@@ -16,7 +16,6 @@ var target: Unit
 
 # Ready
 func _ready() -> void:
-	# Adds a unit to the list of all units in the GameManager
 	GM.add_unit(self)
 
 # Process
@@ -26,8 +25,14 @@ func _process(delta: float) -> void:
 	
 	# Track target
 	if target:
-		var _position = global_position.move_toward(target.global_position, speed*delta)
-		global_position = _position
+		var dir: Vector2 = target.global_position - global_position
+		velocity = dir.normalized() * speed * 100 * delta
+
+# Physics process
+func _physics_process(delta: float) -> void:
+	move_and_slide()
+
+## =============== [ HELPERs ] ================
 
 # Finds the nearest target
 func find_target() -> void:

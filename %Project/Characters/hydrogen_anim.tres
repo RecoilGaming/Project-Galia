@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://21klnqkg875y"]
+
+[ext_resource type="Texture2D" uid="uid://beqmyrgswqfmp" path="res://Resources/hydrogen.png" id="1_fm1ea"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofvav"]
+atlas = ExtResource("1_fm1ea")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfi3l"]
+atlas = ExtResource("1_fm1ea")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u878"]
+atlas = ExtResource("1_fm1ea")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfslm"]
+atlas = ExtResource("1_fm1ea")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrnd5"]
+atlas = ExtResource("1_fm1ea")
+region = Rect2(128, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofvav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfi3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u878")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfslm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrnd5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

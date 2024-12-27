@@ -7,13 +7,12 @@
 [node name="Main" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(525, 342)
 
 [node name="Hydrogen" parent="." instance=ExtResource("1_fl7er")]
-position = Vector2(346, 434)
+position = Vector2(100, -120)
 
 [node name="Hydrogen2" parent="." instance=ExtResource("1_fl7er")]
-position = Vector2(627, 418)
+position = Vector2(200, 100)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -28,4 +27,4 @@ script = ExtResource("3_ofui7")
 
 [connection signal="pressed" from="ShopButton" to="ShopButton" method="_on_pressed"]
 [node name="Hydrogen3" parent="." instance=ExtResource("1_fl7er")]
-position = Vector2(611, 364)
+position = Vector2(-200, 0)
