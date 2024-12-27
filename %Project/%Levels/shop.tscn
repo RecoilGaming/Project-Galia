@@ -14,10 +14,11 @@ script = ExtResource("1_tkgy8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-offset_left = 40.0
-offset_top = 39.0
-offset_right = 577.0
-offset_bottom = 338.0
+offset_left = -147.0
+offset_top = -158.0
+offset_right = 807.0
+offset_bottom = 531.0
+scale = Vector2(1.01063, 0.973659)
 color = Color(0, 0.470588, 0.317647, 0.87451)
 
 [node name="HButton" type="Button" parent="."]
