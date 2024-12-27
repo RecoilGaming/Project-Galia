@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8l7081o6fndg"]
+[gd_scene load_steps=10 format=3 uid="uid://bci0bdsippu00"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Components/unit.gd" id="1_fhsnw"]
 [ext_resource type="Texture2D" uid="uid://beqmyrgswqfmp" path="res://Resources/hydrogen.png" id="3_vifbp"]
