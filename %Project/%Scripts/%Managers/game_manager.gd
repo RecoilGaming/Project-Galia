@@ -15,3 +15,6 @@ func add_unit(unit: Unit):
 func add_hydrogen():
 	unit_cap -= 1
 	print(unit_cap)
+
+func click():
+	pass

@@ -8,7 +8,7 @@ class_name Unit
 @onready var collider: CircleShape2D = $Collider.shape
 
 # Colliding
-@export var collision_strength: float = 0.5
+@export var collision_strength = 20
 
 # Data
 @export var data: UnitData
@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 		velocity = dir.normalized() * data.speed * delta
 		
 	if collision:
-		velocity = collision.get_collider_velocity() * collision_strength
+		velocity = Vector2.UP.rotated(collision.get_angle()) * collision_strength
 
 # Physics process
 func _physics_process(delta: float) -> void:

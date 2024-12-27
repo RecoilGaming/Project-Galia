@@ -11,6 +11,7 @@
 
 [node name="Unit1" parent="." instance=ExtResource("1_fl7er")]
 position = Vector2(100, -120)
+input_pickable = true
 data = ExtResource("2_wydl7")
 
 [node name="Unit2" parent="." instance=ExtResource("1_fl7er")]
