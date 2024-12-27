@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8l7081o6fndg"]
+
+[ext_resource type="Script" path="res://%Project/%Scripts/Components/unit.gd" id="1_fhsnw"]
+[ext_resource type="Script" path="res://%Project/%Scripts/Components/movement.gd" id="1_y0gev"]
+[ext_resource type="Texture2D" uid="uid://dy2ref5a5d5j3" path="res://%Project/Resources/Hydrogen.webp" id="2_07ttx"]
+
+[node name="Hydrogen" type="Node2D"]
+script = ExtResource("1_fhsnw")
+
+[node name="Movement" type="Node2D" parent="."]
+script = ExtResource("1_y0gev")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_07ttx")
