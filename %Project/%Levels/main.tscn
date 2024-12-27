@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://gfm27c0guicw"]
+[gd_scene load_steps=3 format=3 uid="uid://gfm27c0guicw"]
 
-[ext_resource type="PackedScene" uid="uid://c8l7081o6fndg" path="res://%Project/Characters/hydrogen.tscn" id="1_fl7er"]
+[ext_resource type="PackedScene" path="res://%Project/Characters/hydrogen.tscn" id="1_fl7er"]
+[ext_resource type="Script" path="res://%Project/%Scripts/shop.gd" id="2_fibmg"]
 
 [node name="Main" type="Node2D"]
 
@@ -12,3 +13,11 @@ position = Vector2(832, 416)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(525, 342)
+
+[node name="ShopButton" type="Button" parent="."]
+offset_left = 122.0
+offset_top = 73.0
+offset_right = 319.0
+offset_bottom = 141.0
+text = "open shop"
+script = ExtResource("2_fibmg")

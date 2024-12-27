@@ -1,5 +1,4 @@
-extends Control
-
+extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,14 +10,6 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_menu_button_pressed() -> void:
+func _on_h_button_pressed() -> void:
 	print("hello")
-	var shop = $ShopWindow
-	shop.show()
 	pass
-
-
-func _on_shop_window_close_requested() -> void:
-	var shop = $ShopWindow
-	shop.hide()
-	pass # Replace with function body.
