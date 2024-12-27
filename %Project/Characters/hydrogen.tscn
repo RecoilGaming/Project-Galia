@@ -1,18 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjvxppinyue2c"]
+[gd_scene load_steps=4 format=3 uid="uid://dlxns3ydfyxlu"]
 
-[ext_resource type="Script" path="res://%Project/%Scripts/Components/unit.gd" id="1_fhsnw"]
-[ext_resource type="SpriteFrames" uid="uid://ct7t2mcy5vn5n" path="res://%Project/Characters/hydrogen_anim.tres" id="2_pvy7m"]
+[ext_resource type="Script" path="res://%Project/%Scripts/Units/hydrogen.gd" id="1_op452"]
+[ext_resource type="SpriteFrames" uid="uid://21klnqkg875y" path="res://%Project/Characters/hydrogen_anim.tres" id="2_pvy7m"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3kvk2"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_lwi1o"]
 radius = 15.0
 
 [node name="Hydrogen" type="CharacterBody2D"]
-script = ExtResource("1_fhsnw")
+script = ExtResource("1_op452")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_pvy7m")
-animation = &"-1"
-autoplay = "default"
+animation = &"0"
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_3kvk2")
+shape = SubResource("CircleShape2D_lwi1o")

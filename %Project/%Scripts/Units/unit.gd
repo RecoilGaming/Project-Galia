@@ -3,21 +3,14 @@ class_name Unit
 
 ## =============== [ FIELDS ] ================
 
-# Components
-@onready var sprite: AnimatedSprite2D = $Sprite
-@onready var collider: CircleShape2D = $Collider.shape
-
-# Colliding
-@export var collision_strength: float = 10
-
-# Unit attributes
-@export var damage = 10
-
-
-# Data
-@export var data: UnitData
+# Attributes
+@export var max_health: float = 100
+@export var damage: float = 100
+@export var speed: float = 100
+@export var knockback: float = 10
 var health: float = 0
 var polarity: int = 0
+
 
 # Target unit
 var target: Unit
@@ -27,9 +20,12 @@ var collision: KinematicCollision2D
 
 # Ready
 func _ready() -> void:
-	# Initialize data
-	if data:
-		init()
+	# Apply values
+	health = max_health
+	$Sprite.play(str(polarity))
+	
+	# Add to global list
+	GM.add_unit(self)
 
 # Process
 func _process(delta: float) -> void:
@@ -39,32 +35,19 @@ func _process(delta: float) -> void:
 	# Track target
 	if target:
 		var dir: Vector2 = target.global_position - global_position
-		velocity = dir.normalized() * data.speed * delta
+		velocity = dir.normalized() * speed * delta
 		
 	if collision:
-		velocity = collision.get_collider_velocity().normalized() * collision_strength
-		if(collision.get_collider().is_class("Unit")):
-			var unit_collided: Unit = collision.get_collider()
-			unit_collided.damage_unit(damage)
+		velocity = collision.get_collider_velocity().normalized() * knockback
+		if collision.get_collider().is_class("Unit"):
+			var collider: Unit = collision.get_collider()
+			collider.deal_damage(damage)
 
 # Physics process
 func _physics_process(delta: float) -> void:
 	collision = move_and_collide(velocity)
 
 ## =============== [ HELPERS ] ================
-
-# Initialize
-func init() -> void:
-	# Apply data
-	sprite.sprite_frames = data.sprite
-	collider.radius = data.radius
-	
-	health = data.max_health
-	sprite.play(str(polarity))
-	
-	# Add to global list
-	GM.add_unit(self)
-	
 
 # Finds the nearest target
 func find_target() -> void:
@@ -80,6 +63,7 @@ func find_target() -> void:
 		if unit != self and dist < min_dist:
 			min_dist = dist
 			target = unit
-			
-func damage_unit(val: int):
-	health = clamp(health-val, 0, 100)
+
+# Deal damage	
+func deal_damage(amt: int):
+	health -= amt
