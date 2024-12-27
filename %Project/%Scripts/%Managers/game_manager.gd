@@ -2,6 +2,7 @@ extends Node
 
 ## =============== [ FIELDS ] ================
 
-var units: [Unit] = []
+# Global units array
+var units: Array[Unit] = []
 
 ## =============== [ METHODS ] ================
