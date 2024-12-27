@@ -38,9 +38,12 @@ func _process(delta: float) -> void:
 		
 	if collision:
 		velocity = collision.get_collider_velocity().normalized() * knockback
-		if collision.get_collider().is_class("Unit"):
+		if true:
 			var collider: Unit = collision.get_collider()
+			print("DAMAGE")
 			collider.deal_damage(damage)
+		else:
+			print("NO DAMAGE " + str(collision.get_collider().get_script()))
 
 # Physics process
 func _physics_process(delta: float) -> void:
@@ -52,7 +55,8 @@ func _physics_process(delta: float) -> void:
 func find_target() -> void:
 	# Minimum distance
 	var min_dist: float = 1000000
-	
+	if(!is_instance_valid(target)):
+		target = self
 	# Loop through units
 	for unit in GM.units:
 		# Get distance
@@ -64,5 +68,12 @@ func find_target() -> void:
 			target = unit
 
 # Deal damage	
-func deal_damage(amt: int):
-	health -= amt
+func deal_damage(val: int):
+	health -= val
+	if(health <= 0):
+		print("goodbye")
+		die()
+
+func die():
+	GM.units.erase(self)
+	queue_free()
