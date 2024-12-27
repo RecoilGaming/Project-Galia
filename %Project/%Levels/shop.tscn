@@ -22,12 +22,22 @@ offset_bottom = 397.0
 scale = Vector2(1.01063, 0.973659)
 color = Color(0, 0.470588, 0.317647, 0.87451)
 
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 238.465
+offset_top = 23.6222
+offset_right = 414.465
+offset_bottom = 100.622
+theme_override_font_sizes/normal_font_size = 50
+text = "Shop"
+
 [node name="HButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 429.0
-offset_top = 85.0
-offset_right = 533.0
-offset_bottom = 175.0
+offset_left = 384.0
+offset_top = 126.0
+offset_right = 478.0
+offset_bottom = 232.0
+text = "add H"
 icon = ExtResource("2_wqgg5")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -35,20 +45,20 @@ expand_icon = true
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 74.0
-offset_top = 80.0
-offset_right = 192.0
-offset_bottom = 130.0
+offset_left = 85.0
+offset_top = 125.0
+offset_right = 203.0
+offset_bottom = 175.0
 theme_override_font_sizes/font_size = 30
 text = "← exit"
 script = ExtResource("3_tmyva")
 
 [node name="PolarizeButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 359.0
-offset_top = 253.0
-offset_right = 521.0
-offset_bottom = 303.0
+offset_left = 137.0
+offset_top = 220.0
+offset_right = 299.0
+offset_bottom = 270.0
 theme_override_font_sizes/font_size = 30
 text = "Polarize"
 script = ExtResource("1_tkgy8")
