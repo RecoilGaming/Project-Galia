@@ -1,13 +1,20 @@
 [gd_scene load_steps=2 format=3 uid="uid://gfm27c0guicw"]
 
-[ext_resource type="PackedScene" uid="uid://bci0bdsippu00" path="res://%Project/Characters/hydrogen.tscn" id="1_fl7er"]
+[ext_resource type="PackedScene" uid="uid://c8l7081o6fndg" path="res://%Project/Characters/hydrogen.tscn" id="1_fl7er"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Hydrogen" parent="." instance=ExtResource("1_fl7er")]
-position = Vector2(100, 100)
+position = Vector2(269, 398)
 
 [node name="Hydrogen2" parent="." instance=ExtResource("1_fl7er")]
-position = Vector2(-100, -100)
+position = Vector2(832, 416)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(525, 342)
+
+[node name="Hydrogen3" parent="." instance=ExtResource("1_fl7er")]
+position = Vector2(476, 487)
+
+[node name="Hydrogen4" parent="." instance=ExtResource("1_fl7er")]
+position = Vector2(416, 239)
