@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://do5d5q70kmxg1"]
+
+[ext_resource type="Script" path="res://%Project/%Scripts/select_unit.gd" id="1_y7rpe"]
+
+[node name="Control" type="Control"]
+top_level = true
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_y7rpe")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -291.5
+offset_top = 72.0
+offset_right = 291.5
+offset_bottom = 161.0
+grow_horizontal = 2
+scale = Vector2(1.01063, 0.973659)
+color = Color(0.266667, 0.419608, 1, 0.87451)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 219.8
+offset_top = 15.6483
+offset_right = 472.8
+offset_bottom = 75.6483
+theme_override_font_sizes/normal_font_size = 40
+text = "Select a unit"
+
+[node name="BackButton" type="Button" parent="ColorRect"]
+offset_left = 16.8212
+offset_top = 18.487
+offset_right = 134.821
+offset_bottom = 68.487
+theme_override_font_sizes/font_size = 30
+text = "← back"
+script = ExtResource("1_y7rpe")
+
+[connection signal="pressed" from="ColorRect/BackButton" to="." method="_on_back_button_pressed"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwi7qexeqldtt"]
+[gd_scene load_steps=4 format=3 uid="uid://cwi7qexeqldtt"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/shop_ui.gd" id="1_tkgy8"]
 [ext_resource type="Texture2D" uid="uid://cjn3cmtas7rs3" path="res://Resources/guydrogen1.png" id="2_wqgg5"]
+[ext_resource type="Script" path="res://%Project/%Scripts/select_unit.gd" id="3_tmyva"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -14,10 +15,10 @@ script = ExtResource("1_tkgy8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-offset_left = -147.0
-offset_top = -158.0
-offset_right = 807.0
-offset_bottom = 531.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 619.0
+offset_bottom = 397.0
 scale = Vector2(1.01063, 0.973659)
 color = Color(0, 0.470588, 0.317647, 0.87451)
 
@@ -40,6 +41,18 @@ offset_right = 192.0
 offset_bottom = 130.0
 theme_override_font_sizes/font_size = 30
 text = "← exit"
+script = ExtResource("3_tmyva")
+
+[node name="PolarizeButton" type="Button" parent="."]
+offset_left = 359.0
+offset_top = 253.0
+offset_right = 521.0
+offset_bottom = 303.0
+theme_override_font_sizes/font_size = 30
+text = "Polarize"
+script = ExtResource("1_tkgy8")
 
 [connection signal="pressed" from="HButton" to="." method="_on_h_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="PolarizeButton" to="." method="_on_polarize_button_pressed"]
+[connection signal="pressed" from="PolarizeButton" to="." method="_on_back_button_pressed"]
