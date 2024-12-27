@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://gfm27c0guicw"]
+[gd_scene load_steps=3 format=3 uid="uid://gfm27c0guicw"]
 
 [ext_resource type="PackedScene" uid="uid://c8l7081o6fndg" path="res://%Project/Characters/hydrogen.tscn" id="1_fl7er"]
 
