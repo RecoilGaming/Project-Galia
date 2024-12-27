@@ -21,6 +21,7 @@ offset_bottom = 338.0
 color = Color(0, 0.470588, 0.317647, 0.87451)
 
 [node name="HButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 429.0
 offset_top = 85.0
 offset_right = 533.0
@@ -31,6 +32,7 @@ vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="BackButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 74.0
 offset_top = 80.0
 offset_right = 192.0
