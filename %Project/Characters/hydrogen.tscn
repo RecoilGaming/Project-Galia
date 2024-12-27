@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bci0bdsippu00"]
+[gd_scene load_steps=4 format=3 uid="uid://c8l7081o6fndg"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Components/unit.gd" id="1_fhsnw"]
-[ext_resource type="SpriteFrames" uid="uid://21klnqkg875y" path="res://%Project/Characters/hydrogen_anim.tres" id="2_pvy7m"]
+[ext_resource type="SpriteFrames" uid="uid://ct7t2mcy5vn5n" path="res://%Project/Characters/hydrogen_anim.tres" id="2_pvy7m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3kvk2"]
 radius = 15.0
