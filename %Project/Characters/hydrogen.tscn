@@ -1,10 +1,60 @@
-[gd_scene load_steps=3 format=3 uid="uid://bci0bdsippu00"]
+<<<<<<< Updated upstream
+[gd_scene load_steps=10 format=3 uid="uid://bci0bdsippu00"]
+=======
+[gd_scene load_steps=9 format=3 uid="uid://c8l7081o6fndg"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Components/unit.gd" id="1_fhsnw"]
-[ext_resource type="Texture2D" uid="uid://beqmyrgswqfmp" path="res://%Project/Resources/hydrogen.png" id="3_vifbp"]
+[ext_resource type="Texture2D" uid="uid://beqmyrgswqfmp" path="res://Resources/hydrogen.png" id="3_vifbp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofvav"]
+atlas = ExtResource("3_vifbp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u878"]
+atlas = ExtResource("3_vifbp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfslm"]
+atlas = ExtResource("3_vifbp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrnd5"]
+atlas = ExtResource("3_vifbp")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xunbr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofvav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u878")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfslm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrnd5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3kvk2"]
+radius = 15.0
 
 [node name="Hydrogen" type="Node2D"]
 script = ExtResource("1_fhsnw")
+speed = 20.0
 
-[node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("3_vifbp")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xunbr")
+autoplay = "default"
+
+[node name="Body" type="CharacterBody2D" parent="."]
+
+[node name="Collider" type="CollisionShape2D" parent="Body"]
+shape = SubResource("CircleShape2D_3kvk2")
