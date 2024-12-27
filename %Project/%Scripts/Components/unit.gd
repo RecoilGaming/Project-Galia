@@ -10,6 +10,10 @@ class_name Unit
 # Colliding
 @export var collision_strength: float = 10
 
+# Unit attributes
+@export var damage = 10
+
+
 # Data
 @export var data: UnitData
 var health: float = 0
@@ -39,6 +43,9 @@ func _process(delta: float) -> void:
 		
 	if collision:
 		velocity = collision.get_collider_velocity().normalized() * collision_strength
+		if(collision.get_collider().is_class("Unit")):
+			var unit_collided: Unit = collision.get_collider()
+			unit_collided.damage_unit(damage)
 
 # Physics process
 func _physics_process(delta: float) -> void:
@@ -73,3 +80,6 @@ func find_target() -> void:
 		if unit != self and dist < min_dist:
 			min_dist = dist
 			target = unit
+			
+func damage_unit(val: int):
+	health = clamp(health-val, 0, 100)
