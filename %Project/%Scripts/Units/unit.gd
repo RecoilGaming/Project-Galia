@@ -11,7 +11,6 @@ class_name Unit
 var health: float = 0
 var polarity: int = 0
 
-
 # Target unit
 var target: Unit
 var collision: KinematicCollision2D

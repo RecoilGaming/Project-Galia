@@ -6,8 +6,8 @@ extends Node
 @onready var main: Node2D = get_tree().root.get_node("Main")
 
 # Units
+var coins: int = 100
 var units: Array[Unit] = []
-var unit_cap: int = 5
 
 ## =============== [ METHODS ] ================
 
@@ -17,12 +17,14 @@ func add_unit(unit: Unit):
 
 # Spawn hydrogen
 func spawn_hydrogen(pos: Vector2):
-	if unit_cap > 0:
+	if coins >= 3:
 		# Instantiate hydrogen
-		var hydrogen: Unit = load("res://%Project/Characters/hydrogen.tscn").instantiate()
+		var hydrogen: Hydrogen = load("res://%Project/Characters/hydrogen.tscn").instantiate()
 		hydrogen.position = pos
+		
+		# Add child
 		main.add_child(hydrogen)
 		main.move_child(hydrogen, 0)
 		
-		# Decrease unit cap
-		unit_cap -= 1
+		# Subtract cost
+		coins -= 3
