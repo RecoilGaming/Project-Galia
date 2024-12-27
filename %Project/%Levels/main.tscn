@@ -11,7 +11,7 @@ position = Vector2(525, 342)
 position = Vector2(346, 434)
 
 [node name="Hydrogen2" parent="." instance=ExtResource("1_fl7er")]
-position = Vector2(783, 465)
+position = Vector2(627, 418)
 
 [node name="Hydrogen3" parent="." instance=ExtResource("1_fl7er")]
-position = Vector2(632, 203)
+position = Vector2(611, 364)

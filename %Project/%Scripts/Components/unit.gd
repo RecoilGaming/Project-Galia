@@ -6,6 +6,8 @@ class_name Unit
 # Attributes
 @export var speed: float = 100
 @export var health: int = 100
+@export var unit_faction: FACTION
+enum FACTION {NEGATIVE, POSITIVE}
 
 # Target unit
 var target: Unit

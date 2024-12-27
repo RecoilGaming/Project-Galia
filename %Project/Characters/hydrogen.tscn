@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=10 format=3 uid="uid://bci0bdsippu00"]
+=======
+[gd_scene load_steps=9 format=3 uid="uid://c8l7081o6fndg"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Components/unit.gd" id="1_fhsnw"]
 [ext_resource type="Texture2D" uid="uid://beqmyrgswqfmp" path="res://Resources/hydrogen.png" id="3_vifbp"]
@@ -6,10 +10,6 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_ofvav"]
 atlas = ExtResource("3_vifbp")
 region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cfi3l"]
-atlas = ExtResource("3_vifbp")
-region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8u878"]
 atlas = ExtResource("3_vifbp")
@@ -28,9 +28,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ofvav")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cfi3l")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8u878")
