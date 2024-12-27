@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://gfm27c0guicw"]
 
-[ext_resource type="PackedScene" path="res://%Project/Characters/unit.tscn" id="1_fl7er"]
+[ext_resource type="PackedScene" uid="uid://bci0bdsippu00" path="res://%Project/Characters/unit.tscn" id="1_fl7er"]
 [ext_resource type="Texture2D" uid="uid://cpe0ds574sqks" path="res://Resources/shop_button1.png" id="2_3t6fu"]
-[ext_resource type="Resource" path="res://%Project/Characters/hydrogen.tres" id="2_wydl7"]
+[ext_resource type="Resource" uid="uid://dct8i4iv87lao" path="res://%Project/Characters/hydrogen.tres" id="2_wydl7"]
 [ext_resource type="Script" path="res://%Project/%Scripts/shop_button.gd" id="3_ofui7"]
 
 [node name="Main" type="Node2D"]

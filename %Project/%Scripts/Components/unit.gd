@@ -8,12 +8,12 @@ class_name Unit
 @onready var collider: CircleShape2D = $Collider.shape
 
 # Colliding
-@export var collision_strength: float = 0.5
+@export var collision_strength: float = 10
 
 # Data
 @export var data: UnitData
+var health: float = 0
 var polarity: int = 0
-var health: int = 0
 
 # Target unit
 var target: Unit
@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 		velocity = dir.normalized() * data.speed * delta
 		
 	if collision:
-		velocity = collision.get_collider_velocity() * collision_strength
+		velocity = collision.get_collider_velocity().normalized() * collision_strength
 
 # Physics process
 func _physics_process(delta: float) -> void:
@@ -52,8 +52,8 @@ func init() -> void:
 	sprite.sprite_frames = data.sprite
 	collider.radius = data.radius
 	
-	sprite.play(str(polarity))
 	health = data.max_health
+	sprite.play(str(polarity))
 	
 	# Add to global list
 	GM.add_unit(self)
