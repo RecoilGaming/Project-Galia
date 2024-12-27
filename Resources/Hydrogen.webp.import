@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dy2ref5a5d5j3"
-path="res://.godot/imported/Hydrogen.webp-5be91ccec861cabeb432ff67a94d2e09.ctex"
+path="res://.godot/imported/Hydrogen.webp-741096c4ae02f7aebb115d4d4a0a9f90.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://%Project/Resources/Hydrogen.webp"
-dest_files=["res://.godot/imported/Hydrogen.webp-5be91ccec861cabeb432ff67a94d2e09.ctex"]
+source_file="res://Resources/Hydrogen.webp"
+dest_files=["res://.godot/imported/Hydrogen.webp-741096c4ae02f7aebb115d4d4a0a9f90.ctex"]
 
 [params]
 

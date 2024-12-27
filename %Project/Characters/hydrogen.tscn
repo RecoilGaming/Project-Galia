@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Components/unit.gd" id="1_fhsnw"]
 [ext_resource type="Script" path="res://%Project/%Scripts/Components/movement.gd" id="1_y0gev"]
-[ext_resource type="Texture2D" uid="uid://dy2ref5a5d5j3" path="res://%Project/Resources/Hydrogen.webp" id="2_07ttx"]
+[ext_resource type="Texture2D" path="res://%Project/Resources/Hydrogen.webp" id="2_07ttx"]
 
 [node name="Hydrogen" type="Node2D"]
 script = ExtResource("1_fhsnw")
