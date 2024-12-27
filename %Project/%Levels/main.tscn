@@ -1,26 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://gfm27c0guicw"]
+[gd_scene load_steps=4 format=3 uid="uid://gfm27c0guicw"]
 
-[ext_resource type="PackedScene" path="res://%Project/Characters/unit.tscn" id="1_fl7er"]
+[ext_resource type="PackedScene" uid="uid://dlxns3ydfyxlu" path="res://%Project/Characters/hydrogen.tscn" id="1_fl7er"]
 [ext_resource type="Texture2D" uid="uid://cpe0ds574sqks" path="res://Resources/shop_button1.png" id="2_3t6fu"]
-[ext_resource type="Resource" path="res://%Project/Characters/hydrogen.tres" id="2_wydl7"]
 [ext_resource type="Script" path="res://%Project/%Scripts/shop_button.gd" id="3_ofui7"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="Unit1" parent="." instance=ExtResource("1_fl7er")]
-position = Vector2(100, -120)
-input_pickable = true
-data = ExtResource("2_wydl7")
-
-[node name="Unit2" parent="." instance=ExtResource("1_fl7er")]
-position = Vector2(200, 100)
-data = ExtResource("2_wydl7")
-
-[node name="Unit3" parent="." instance=ExtResource("1_fl7er")]
-position = Vector2(-200, 0)
-data = ExtResource("2_wydl7")
 
 [node name="ShopButton" type="Button" parent="."]
 offset_left = -294.0
@@ -30,5 +16,13 @@ offset_bottom = 160.0
 icon = ExtResource("2_3t6fu")
 expand_icon = true
 script = ExtResource("3_ofui7")
+
+[node name="Hydrogen" parent="." instance=ExtResource("1_fl7er")]
+
+[node name="Hydrogen2" parent="." instance=ExtResource("1_fl7er")]
+position = Vector2(100, 0)
+
+[node name="Hydrogen3" parent="." instance=ExtResource("1_fl7er")]
+position = Vector2(100, 100)
 
 [connection signal="pressed" from="ShopButton" to="ShopButton" method="_on_pressed"]
