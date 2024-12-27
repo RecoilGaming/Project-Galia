@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6uchpmsqsxte"]
+
+[ext_resource type="Script" path="res://%Project/%Scripts/shop.gd" id="1_5inxc"]
+[ext_resource type="Texture2D" path="res://%Project/Resources/shop_button.png" id="2_i8de5"]
+[ext_resource type="Texture2D" path="res://%Project/Resources/guydrogen.png" id="3_yruna"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 75.0
+offset_top = 89.0
+offset_right = 75.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5inxc")
+
+[node name="MenuButton" type="MenuButton" parent="."]
+layout_mode = 1
+offset_left = 250.0
+offset_top = 183.0
+offset_right = 549.0
+offset_bottom = 347.0
+theme_override_font_sizes/font_size = 50
+text = "[open shop]"
+
+[node name="TextureButton" type="TextureButton" parent="MenuButton"]
+layout_mode = 0
+offset_right = 299.0
+offset_bottom = 163.0
+mouse_filter = 2
+texture_normal = ExtResource("2_i8de5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ShopWindow" type="Window" parent="."]
+title = "shop"
+initial_position = 1
+size = Vector2i(800, 400)
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopWindow"]
+position = Vector2(500, 300)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_yruna")
+
+[node name="Camera2D" type="Camera2D" parent="ShopWindow"]
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="close_requested" from="ShopWindow" to="." method="_on_shop_window_close_requested"]
