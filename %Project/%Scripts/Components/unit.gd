@@ -5,6 +5,7 @@ class_name Unit
 
 # Attributes
 @export var speed: float = 100
+@export var health: int = 100
 
 # Target unit
 var target: Unit
