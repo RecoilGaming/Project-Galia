@@ -7,10 +7,12 @@ class_name Unit
 @export var speed: float = 100
 @export var health: int = 100
 @export var unit_faction: FACTION
+@export var collision_strength = 20
 enum FACTION {NEGATIVE, POSITIVE}
 
 # Target unit
 var target: Unit
+var collision: KinematicCollision2D
 
 ## =============== [ METHODS ] ================
 
@@ -26,11 +28,14 @@ func _process(delta: float) -> void:
 	# Track target
 	if target:
 		var dir: Vector2 = target.global_position - global_position
-		velocity = dir.normalized() * speed * 100 * delta
+		velocity = dir.normalized() * speed * delta
+		
+	if(collision):
+		velocity = Vector2.UP.rotated(collision.get_angle()) * collision_strength
 
 # Physics process
 func _physics_process(delta: float) -> void:
-	move_and_slide()
+	collision = move_and_collide(velocity)
 
 ## =============== [ HELPERs ] ================
 
