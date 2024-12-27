@@ -44,6 +44,7 @@ text = "← exit"
 script = ExtResource("3_tmyva")
 
 [node name="PolarizeButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 359.0
 offset_top = 253.0
 offset_right = 521.0
@@ -54,5 +55,5 @@ script = ExtResource("1_tkgy8")
 
 [connection signal="pressed" from="HButton" to="." method="_on_h_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="PolarizeButton" to="." method="_on_polarize_button_pressed"]
 [connection signal="pressed" from="PolarizeButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="PolarizeButton" to="." method="_on_polarize_button_pressed"]

@@ -12,5 +12,5 @@ func _process(delta: float) -> void:
 
 
 func _on_back_button_pressed() -> void:
-	
-	pass # Replace with function body.
+	get_parent().add_child(load("res://%Project/%Levels/shop.tscn").instantiate())
+	queue_free()

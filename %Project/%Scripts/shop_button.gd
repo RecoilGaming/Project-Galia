@@ -10,4 +10,3 @@ func _process(delta: float) -> void:
 
 func _on_pressed() -> void:
 	get_parent().add_child(load("res://%Project/%Levels/shop.tscn").instantiate())
-	self.hide()

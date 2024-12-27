@@ -15,10 +15,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -291.5
-offset_top = 72.0
-offset_right = 291.5
-offset_bottom = 161.0
+offset_left = -312.0
+offset_top = 65.0
+offset_right = 327.0
+offset_bottom = 163.0
 grow_horizontal = 2
 scale = Vector2(1.01063, 0.973659)
 color = Color(0.266667, 0.419608, 1, 0.87451)
@@ -33,6 +33,7 @@ theme_override_font_sizes/normal_font_size = 40
 text = "Select a unit"
 
 [node name="BackButton" type="Button" parent="ColorRect"]
+layout_mode = 0
 offset_left = 16.8212
 offset_top = 18.487
 offset_right = 134.821
