@@ -16,8 +16,8 @@ position = Vector2(-100, -100)
 
 [node name="ShopButton" type="Button" parent="."]
 offset_left = -294.0
-offset_top = 83.0
-offset_right = -151.0
+offset_top = 107.0
+offset_right = -198.0
 offset_bottom = 160.0
 icon = ExtResource("2_3t6fu")
 expand_icon = true
