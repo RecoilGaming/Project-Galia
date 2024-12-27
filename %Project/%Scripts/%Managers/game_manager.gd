@@ -12,6 +12,8 @@ var unit_cap: int = 5
 func add_unit(unit: Unit):
 	units.append(unit)
 
-func add_hydrogen():
+# Spawn hydrogen
+func spawn_hydrogen(pos: Vector2):
+	var hydrogen: Unit = load("res://%Project/Characters/unit.tscn").instantiate()
+	get_tree().root.add_child(hydrogen)
 	unit_cap -= 1
-	print(unit_cap)
