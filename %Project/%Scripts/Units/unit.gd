@@ -131,8 +131,11 @@ func change_polarity(amt: int) -> bool:
 
 # Left click detection
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT and GM.polarizing:
-		change_polarity(GM.click_polarity)
+	if event.is_pressed() and GM.polarizing:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			change_polarity(-1)
+		elif event.button_index == MOUSE_BUTTON_RIGHT:
+			change_polarity(1)
 
 func _body_entered(body: Node2D):
 	if(body is Unit and body != self):

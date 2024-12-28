@@ -14,21 +14,24 @@ texture = ExtResource("1_j88ee")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="ShopButton" type="Button" parent="."]
-offset_left = -294.0
-offset_top = 113.0
-offset_right = -207.0
-offset_bottom = 160.0
+offset_left = -314.0
+offset_top = 127.0
+offset_right = -227.0
+offset_bottom = 174.0
 icon = ExtResource("2_3t6fu")
 expand_icon = true
 script = ExtResource("2_f2gkk")
 
 [node name="CoinText" type="RichTextLabel" parent="."]
-offset_left = 225.0
-offset_top = 135.0
-offset_right = 313.0
-offset_bottom = 176.0
+offset_left = 163.0
+offset_top = 144.0
+offset_right = 315.0
+offset_bottom = 180.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "coins: 69"
+theme_override_fonts/normal_font = ExtResource("5_x6f26")
+theme_override_font_sizes/normal_font_size = 32
+text = "coins: 100"
+text_direction = 2
 script = ExtResource("7_33h7g")
 
 [connection signal="pressed" from="ShopButton" to="ShopButton" method="_on_pressed"]

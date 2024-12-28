@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://do5d5q70kmxg1"]
+[gd_scene load_steps=3 format=3 uid="uid://do5d5q70kmxg1"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/select_unit.gd" id="1_y3xdy"]
+[ext_resource type="FontFile" uid="uid://bcp7y8bedygee" path="res://Resources/Stepalange-x3BLm.otf" id="2_xy1b8"]
 
 [node name="SelectUnit" type="Control"]
 top_level = true
@@ -15,52 +16,42 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -312.0
-offset_top = 80.0
-offset_right = 327.0
-offset_bottom = 178.0
+offset_left = -150.0
+offset_top = 138.0
+offset_right = 147.0
+offset_bottom = 168.0
 grow_horizontal = 2
 scale = Vector2(1.01063, 0.973659)
 color = Color(0.266667, 0.419608, 1, 0.87451)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
 layout_mode = 0
-offset_left = 219.8
-offset_top = 15.6483
-offset_right = 472.8
-offset_bottom = 75.6483
-theme_override_font_sizes/normal_font_size = 40
-text = "Select a unit"
+offset_left = 41.5582
+offset_top = 6.16232
+offset_right = 399.558
+offset_bottom = 51.1623
+theme_override_fonts/normal_font = ExtResource("2_xy1b8")
+theme_override_font_sizes/normal_font_size = 20
+text = "Polarize units with LMB and RMB"
 
 [node name="BackButton" type="Button" parent="ColorRect"]
 layout_mode = 0
-offset_left = 16.8212
-offset_top = 18.487
-offset_right = 134.821
-offset_bottom = 68.487
-theme_override_font_sizes/font_size = 30
-text = "← back"
+offset_left = 7.91586
+offset_top = 3.08116
+offset_right = 27.9159
+offset_bottom = 25.0812
+theme_override_font_sizes/font_size = 10
 script = ExtResource("1_y3xdy")
 
-[node name="PolarityToggle" type="CheckButton" parent="ColorRect"]
+[node name="x" type="RichTextLabel" parent="ColorRect/BackButton"]
 layout_mode = 0
-offset_left = 502.657
-offset_top = 30.8116
-offset_right = 546.657
-offset_bottom = 54.8116
-button_pressed = true
-icon_alignment = 1
-script = ExtResource("1_y3xdy")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/PolarityToggle"]
-layout_mode = 0
-offset_left = -10.8843
-offset_top = -5.13526
-offset_right = 89.1157
-offset_bottom = 44.8648
+offset_left = 5.74757
+offset_top = -0.918848
+offset_right = 33.7476
+offset_bottom = 29.0812
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 20
-text = "-          +"
+theme_override_font_sizes/normal_font_size = 15
+text = "×"
+metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="ColorRect/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="toggled" from="ColorRect/PolarityToggle" to="." method="_on_polarity_toggle_toggled"]
