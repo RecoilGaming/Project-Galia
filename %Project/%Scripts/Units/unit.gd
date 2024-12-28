@@ -14,17 +14,25 @@ var health: float = MAX_HEALTH
 
 enum Polarity { BIG_POSITIVE, POSITIVE, NEUTRAL, NEGATIVE, BIG_NEGATIVE }
 
-@export var polarity: Polarity = Polarity.NEUTRAL:
-	set(value):
-		polarity = clamp(value, Polarity.BIG_POSITIVE, Polarity.BIG_NEGATIVE)
-		# Changes animation
-		$Sprite.play(str(polarity))
+@export var polarity: Polarity = Polarity.NEUTRAL
 
 # Target unit
 var target: Unit
 var collision: KinematicCollision2D
 
 ## =============== [ METHODS ] ================ ##
+
+func set_polarity(value):
+	var old_polarity = polarity
+	
+	polarity = clamp(value, Polarity.BIG_POSITIVE, Polarity.BIG_NEGATIVE)
+	
+	if(old_polarity == polarity):
+		return false
+	else:
+		# Changes animation
+		$Sprite.play(str(polarity))
+		return true
 
 # Ready
 func _ready() -> void:
@@ -108,14 +116,7 @@ func move(dir: Vector2, delta: float):
 
 # Change polarity, returns whether it was successful
 func change_polarity(amt: int) -> bool:
-	var old_polarity = polarity
-	polarity += amt
-	
-	# If the polarity didn't change
-	if(polarity == old_polarity):
-		return false
-	
-	return true
+	return set_polarity(polarity+amt)
 
 ## =============== [ SIGNALS ] ================ ##
 
