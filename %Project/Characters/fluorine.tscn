@@ -4,15 +4,16 @@
 [ext_resource type="SpriteFrames" uid="uid://croo870vqqify" path="res://%Project/Characters/fluorine_anim.tres" id="2_b2owd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ms6eo"]
-radius = 24.0
+radius = 11.0454
 
 [node name="Fluorine" type="CharacterBody2D"]
 input_pickable = true
 script = ExtResource("1_c707q")
+CONTACT_DAMAGE = 0.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_b2owd")
-animation = &"0"
+animation = &"2"
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ms6eo")

@@ -5,13 +5,18 @@ class_name Unit
 
 # Attributes
 @export var MAX_HEALTH: float = 100
-@export var CONTACT_DAMAGE: float = 20
+@export var CONTACT_DAMAGE: float = 2
 @export var SPEED: float = 100
 @export var KNOCKBACK: float = 10
 var health: float = 0
 
-# TODO: change this to be an enum
-var polarity: int = 0
+enum POLARITY {BIG_POSITIVE, POSITIVE, NEUTRAL, NEGATIVE, BIG_NEGATIVE}
+
+@export var polarity: POLARITY = POLARITY.NEUTRAL:
+	set(value):
+		polarity = clamp(value, POLARITY.BIG_POSITIVE, POLARITY.BIG_NEGATIVE)
+		# Changes animation
+		$Sprite.play(str(polarity))
 
 # Target unit
 var target: Unit
@@ -47,7 +52,7 @@ func _process(delta: float) -> void:
 		velocity = collision.get_collider_velocity().normalized() * KNOCKBACK
 		var collider: Unit = collision.get_collider()
 		if collider:
-			collider.deal_damage(CONTACT_DAMAGE, 1)
+			collider.take_damage(CONTACT_DAMAGE, self.polarity)
 
 # Physics process
 func _physics_process(delta: float) -> void:
@@ -71,8 +76,17 @@ func find_target() -> void:
 			target = unit
 
 # Deal physical damage
-func deal_damage(amt: int, dc_polarity: int): # Amount, Damage component polarity
-	health -= amt
+func take_damage(amt: int, dc_polarity: POLARITY): # Amount of damage, Damage component polarity
+	# FLOWCHART TIME!!!
+	# If they're the same, this is 1
+	# If they're the different by 1, this is 2
+	# If they're the different by 2, this is 5
+	# If they're the different by 3, this is 10
+	# If they're the different by 4, this is 17
+	# Note: Make base damage take this into account i.e. have it be small
+	var damage_multiplier = abs(dc_polarity-self.polarity)^2+1
+	health -= amt*damage_multiplier
+	print("I, "+ str(self.name) +" have " + str(health) + "hp and are taking " + str(damage_multiplier))
 	
 	# Dying
 	if health <= 0:
@@ -85,12 +99,19 @@ func die():
 
 # Movint
 func move(dir: Vector2, delta: float):
+	#acceleration = dir.normalized() * SPEED * delta
 	velocity = dir.normalized() * SPEED * delta
 
-# Change polarity
-func change_polarity(amt: int):
-	polarity = clamp(polarity + amt, -2, 2)
-	$Sprite.play(str(polarity))
+# Change polarity, returns whether it was successful
+func change_polarity(amt: int) -> bool:
+	var old_polarity = polarity
+	polarity += amt
+	
+	# If the polarity didn't change
+	if(polarity == old_polarity):
+		return false
+	
+	return true
 
 ## =============== [ SIGNALS ] ================ ##
 

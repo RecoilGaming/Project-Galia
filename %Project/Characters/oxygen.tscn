@@ -4,7 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://x022s6cbl6d4" path="res://%Project/Characters/oxygen_anim.tres" id="2_fft31"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_04t31"]
-radius = 24.0
+radius = 16.0
 
 [node name="Oxygen" type="CharacterBody2D"]
 input_pickable = true
@@ -12,7 +12,7 @@ script = ExtResource("1_qq8k8")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_fft31")
-animation = &"0"
+animation = &"4"
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_04t31")
