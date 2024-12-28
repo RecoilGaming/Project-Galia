@@ -1,7 +1,7 @@
 extends Control
 
 func _on_h_button_pressed() -> void:
-	GM.spawn_unit(Vector2(0, 0))
+	GM.spawn_unit(Vector2(0, 0), GM.unit_spawn_index)
 
 func _on_back_button_pressed() -> void:
 	queue_free()
