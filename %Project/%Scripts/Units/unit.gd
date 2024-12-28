@@ -113,7 +113,6 @@ func die():
 
 # Movint
 func move(dir: Vector2, delta: float):
-	#acceleration = dir.normalized() * SPEED * delta
 	velocity = dir.normalized() * SPEED * delta
 
 # Change polarity, returns whether it was successful
