@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dlxns3ydfyxlu"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Units/hydrogen.gd" id="1_op452"]
-[ext_resource type="SpriteFrames" uid="uid://bfy2pobjyt62x" path="res://%Project/Characters/fluorine_anim.tres" id="2_vaks2"]
+[ext_resource type="SpriteFrames" uid="uid://21klnqkg875y" path="res://%Project/Characters/hydrogen_anim.tres" id="2_pvy7m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lwi1o"]
 radius = 16.0
@@ -11,7 +11,7 @@ input_pickable = true
 script = ExtResource("1_op452")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("2_vaks2")
+sprite_frames = ExtResource("2_pvy7m")
 animation = &"0"
 
 [node name="Collider" type="CollisionShape2D" parent="."]
