@@ -39,18 +39,18 @@ IS_ENEMY = true
 polarity = 0
 
 [node name="Oxygen" parent="." instance=ExtResource("4_aud5d")]
-position = Vector2(-307, -124)
+position = Vector2(-236, -55)
 
 [node name="Fluorine" parent="." instance=ExtResource("5_7pd8u")]
 position = Vector2(75, -113)
 
 [node name="CoinText" type="RichTextLabel" parent="."]
-offset_left = 234.0
-offset_top = 136.0
-offset_right = 311.0
-offset_bottom = 172.0
+offset_left = -309.0
+offset_top = -170.0
+offset_right = -225.0
+offset_bottom = -146.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "coins: 69"
+text = "Coins: 69"
 script = ExtResource("7_33h7g")
 
 [connection signal="pressed" from="ShopButton" to="ShopButton" method="_on_pressed"]
