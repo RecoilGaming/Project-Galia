@@ -1,9 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwi7qexeqldtt"]
+[gd_scene load_steps=8 format=3 uid="uid://cwi7qexeqldtt"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/shop_ui.gd" id="1_tbhn0"]
-[ext_resource type="Script" path="res://%Project/%Scripts/shop_ui.gd" id="1_tkgy8"]
 [ext_resource type="Texture2D" uid="uid://beqmyrgswqfmp" path="res://Resources/hydrogen.png" id="3_mkgi2"]
-[ext_resource type="Script" path="res://%Project/%Scripts/select_unit.gd" id="3_tmyva"]
 [ext_resource type="Texture2D" uid="uid://wqj3pi30xf1r" path="res://Resources/oxygen.png" id="4_b80xg"]
 [ext_resource type="Texture2D" uid="uid://ds7yg4sqp34xp" path="res://Resources/fluorine.png" id="5_4jdiu"]
 
@@ -62,6 +60,7 @@ vertical_icon_alignment = 0
 script = ExtResource("1_tbhn0")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 522.0
 offset_top = 134.0
 offset_right = 586.0
@@ -103,7 +102,7 @@ offset_right = 171.0
 offset_bottom = 103.0
 theme_override_font_sizes/font_size = 25
 text = "← back"
-script = ExtResource("3_tmyva")
+script = ExtResource("1_tbhn0")
 
 [node name="PolarizeButton" type="Button" parent="."]
 layout_mode = 0
@@ -113,10 +112,10 @@ offset_right = 264.0
 offset_bottom = 224.0
 theme_override_font_sizes/font_size = 30
 text = "Polarize"
-script = ExtResource("1_tkgy8")
+script = ExtResource("1_tbhn0")
 
 [connection signal="pressed" from="AddButton" to="." method="_on_h_button_pressed"]
 [connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="PolarizeButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="PolarizeButton" to="." method="_on_polarize_button_pressed"]
+[connection signal="pressed" from="PolarizeButton" to="." method="_on_back_button_pressed"]
