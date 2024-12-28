@@ -16,5 +16,3 @@ animation = &"0"
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lwi1o")
-
-[connection signal="input_event" from="." to="." method="_on_input_event"]

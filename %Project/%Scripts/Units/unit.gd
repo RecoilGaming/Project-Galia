@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Unit
 
-## =============== [ FIELDS ] ================
+## =============== [ FIELDS ] ================ ##
 
 # Attributes
 @export var MAX_HEALTH: float = 100
@@ -15,13 +15,14 @@ var polarity: int = 0
 var target: Unit
 var collision: KinematicCollision2D
 
-## =============== [ METHODS ] ================
+## =============== [ METHODS ] ================ ##
 
 # Ready
 func _ready() -> void:
 	# Apply values
 	health = MAX_HEALTH
 	$Sprite.play(str(polarity))
+	self.input_event.connect(_on_input_event)
 	
 	# Add to global list
 	GM.add_unit(self)
@@ -50,7 +51,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	collision = move_and_collide(velocity)
 
-## =============== [ HELPERS ] ================
+## =============== [ HELPERS ] ================ ##
 
 # Finds the nearest target
 func find_target() -> void:
@@ -89,3 +90,10 @@ func move(delta: float):
 func change_polarity(amt: int):
 	polarity = clamp(polarity + amt, -2, 2)
 	$Sprite.play(str(polarity))
+
+## =============== [ SIGNALS ] ================ ##
+
+# Left click detection
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		change_polarity(1)
