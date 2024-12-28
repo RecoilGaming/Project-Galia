@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://xon2i8id4tpe"]
+[gd_scene load_steps=3 format=3 uid="uid://tidsrn13xota"]
 
-[ext_resource type="SpriteFrames" uid="uid://klerwkmts7x0" path="res://%Project/Characters/electron_anim.tres" id="2_ealna"]
+[ext_resource type="SpriteFrames" uid="uid://dvxkrbletolyb" path="res://%Project/Characters/electron_anim.tres" id="2_ealna"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_04t31"]
 radius = 4.0
@@ -9,7 +9,7 @@ radius = 4.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_ealna")
-frame_progress = 0.818162
+frame_progress = 0.662006
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_04t31")

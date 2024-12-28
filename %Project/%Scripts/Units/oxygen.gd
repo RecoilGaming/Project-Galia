@@ -28,4 +28,6 @@ func _process(delta: float) -> void:
 
 # Shoots a bullet	
 func shoot():
-	print("Pew!")
+	var electron = load("res://%Project/Characters/electron.tscn").instantiate()
+	get_parent().add_child(electron)
+	

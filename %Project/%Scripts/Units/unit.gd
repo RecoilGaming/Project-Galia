@@ -8,7 +8,13 @@ class_name Unit
 @export var CONTACT_DAMAGE: float = 2
 @export var SPEED: float = 100
 @export var KNOCKBACK: float = 10
-var health: float = 0
+@export var IS_ENEMY: bool = false
+
+var health: float = 0:
+	set(value):
+		# Dying
+		if health <= 0:
+			die()
 
 enum Polarity { BIG_POSITIVE, POSITIVE, NEUTRAL, NEGATIVE, BIG_NEGATIVE }
 
@@ -51,8 +57,9 @@ func _process(delta: float) -> void:
 	if collision:
 		velocity = collision.get_collider_velocity().normalized() * KNOCKBACK
 		var collider: Unit = collision.get_collider()
-		if collider:
-			collider.take_damage(CONTACT_DAMAGE, self.polarity)
+		if collider: # Needs to be unit
+			if(target.IS_ENEMY == self.IS_ENEMY):
+				collider.take_damage(CONTACT_DAMAGE, self.polarity)
 
 # Physics process
 func _physics_process(delta: float) -> void:
@@ -71,7 +78,7 @@ func find_target() -> void:
 		var dist: float = global_position.distance_to(unit.global_position)
 		
 		# Check unit
-		if unit != self and dist < min_dist:
+		if unit != self and dist < min_dist and unit.IS_ENEMY == self.IS_ENEMY:
 			min_dist = dist
 			target = unit
 
@@ -89,10 +96,6 @@ func take_damage(amt: int, dc_polarity: Polarity): # Amount of damage, Damage co
 	damage_multiplier += 1
 	health -= amt*damage_multiplier
 	#print("I, "+ str(self.name) +" have " + str(health) + "hp and are taking " + str(damage_multiplier))
-	
-	# Dying
-	if health <= 0:
-		die()
 
 # Dyging
 func die():
