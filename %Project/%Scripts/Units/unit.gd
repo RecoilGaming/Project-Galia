@@ -10,7 +10,7 @@ class_name Unit
 @export var KNOCKBACK: float = 10
 @export var IS_ENEMY: bool = false
 
-var health: float = 0:
+var health: float = MAX_HEALTH:
 	set(value):
 		# Dying
 		if health <= 0:
@@ -33,7 +33,6 @@ var collision: KinematicCollision2D
 # Ready
 func _ready() -> void:
 	# Apply values
-	health = MAX_HEALTH
 	$Sprite.play(str(polarity))
 	self.input_event.connect(_on_input_event)
 	

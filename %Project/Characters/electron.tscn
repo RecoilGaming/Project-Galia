@@ -9,7 +9,7 @@ radius = 4.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_ealna")
-frame_progress = 0.662006
+frame_progress = 0.0122008
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_04t31")
