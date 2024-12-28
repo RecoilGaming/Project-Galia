@@ -5,10 +5,12 @@ class_name Unit
 
 # Attributes
 @export var MAX_HEALTH: float = 100
-@export var CONTACT_DAMAGE: float = 100
+@export var CONTACT_DAMAGE: float = 20
 @export var SPEED: float = 100
 @export var KNOCKBACK: float = 10
 var health: float = 0
+
+# TODO: change this to be an enum
 var polarity: int = 0
 
 # Target unit
@@ -45,7 +47,7 @@ func _process(delta: float) -> void:
 		velocity = collision.get_collider_velocity().normalized() * KNOCKBACK
 		var collider: Unit = collision.get_collider()
 		if collider:
-			collider.deal_contact_damage(CONTACT_DAMAGE)
+			collider.deal_damage(CONTACT_DAMAGE, 1)
 
 # Physics process
 func _physics_process(delta: float) -> void:
@@ -69,7 +71,7 @@ func find_target() -> void:
 			target = unit
 
 # Deal physical damage
-func deal_contact_damage(amt: int):
+func deal_damage(amt: int, dc_polarity: int): # Amount, Damage component polarity
 	health -= amt
 	
 	# Dying

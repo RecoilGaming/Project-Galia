@@ -8,6 +8,7 @@ const FOLLOWING_MARGINS = 30
 const BACKUP_SLOWDOWN = 0.2
 var shot_cooldown: float = 1
 
+# Moves the oxygen
 func move(dir: Vector2, delta: float):
 	if(global_position.distance_to(target.global_position) < FOLLOWING_DISTANCE - FOLLOWING_MARGINS):
 		super.move(-dir, delta*BACKUP_SLOWDOWN)
@@ -24,6 +25,7 @@ func _process(delta: float) -> void:
 	if(shot_cooldown <= 0):
 		shoot()
 		shot_cooldown += SHOOT_COOLDOWN
-		
+
+# Shoots a bullet	
 func shoot():
 	print("Pew!")
