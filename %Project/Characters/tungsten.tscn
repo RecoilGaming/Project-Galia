@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhmjyfwhpcy5y"]
+
+[ext_resource type="Script" path="res://%Project/%Scripts/Units/tungsten.gd" id="1_bg1ie"]
+[ext_resource type="SpriteFrames" uid="uid://crl1pvq7tbk72" path="res://%Project/Characters/tungsten_anim.tres" id="2_wf3bp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4nkcf"]
+radius = 14.0
+
+[node name="Tungsten" type="CharacterBody2D"]
+script = ExtResource("1_bg1ie")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_wf3bp")
+animation = &"4"
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4nkcf")
