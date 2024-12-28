@@ -88,3 +88,4 @@ func move(delta: float):
 # Change polarity
 func change_polarity(amt: int):
 	polarity = clamp(polarity + amt, -2, 2)
+	$Sprite.play(str(polarity))

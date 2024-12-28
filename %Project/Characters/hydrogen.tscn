@@ -8,8 +8,6 @@ radius = 16.0
 
 [node name="Hydrogen" type="CharacterBody2D"]
 script = ExtResource("1_op452")
-damage = 10.0
-speed = 50.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_vaks2")
