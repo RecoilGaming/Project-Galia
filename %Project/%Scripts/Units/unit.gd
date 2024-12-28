@@ -67,9 +67,9 @@ func find_target() -> void:
 			min_dist = dist
 			target = unit
 
-# Deal CONTACT_DAMAGE	
-func deal_CONTACT_DAMAGE(val: int):
-	health -= val
+# Deal physical damage
+func deal_physical_damage(amt: int):
+	health -= amt
 	
 	# Dying
 	if health <= 0:
@@ -80,7 +80,11 @@ func die():
 	GM.units.erase(self)
 	queue_free()
 
-# Movint
+# Move
 func move(delta: float):
 	var dir: Vector2 = target.global_position - global_position
 	velocity = dir.normalized() * SPEED * delta
+
+# Change polarity
+func change_polarity(amt: int):
+	polarity = clamp(polarity + amt, -2, 2)
