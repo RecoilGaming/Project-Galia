@@ -16,7 +16,7 @@ var unit_spawn_index: int = 0
 var types = ["hydrogen", "oxygen", "fluorine"]
 var polarizing: bool = false
 
-var current_wave := 1
+var current_wave := 0
 var waves = [
 	[["hydrogen", 5]],
 	[["hydrogen", 3], ["oxygen", 2]],
