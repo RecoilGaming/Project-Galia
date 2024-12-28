@@ -67,6 +67,10 @@ func find_target() -> void:
 			min_dist = dist
 			target = unit
 
+func on_click():
+	print("clicked")
+	pass
+
 # Deal damage	
 func deal_damage(val: int):
 	health -= val

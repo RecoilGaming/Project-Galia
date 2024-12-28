@@ -11,6 +11,7 @@ offset_left = -312.0
 offset_top = -201.0
 offset_right = -312.0
 offset_bottom = -201.0
+mouse_filter = 2
 script = ExtResource("1_tkgy8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
