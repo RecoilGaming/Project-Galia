@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://gfm27c0guicw"]
+[gd_scene load_steps=9 format=3 uid="uid://gfm27c0guicw"]
 
+[ext_resource type="PackedScene" uid="uid://dlxns3ydfyxlu" path="res://%Project/Characters/hydrogen.tscn" id="1_fl7er"]
 [ext_resource type="Texture2D" uid="uid://67jod3wvej7v" path="res://Resources/background.png" id="1_j88ee"]
 [ext_resource type="Texture2D" uid="uid://cpe0ds574sqks" path="res://Resources/shop_button1.png" id="2_3t6fu"]
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/shop_button.gd" id="2_f2gkk"]
 [ext_resource type="PackedScene" uid="uid://14usl23dbv54" path="res://%Project/Characters/oxygen.tscn" id="4_aud5d"]
+[ext_resource type="PackedScene" uid="uid://0hwrktw6n1cj" path="res://%Project/Characters/tungsten.tscn" id="6_naupy"]
 [ext_resource type="Script" path="res://%Project/%Scripts/%Managers/game_manager.gd" id="7_33h7g"]
+[ext_resource type="PackedScene" uid="uid://bgi6uiv2q143h" path="res://%Project/Characters/uranium.tscn" id="7_jb222"]
 
 [node name="Main" type="Node2D"]
 
@@ -16,8 +19,8 @@ texture = ExtResource("1_j88ee")
 
 [node name="ShopButton" type="Button" parent="."]
 offset_left = -294.0
-offset_top = 83.0
-offset_right = -151.0
+offset_top = 113.0
+offset_right = -207.0
 offset_bottom = 160.0
 icon = ExtResource("2_3t6fu")
 expand_icon = true
@@ -35,13 +38,13 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "coins: 69"
 script = ExtResource("7_33h7g")
 
-[node name="Oxygen2" parent="." instance=ExtResource("4_aud5d")]
-position = Vector2(195, -50)
+[node name="Tungsten" parent="." instance=ExtResource("6_naupy")]
+position = Vector2(64, 125)
 
-[node name="Oxygen3" parent="." instance=ExtResource("4_aud5d")]
-position = Vector2(-53, 56)
+[node name="Uranium" parent="." instance=ExtResource("7_jb222")]
+position = Vector2(187, 68)
 
-[node name="Oxygen4" parent="." instance=ExtResource("4_aud5d")]
-position = Vector2(23, -116)
+[node name="Hydrogen" parent="." instance=ExtResource("1_fl7er")]
+position = Vector2(60, -97)
 
 [connection signal="pressed" from="ShopButton" to="ShopButton" method="_on_pressed"]

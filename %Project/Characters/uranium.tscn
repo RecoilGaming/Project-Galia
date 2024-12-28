@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://o7hoju52v1bi"]
+[gd_scene load_steps=5 format=3 uid="uid://bgi6uiv2q143h"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Units/uranium.gd" id="1_46yvj"]
-[ext_resource type="SpriteFrames" uid="uid://yx236qgpwlan" path="res://%Project/Characters/uranium_anim.tres" id="2_kh0tw"]
+[ext_resource type="SpriteFrames" uid="uid://sxjidgejcf1y" path="res://%Project/Characters/uranium_anim.tres" id="2_kh0tw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nahrt"]
 radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_58r6o"]
+radius = 25.0799
 
 [node name="Uranium" type="CharacterBody2D"]
 script = ExtResource("1_46yvj")
@@ -17,3 +20,8 @@ frame_progress = 0.770151
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_nahrt")
+
+[node name="NotArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NotArea2D"]
+shape = SubResource("CircleShape2D_58r6o")
