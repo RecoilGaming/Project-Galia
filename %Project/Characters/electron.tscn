@@ -1,18 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://tidsrn13xota"]
+[gd_scene load_steps=3 format=3 uid="uid://xon2i8id4tpe"]
 
-[ext_resource type="Script" path="res://%Project/%Scripts/Units/oxygen.gd" id="1_nenlm"]
-[ext_resource type="SpriteFrames" uid="uid://x022s6cbl6d4" path="res://%Project/Characters/oxygen_anim.tres" id="2_an5cv"]
+[ext_resource type="SpriteFrames" uid="uid://klerwkmts7x0" path="res://%Project/Characters/electron_anim.tres" id="2_ealna"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_04t31"]
-radius = 16.0
+radius = 4.0
 
-[node name="Electron" type="CharacterBody2D"]
-input_pickable = true
-script = ExtResource("1_nenlm")
+[node name="Electron" type="Area2D"]
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("2_an5cv")
-animation = &"4"
+sprite_frames = ExtResource("2_ealna")
+frame_progress = 0.818162
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_04t31")
