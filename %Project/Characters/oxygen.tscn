@@ -12,7 +12,7 @@ script = ExtResource("1_qq8k8")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_fft31")
-animation = &"4"
+animation = &"2"
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_04t31")
