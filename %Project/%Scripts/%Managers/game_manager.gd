@@ -37,4 +37,4 @@ func spawn_unit(pos: Vector2, index: int):
 		update_coins()
 
 func update_coins():
-	main.get_node("CoinText").text = "coins: " + str(coins)
+	main.get_node("CoinText").text = "Coins: " + str(coins)
