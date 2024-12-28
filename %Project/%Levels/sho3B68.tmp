@@ -69,7 +69,7 @@ mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 50
 text = "+"
 
-[node name="UnitDropdown" type="OptionButton" parent="."]
+[node name="OptionButton" type="OptionButton" parent="."]
 layout_mode = 0
 offset_left = 329.0
 offset_top = 148.0
@@ -115,7 +115,7 @@ text = "Polarize"
 script = ExtResource("1_tbhn0")
 
 [connection signal="pressed" from="AddButton" to="." method="_on_h_button_pressed"]
-[connection signal="item_selected" from="UnitDropdown" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="PolarizeButton" to="." method="_on_polarize_button_pressed"]
 [connection signal="pressed" from="PolarizeButton" to="." method="_on_back_button_pressed"]
