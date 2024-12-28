@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://do5d5q70kmxg1"]
 
-[ext_resource type="Script" path="res://%Project/%Scripts/select_unit.gd" id="1_y7rpe"]
+[ext_resource type="Script" path="res://%Project/%Scripts/UI/select_unit.gd" id="1_y3xdy"]
 
 [node name="Control" type="Control"]
 top_level = true
@@ -8,7 +8,7 @@ layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("1_y7rpe")
+script = ExtResource("1_y3xdy")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -40,7 +40,7 @@ offset_right = 134.821
 offset_bottom = 68.487
 theme_override_font_sizes/font_size = 30
 text = "← back"
-script = ExtResource("1_y7rpe")
+script = ExtResource("1_y3xdy")
 
 [node name="PolarityToggle" type="CheckButton" parent="ColorRect"]
 layout_mode = 0
@@ -50,7 +50,7 @@ offset_right = 546.657
 offset_bottom = 54.8116
 button_pressed = true
 icon_alignment = 1
-script = ExtResource("1_y7rpe")
+script = ExtResource("1_y3xdy")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/PolarityToggle"]
 layout_mode = 0

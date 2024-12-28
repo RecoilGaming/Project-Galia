@@ -10,6 +10,7 @@ var coins: int = 100
 var units: Array[Unit] = []
 var click_polarity: int = 1
 var unit_spawn_index: int = 0
+var types = ["hydrogen", "oxygen", "fluorine"]
 
 ## =============== [ METHODS ] ================
 
@@ -18,10 +19,11 @@ func add_unit(unit: Unit):
 	units.append(unit)
 
 # Spawn hydrogen
-func spawn_hydrogen(pos: Vector2):
+func spawn_unit(pos: Vector2):
+	print("adding " + types[unit_spawn_index])
 	if coins >= 3:
 		# Instantiate hydrogen
-		var hydrogen: Hydrogen = load("res://%Project/Characters/hydrogen.tscn").instantiate()
+		var hydrogen: Hydrogen = load("res://%Project/Characters/" + types[unit_spawn_index] + ".tscn").instantiate()
 		hydrogen.position = pos
 		
 		# Add child
