@@ -9,6 +9,7 @@ radius = 4.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_ealna")
+autoplay = "default"
 frame_progress = 0.0122008
 
 [node name="Collider" type="CollisionShape2D" parent="."]

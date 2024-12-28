@@ -10,11 +10,7 @@ class_name Unit
 @export var KNOCKBACK: float = 10
 @export var IS_ENEMY: bool = false
 
-var health: float = MAX_HEALTH:
-	set(value):
-		# Dying
-		if health <= 0:
-			die()
+var health: float = MAX_HEALTH
 
 enum Polarity { BIG_POSITIVE, POSITIVE, NEUTRAL, NEGATIVE, BIG_NEGATIVE }
 
@@ -35,7 +31,7 @@ func _ready() -> void:
 	# Apply values
 	$Sprite.play(str(polarity))
 	self.input_event.connect(_on_input_event)
-	
+	IS_ENEMY = randi_range(0, 1)
 	# Add to global list
 	GM.add_unit(self)
 
@@ -57,7 +53,7 @@ func _process(delta: float) -> void:
 		velocity = collision.get_collider_velocity().normalized() * KNOCKBACK
 		var collider: Unit = collision.get_collider()
 		if collider: # Needs to be unit
-			if(target.IS_ENEMY == self.IS_ENEMY):
+			if(target.IS_ENEMY != self.IS_ENEMY):
 				collider.take_damage(CONTACT_DAMAGE, self.polarity)
 
 # Physics process
@@ -77,7 +73,7 @@ func find_target() -> void:
 		var dist: float = global_position.distance_to(unit.global_position)
 		
 		# Check unit
-		if unit != self and dist < min_dist and unit.IS_ENEMY == self.IS_ENEMY:
+		if unit != self and dist < min_dist and unit.IS_ENEMY != self.IS_ENEMY:
 			min_dist = dist
 			target = unit
 
@@ -95,6 +91,10 @@ func take_damage(amt: int, dc_polarity: Polarity): # Amount of damage, Damage co
 	damage_multiplier += 1
 	health -= amt*damage_multiplier
 	#print("I, "+ str(self.name) +" have " + str(health) + "hp and are taking " + str(damage_multiplier))
+	
+	# Dying
+	if health <= 0:
+		die()
 
 # Dyging
 func die():
