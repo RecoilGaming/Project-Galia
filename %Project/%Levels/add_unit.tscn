@@ -1,0 +1,135 @@
+[gd_scene load_steps=12 format=3 uid="uid://cceh0q54dgcxe"]
+
+[ext_resource type="Script" path="res://%Project/%Scripts/UI/add_unit.gd" id="1_a06ko"]
+[ext_resource type="Texture2D" uid="uid://beqmyrgswqfmp" path="res://Resources/hydrogen.png" id="3_8tngi"]
+[ext_resource type="Texture2D" uid="uid://wqj3pi30xf1r" path="res://Resources/oxygen.png" id="4_vw7u1"]
+[ext_resource type="Texture2D" uid="uid://ds7yg4sqp34xp" path="res://Resources/fluorine.png" id="5_8buu2"]
+[ext_resource type="Texture2D" uid="uid://dq4wc36j373fd" path="res://Resources/bad_circle.png" id="5_v0m5v"]
+[ext_resource type="Script" path="res://%Project/%Scripts/UI/unit_position_pointer.gd" id="6_hl8am"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj8q3"]
+atlas = ExtResource("3_8tngi")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcml3"]
+atlas = ExtResource("4_vw7u1")
+region = Rect2(4, 96, 41, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gf3f"]
+atlas = ExtResource("5_8buu2")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3qbe"]
+atlas = ExtResource("5_v0m5v")
+region = Rect2(1321, 1628.92, 88, 83)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_on6t6"]
+radius = 33.0151
+
+[node name="AddUnit" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a06ko")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -324.0
+offset_top = 45.0
+offset_right = 315.0
+offset_bottom = 143.0
+grow_horizontal = 2
+scale = Vector2(1.01063, 0.973659)
+color = Color(0.266667, 0.419608, 1, 0.87451)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 165.243
+offset_top = 22.5952
+offset_right = 418.243
+offset_bottom = 82.5952
+theme_override_font_sizes/normal_font_size = 40
+text = "Add unit"
+
+[node name="AddButton" type="Button" parent="ColorRect"]
+clip_contents = true
+layout_mode = 0
+offset_left = 558.068
+offset_top = 27.7304
+offset_right = 602.068
+offset_bottom = 73.7305
+text_overrun_behavior = 1
+clip_text = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = ExtResource("1_a06ko")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 565.984
+offset_top = 14.3787
+offset_right = 629.984
+offset_bottom = 89.3788
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "+"
+
+[node name="UnitDropdown" type="OptionButton" parent="ColorRect"]
+layout_mode = 0
+offset_left = 360.171
+offset_top = 27.7304
+offset_right = 692.171
+offset_bottom = 117.73
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 30
+toggle_mode = false
+alignment = 1
+expand_icon = true
+selected = 0
+fit_to_longest_item = false
+allow_reselect = true
+item_count = 3
+popup/item_0/text = "Hydrogen"
+popup/item_0/icon = SubResource("AtlasTexture_sj8q3")
+popup/item_1/text = "Oxygen"
+popup/item_1/icon = SubResource("AtlasTexture_kcml3")
+popup/item_1/id = 1
+popup/item_2/text = "Fluorine"
+popup/item_2/icon = SubResource("AtlasTexture_8gf3f")
+popup/item_2/id = 2
+script = ExtResource("1_a06ko")
+
+[node name="BackButton" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 17.8107
+offset_top = 23.6222
+offset_right = 135.811
+offset_bottom = 73.6222
+theme_override_font_sizes/font_size = 30
+text = "← back"
+script = ExtResource("1_a06ko")
+
+[node name="Pointer" type="Sprite2D" parent="."]
+scale = Vector2(0.512048, 0.512048)
+texture = SubResource("AtlasTexture_b3qbe")
+script = ExtResource("6_hl8am")
+
+[node name="PointerArea" type="Area2D" parent="Pointer"]
+position = Vector2(82, -13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pointer/PointerArea"]
+position = Vector2(-82, 12)
+shape = SubResource("CircleShape2D_on6t6")
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="ColorRect/AddButton" to="." method="_on_add_button_pressed"]
+[connection signal="item_selected" from="ColorRect/UnitDropdown" to="." method="_on_unit_dropdown_item_selected"]
+[connection signal="ready" from="ColorRect/UnitDropdown" to="." method="_on_unit_dropdown_ready"]
+[connection signal="pressed" from="ColorRect/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="input_event" from="Pointer/PointerArea" to="Pointer" method="_on_pointer_area_input_event"]

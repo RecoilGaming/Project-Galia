@@ -11,6 +11,7 @@ var units: Array[Unit] = []
 var click_polarity: int = 1
 var unit_spawn_index: int = 0
 var types = ["hydrogen", "oxygen", "fluorine"]
+var polarizing: bool = false
 
 func _ready():
 	update_coins()

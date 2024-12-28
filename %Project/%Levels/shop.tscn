@@ -1,21 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwi7qexeqldtt"]
+[gd_scene load_steps=2 format=3 uid="uid://cwi7qexeqldtt"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/shop_ui.gd" id="1_tbhn0"]
-[ext_resource type="Texture2D" uid="uid://beqmyrgswqfmp" path="res://Resources/hydrogen.png" id="3_mkgi2"]
-[ext_resource type="Texture2D" uid="uid://wqj3pi30xf1r" path="res://Resources/oxygen.png" id="4_b80xg"]
-[ext_resource type="Texture2D" uid="uid://ds7yg4sqp34xp" path="res://Resources/fluorine.png" id="5_4jdiu"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mow2f"]
-atlas = ExtResource("3_mkgi2")
-region = Rect2(64, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_keb0b"]
-atlas = ExtResource("4_b80xg")
-region = Rect2(4, 96, 41, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oe361"]
-atlas = ExtResource("5_4jdiu")
-region = Rect2(64, 64, 32, 32)
 
 [node name="Shop" type="Control"]
 z_index = 1
@@ -47,54 +32,6 @@ mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 50
 text = "Shop"
 
-[node name="AddButton" type="Button" parent="."]
-clip_contents = true
-layout_mode = 0
-offset_left = 514.0
-offset_top = 147.0
-offset_right = 558.0
-offset_bottom = 193.0
-text_overrun_behavior = 1
-clip_text = true
-icon_alignment = 1
-vertical_icon_alignment = 0
-script = ExtResource("1_tbhn0")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 522.0
-offset_top = 134.0
-offset_right = 586.0
-offset_bottom = 209.0
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 50
-text = "+"
-
-[node name="UnitDropdown" type="OptionButton" parent="."]
-layout_mode = 0
-offset_left = 329.0
-offset_top = 148.0
-offset_right = 661.0
-offset_bottom = 238.0
-scale = Vector2(0.5, 0.5)
-theme_override_font_sizes/font_size = 30
-toggle_mode = false
-alignment = 1
-expand_icon = true
-selected = 0
-fit_to_longest_item = false
-allow_reselect = true
-item_count = 3
-popup/item_0/text = "Hydrogen"
-popup/item_0/icon = SubResource("AtlasTexture_mow2f")
-popup/item_1/text = "Oxygen"
-popup/item_1/icon = SubResource("AtlasTexture_keb0b")
-popup/item_1/id = 1
-popup/item_2/text = "Fluorine"
-popup/item_2/icon = SubResource("AtlasTexture_oe361")
-popup/item_2/id = 2
-script = ExtResource("1_tbhn0")
-
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 71.0
@@ -103,6 +40,16 @@ offset_right = 171.0
 offset_bottom = 103.0
 theme_override_font_sizes/font_size = 25
 text = "← back"
+script = ExtResource("1_tbhn0")
+
+[node name="AddUnitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 261.0
+offset_right = 292.0
+offset_bottom = 311.0
+theme_override_font_sizes/font_size = 30
+text = "Add unit"
 script = ExtResource("1_tbhn0")
 
 [node name="PolarizeButton" type="Button" parent="."]
@@ -115,8 +62,7 @@ theme_override_font_sizes/font_size = 30
 text = "Polarize"
 script = ExtResource("1_tbhn0")
 
-[connection signal="pressed" from="AddButton" to="." method="_on_h_button_pressed"]
-[connection signal="item_selected" from="UnitDropdown" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="ready" from="BackButton" to="." method="_on_back_button_ready"]
+[connection signal="pressed" from="AddUnitButton" to="." method="_on_add_unit_button_pressed"]
 [connection signal="pressed" from="PolarizeButton" to="." method="_on_polarize_button_pressed"]
-[connection signal="pressed" from="PolarizeButton" to="." method="_on_back_button_pressed"]
