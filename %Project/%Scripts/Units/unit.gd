@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Unit
 
-## =============== [ FIELDS ] ================
+## =============== [ FIELDS ] ================ ##
 
 # Attributes
 @export var MAX_HEALTH: float = 100
@@ -15,13 +15,14 @@ var polarity: int = 0
 var target: Unit
 var collision: KinematicCollision2D
 
-## =============== [ METHODS ] ================
+## =============== [ METHODS ] ================ ##
 
 # Ready
 func _ready() -> void:
 	# Apply values
 	health = MAX_HEALTH
 	$Sprite.play(str(polarity))
+	self.input_event.connect(_on_input_event)
 	
 	# Add to global list
 	GM.add_unit(self)
@@ -44,13 +45,13 @@ func _process(delta: float) -> void:
 		velocity = collision.get_collider_velocity().normalized() * KNOCKBACK
 		var collider: Unit = collision.get_collider()
 		if collider:
-			collider.deal_CONTACT_DAMAGE(CONTACT_DAMAGE)
+			collider.deal_contact_damage(CONTACT_DAMAGE)
 
 # Physics process
 func _physics_process(delta: float) -> void:
 	collision = move_and_collide(velocity)
 
-## =============== [ HELPERS ] ================
+## =============== [ HELPERS ] ================ ##
 
 # Finds the nearest target
 func find_target() -> void:
@@ -67,9 +68,9 @@ func find_target() -> void:
 			min_dist = dist
 			target = unit
 
-# Deal CONTACT_DAMAGE	
-func deal_CONTACT_DAMAGE(val: int):
-	health -= val
+# Deal physical damage
+func deal_contact_damage(amt: int):
+	health -= amt
 	
 	# Dying
 	if health <= 0:
@@ -83,3 +84,15 @@ func die():
 # Movint
 func move(dir: Vector2, delta: float):
 	velocity = dir.normalized() * SPEED * delta
+
+# Change polarity
+func change_polarity(amt: int):
+	polarity = clamp(polarity + amt, -2, 2)
+	$Sprite.play(str(polarity))
+
+## =============== [ SIGNALS ] ================ ##
+
+# Left click detection
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		change_polarity(1)
