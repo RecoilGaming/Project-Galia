@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://klerwkmts7x0"]
+
+[ext_resource type="Texture2D" uid="uid://dlk4wmtvnefuq" path="res://Resources/electron.png" id="1_gynkl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1gu5"]
+atlas = ExtResource("1_gynkl")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exw6l"]
+atlas = ExtResource("1_gynkl")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm2xe"]
+atlas = ExtResource("1_gynkl")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bi4e"]
+atlas = ExtResource("1_gynkl")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fuasw"]
+atlas = ExtResource("1_gynkl")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w84i0"]
+atlas = ExtResource("1_gynkl")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hpky"]
+atlas = ExtResource("1_gynkl")
+region = Rect2(48, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11tlr"]
+atlas = ExtResource("1_gynkl")
+region = Rect2(56, 0, 8, 8)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1gu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exw6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm2xe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bi4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fuasw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w84i0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hpky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11tlr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
