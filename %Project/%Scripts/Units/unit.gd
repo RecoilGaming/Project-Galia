@@ -4,10 +4,10 @@ class_name Unit
 ## =============== [ FIELDS ] ================
 
 # Attributes
-@export var max_health: float = 100
-@export var damage: float = 100
-@export var speed: float = 100
-@export var knockback: float = 10
+@export var MAX_HEALTH: float = 100
+@export var CONTACT_DAMAGE: float = 100
+@export var SPEED: float = 100
+@export var KNOCKBACK: float = 10
 var health: float = 0
 var polarity: int = 0
 
@@ -20,7 +20,7 @@ var collision: KinematicCollision2D
 # Ready
 func _ready() -> void:
 	# Apply values
-	health = max_health
+	health = MAX_HEALTH
 	$Sprite.play(str(polarity))
 	
 	# Add to global list
@@ -31,19 +31,20 @@ func _process(delta: float) -> void:
 	# Find target
 	find_target()
 	
+	# No targets
+	if !is_instance_valid(target):
+		target = self
+	
 	# Track target
 	if target:
-		var dir: Vector2 = target.global_position - global_position
-		velocity = dir.normalized() * speed * delta
+		move(delta)
 		
+	# Deal collision CONTACT_DAMAGE
 	if collision:
-		velocity = collision.get_collider_velocity().normalized() * knockback
-		if true:
-			var collider: Unit = collision.get_collider()
-			print("DAMAGE")
-			collider.deal_damage(damage)
-		else:
-			print("NO DAMAGE " + str(collision.get_collider().get_script()))
+		velocity = collision.get_collider_velocity().normalized() * KNOCKBACK
+		var collider: Unit = collision.get_collider()
+		if collider:
+			collider.deal_CONTACT_DAMAGE(CONTACT_DAMAGE)
 
 # Physics process
 func _physics_process(delta: float) -> void:
@@ -55,9 +56,8 @@ func _physics_process(delta: float) -> void:
 func find_target() -> void:
 	# Minimum distance
 	var min_dist: float = 1000000
-	if(!is_instance_valid(target)):
-		target = self
-	# Loop through units
+	
+	# Loop through edits
 	for unit in GM.units:
 		# Get distance
 		var dist: float = global_position.distance_to(unit.global_position)
@@ -67,17 +67,20 @@ func find_target() -> void:
 			min_dist = dist
 			target = unit
 
-func on_click():
-	print("clicked")
-	pass
-
-# Deal damage	
-func deal_damage(val: int):
+# Deal CONTACT_DAMAGE	
+func deal_CONTACT_DAMAGE(val: int):
 	health -= val
-	if(health <= 0):
-		print("goodbye")
+	
+	# Dying
+	if health <= 0:
 		die()
 
+# Dyging
 func die():
 	GM.units.erase(self)
 	queue_free()
+
+# Movint
+func move(delta: float):
+	var dir: Vector2 = target.global_position - global_position
+	velocity = dir.normalized() * SPEED * delta
