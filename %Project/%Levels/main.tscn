@@ -20,12 +20,15 @@ expand_icon = true
 script = ExtResource("3_ofui7")
 
 [node name="Hydrogen" parent="." instance=ExtResource("1_fl7er")]
+polarity = 4
 
 [node name="Hydrogen2" parent="." instance=ExtResource("1_fl7er")]
 position = Vector2(100, 0)
+polarity = 0
 
 [node name="Hydrogen3" parent="." instance=ExtResource("1_fl7er")]
 position = Vector2(100, 100)
+polarity = 0
 
 [node name="Oxygen" parent="." instance=ExtResource("4_aud5d")]
 position = Vector2(-307, -124)

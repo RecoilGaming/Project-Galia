@@ -84,9 +84,11 @@ func take_damage(amt: int, dc_polarity: POLARITY): # Amount of damage, Damage co
 	# If they're the different by 3, this is 10
 	# If they're the different by 4, this is 17
 	# Note: Make base damage take this into account i.e. have it be small
-	var damage_multiplier = abs(dc_polarity-self.polarity)^2+1
+	var damage_multiplier = abs(dc_polarity-self.polarity)
+	damage_multiplier *= damage_multiplier
+	damage_multiplier += 1
 	health -= amt*damage_multiplier
-	print("I, "+ str(self.name) +" have " + str(health) + "hp and are taking " + str(damage_multiplier))
+	#print("I, "+ str(self.name) +" have " + str(health) + "hp and are taking " + str(damage_multiplier))
 	
 	# Dying
 	if health <= 0:
