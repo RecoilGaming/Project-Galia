@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_04t31"]
 radius = 4.0
 
-[node name="Neutron" type="CharacterBody2D"]
+[node name="Electron" type="CharacterBody2D"]
 script = ExtResource("1_fnitx")
 MAX_HEALTH = 10.0
 SPEED = 400.0

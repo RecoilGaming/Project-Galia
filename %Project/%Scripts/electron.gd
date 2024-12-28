@@ -1,5 +1,5 @@
 extends Unit
-class_name Neutron
+class_name Electron
 
 #@export var LIFESPAN = 2
 #var alive_time = LIFESPAN

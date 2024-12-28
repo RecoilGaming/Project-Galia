@@ -14,11 +14,7 @@ var health: float = MAX_HEALTH
 
 enum Polarity { BIG_POSITIVE, POSITIVE, NEUTRAL, NEGATIVE, BIG_NEGATIVE }
 
-@export var polarity: Polarity = Polarity.NEUTRAL:
-	set(value):
-		polarity = clamp(value, Polarity.BIG_POSITIVE, Polarity.BIG_NEGATIVE)
-		# Changes animation
-		$Sprite.play(str(polarity))
+@export var polarity: Polarity = Polarity.NEUTRAL
 
 # Target unit
 var target: Unit
