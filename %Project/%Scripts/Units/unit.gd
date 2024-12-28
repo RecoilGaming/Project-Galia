@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 	
 	# Track target
 	if target:
-		move(delta)
+		move(target.global_position - global_position, delta)
 		
 	# Deal collision CONTACT_DAMAGE
 	if collision:
@@ -81,9 +81,8 @@ func die():
 	GM.units.erase(self)
 	queue_free()
 
-# Move
-func move(delta: float):
-	var dir: Vector2 = target.global_position - global_position
+# Movint
+func move(dir: Vector2, delta: float):
 	velocity = dir.normalized() * SPEED * delta
 
 # Change polarity
