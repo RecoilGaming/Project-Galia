@@ -16,7 +16,9 @@ var attack_cooldown := ATTACK_COOLDOWN
 
 enum Polarity { BIG_POSITIVE, POSITIVE, NEUTRAL, NEGATIVE, BIG_NEGATIVE }
 
-@export var polarity: Polarity = Polarity.NEUTRAL
+@export var polarity: Polarity = Polarity.NEUTRAL:
+	set(value):
+		polarity = clamp(value, Polarity.BIG_POSITIVE, Polarity.BIG_NEGATIVE)
 
 # Target unit
 var target: Unit
@@ -61,15 +63,13 @@ func _process(delta: float) -> void:
 			if(not_null):
 				not_null.take_damage(CONTACT_DAMAGE, polarity)
 				
-				# Collides the thing
-				if collision:
-					velocity = collision.get_collider_velocity().normalized() * KNOCKBACK
+				## Collides the thing
+				#if collision:
+					#velocity = collision.get_collider_velocity().normalized() * KNOCKBACK
 
 # Physics process
 func _physics_process(delta: float) -> void:
-	var potential_collision = move_and_collide(velocity)
-	#if potential_collision:
-	collision = potential_collision
+	collision = move_and_collide(velocity)
 
 ## =============== [ HELPERS ] ================ ##
 
@@ -101,10 +101,6 @@ func take_damage(amt: int, dc_polarity: Polarity): # Amount of damage, Damage co
 	damage_multiplier *= damage_multiplier
 	damage_multiplier += 1
 	health -= amt*damage_multiplier
-	#print("I, "+ str(self.name) +" have " + str(health) + "hp and are taking " + str(damage_multiplier))
-	
-	#print("TAKING DAMAGE " + str(amt))
-	#print("HEALTH IS " + str(health))
 	
 	# Dying
 	if health <= 0:
