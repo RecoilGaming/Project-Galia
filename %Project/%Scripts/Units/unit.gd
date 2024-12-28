@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 		velocity = collision.get_collider_velocity().normalized() * KNOCKBACK
 		var collider: Unit = collision.get_collider()
 		if collider:
-			collider.deal_CONTACT_DAMAGE(CONTACT_DAMAGE)
+			collider.deal_contact_damage(CONTACT_DAMAGE)
 
 # Physics process
 func _physics_process(delta: float) -> void:
@@ -68,7 +68,7 @@ func find_target() -> void:
 			target = unit
 
 # Deal physical damage
-func deal_physical_damage(amt: int):
+func deal_contact_damage(amt: int):
 	health -= amt
 	
 	# Dying
