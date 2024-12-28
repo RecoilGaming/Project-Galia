@@ -21,16 +21,15 @@ func _ready():
 func add_unit(unit: Unit):
 	units.append(unit)
 
-# Spawn hydrogen
+# Spawn unit
 func spawn_unit(pos: Vector2, index: int):
 	if coins >= 3:
-		# Instantiate hydrogen
-		var hydrogen: Hydrogen = load("res://%Project/Characters/" + types[index] + ".tscn").instantiate()
-		hydrogen.position = pos
+		# Instantiate unit
+		var unit: Unit = load("res://%Project/Characters/" + types[index] + ".tscn").instantiate()
+		unit.position = pos
 		
 		# Add child
-		main.add_child(hydrogen)
-		main.move_child(hydrogen, 0)
+		main.add_child(unit)
 		
 		# Subtract cost
 		coins -= 3

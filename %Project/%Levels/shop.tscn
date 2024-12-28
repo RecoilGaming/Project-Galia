@@ -18,6 +18,7 @@ atlas = ExtResource("5_4jdiu")
 region = Rect2(64, 64, 32, 32)
 
 [node name="Shop" type="Control"]
+z_index = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = -312.0
