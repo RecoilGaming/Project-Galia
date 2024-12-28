@@ -1,10 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwi7qexeqldtt"]
+[gd_scene load_steps=9 format=3 uid="uid://cwi7qexeqldtt"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/shop_ui.gd" id="1_tkgy8"]
 [ext_resource type="Texture2D" uid="uid://beqmyrgswqfmp" path="res://Resources/hydrogen.png" id="3_mkgi2"]
 [ext_resource type="Script" path="res://%Project/%Scripts/select_unit.gd" id="3_tmyva"]
 [ext_resource type="Texture2D" uid="uid://wqj3pi30xf1r" path="res://Resources/oxygen.png" id="4_b80xg"]
 [ext_resource type="Texture2D" uid="uid://ds7yg4sqp34xp" path="res://Resources/fluorine.png" id="5_4jdiu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mow2f"]
+atlas = ExtResource("3_mkgi2")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keb0b"]
+atlas = ExtResource("4_b80xg")
+region = Rect2(4, 96, 41, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe361"]
+atlas = ExtResource("5_4jdiu")
+region = Rect2(64, 64, 32, 32)
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -18,10 +30,10 @@ script = ExtResource("1_tkgy8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-offset_left = 1.0
-offset_top = 2.0
+offset_left = -5.0
+offset_top = 22.0
 offset_right = 619.0
-offset_bottom = 397.0
+offset_bottom = 386.0
 scale = Vector2(1.01063, 0.973659)
 color = Color(0, 0.470588, 0.317647, 0.87451)
 
@@ -31,58 +43,72 @@ offset_left = 238.465
 offset_top = 23.6222
 offset_right = 414.465
 offset_bottom = 100.622
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 50
 text = "Shop"
 
 [node name="HButton" type="Button" parent="."]
+clip_contents = true
 layout_mode = 0
-offset_left = 293.0
-offset_top = 248.0
-offset_right = 426.0
-offset_bottom = 302.0
-text = "push unit"
+offset_left = 514.0
+offset_top = 147.0
+offset_right = 558.0
+offset_bottom = 193.0
+text_overrun_behavior = 1
+clip_text = true
 icon_alignment = 1
 vertical_icon_alignment = 0
-expand_icon = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 522.0
+offset_top = 134.0
+offset_right = 586.0
+offset_bottom = 209.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "+"
 
 [node name="OptionButton" type="OptionButton" parent="."]
 layout_mode = 0
-offset_left = 270.0
-offset_top = 110.0
-offset_right = 605.0
-offset_bottom = 358.0
+offset_left = 329.0
+offset_top = 148.0
+offset_right = 661.0
+offset_bottom = 238.0
 scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 30
 toggle_mode = false
+alignment = 1
+expand_icon = true
 selected = 0
 fit_to_longest_item = false
 allow_reselect = true
 item_count = 3
 popup/item_0/text = "Hydrogen"
-popup/item_0/icon = ExtResource("3_mkgi2")
+popup/item_0/icon = SubResource("AtlasTexture_mow2f")
 popup/item_1/text = "Oxygen"
-popup/item_1/icon = ExtResource("4_b80xg")
+popup/item_1/icon = SubResource("AtlasTexture_keb0b")
 popup/item_1/id = 1
 popup/item_2/text = "Fluorine"
-popup/item_2/icon = ExtResource("5_4jdiu")
+popup/item_2/icon = SubResource("AtlasTexture_oe361")
 popup/item_2/id = 2
 script = ExtResource("1_tkgy8")
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 80.0
-offset_top = 44.0
-offset_right = 198.0
-offset_bottom = 94.0
-theme_override_font_sizes/font_size = 30
-text = "← exit"
+offset_left = 71.0
+offset_top = 60.0
+offset_right = 171.0
+offset_bottom = 103.0
+theme_override_font_sizes/font_size = 25
+text = "← back"
 script = ExtResource("3_tmyva")
 
 [node name="PolarizeButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 83.0
-offset_top = 124.0
-offset_right = 245.0
-offset_bottom = 174.0
+offset_left = 102.0
+offset_top = 174.0
+offset_right = 264.0
+offset_bottom = 224.0
 theme_override_font_sizes/font_size = 30
 text = "Polarize"
 script = ExtResource("1_tkgy8")
