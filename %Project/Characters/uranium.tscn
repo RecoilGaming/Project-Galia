@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://p6njdmydsy6n"]
+[gd_scene load_steps=5 format=3 uid="uid://o7hoju52v1bi"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Units/uranium.gd" id="1_46yvj"]
-[ext_resource type="SpriteFrames" uid="uid://bt3p5cckmg2r0" path="res://%Project/Characters/uranium_anim.tres" id="2_kh0tw"]
+[ext_resource type="SpriteFrames" uid="uid://yx236qgpwlan" path="res://%Project/Characters/uranium_anim.tres" id="2_kh0tw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nahrt"]
 radius = 16.0
