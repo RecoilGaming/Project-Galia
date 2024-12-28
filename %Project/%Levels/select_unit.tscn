@@ -50,14 +50,17 @@ offset_right = 546.657
 offset_bottom = 54.8116
 button_pressed = true
 icon_alignment = 1
+script = ExtResource("1_y7rpe")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/PolarityToggle"]
 layout_mode = 0
-offset_left = -8.90534
+offset_left = -10.8843
 offset_top = -4.10821
-offset_right = 91.0947
+offset_right = 89.1157
 offset_bottom = 45.8918
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 20
 text = "-          +"
 
 [connection signal="pressed" from="ColorRect/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="toggled" from="ColorRect/PolarityToggle" to="." method="_on_polarity_toggle_toggled"]

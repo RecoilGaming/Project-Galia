@@ -8,6 +8,7 @@ extends Node
 # Units
 var coins: int = 100
 var units: Array[Unit] = []
+var click_polarity: int = 1;
 
 ## =============== [ METHODS ] ================
 
