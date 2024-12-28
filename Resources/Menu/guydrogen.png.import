@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://67jod3wvej7v"
-path="res://.godot/imported/background.png-29f75aad12319c515b0a31e04e27d610.ctex"
+uid="uid://8dn73de8qai8"
+path="res://.godot/imported/guydrogen.png-98fd63ab16575135bf675cb8a944f66e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/background.png"
-dest_files=["res://.godot/imported/background.png-29f75aad12319c515b0a31e04e27d610.ctex"]
+source_file="res://Resources/Menu/guydrogen.png"
+dest_files=["res://.godot/imported/guydrogen.png-98fd63ab16575135bf675cb8a944f66e.ctex"]
 
 [params]
 
