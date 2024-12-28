@@ -1,7 +1,8 @@
 extends Control
 
 func _ready():
-	OptionButton.select(1)
+	#get_node("UnitDropdown").select(1)
+	pass
 
 func _on_h_button_pressed() -> void:
 	GM.spawn_unit(Vector2(0, 0), GM.unit_spawn_index)
