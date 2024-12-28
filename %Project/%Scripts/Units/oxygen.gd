@@ -31,3 +31,4 @@ func shoot():
 	var electron = load("res://%Project/Characters/electron.tscn").instantiate()
 	get_parent().add_child(electron)
 	electron.global_position = global_position
+	electron.IS_ENEMY = self.IS_ENEMY
