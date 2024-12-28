@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://cpe0ds574sqks" path="res://Resources/shop_button1.png" id="2_3t6fu"]
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/shop_button.gd" id="2_f2gkk"]
 [ext_resource type="PackedScene" uid="uid://14usl23dbv54" path="res://%Project/Characters/oxygen.tscn" id="4_aud5d"]
-[ext_resource type="PackedScene" uid="uid://0hwrktw6n1cj" path="res://%Project/Characters/tungsten.tscn" id="6_naupy"]
+[ext_resource type="PackedScene" path="res://%Project/Characters/tungsten.tscn" id="6_naupy"]
 [ext_resource type="Script" path="res://%Project/%Scripts/%Managers/game_manager.gd" id="7_33h7g"]
-[ext_resource type="PackedScene" uid="uid://bgi6uiv2q143h" path="res://%Project/Characters/uranium.tscn" id="7_jb222"]
+[ext_resource type="PackedScene" path="res://%Project/Characters/uranium.tscn" id="7_jb222"]
 
 [node name="Main" type="Node2D"]
 
@@ -30,10 +30,10 @@ script = ExtResource("2_f2gkk")
 position = Vector2(-307, -124)
 
 [node name="CoinText" type="RichTextLabel" parent="."]
-offset_left = 234.0
-offset_top = 136.0
-offset_right = 311.0
-offset_bottom = 172.0
+offset_left = 225.0
+offset_top = 135.0
+offset_right = 313.0
+offset_bottom = 176.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "coins: 69"
 script = ExtResource("7_33h7g")

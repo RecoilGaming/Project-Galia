@@ -125,6 +125,7 @@ func change_polarity(amt: int) -> bool:
 	if(polarity == old_polarity):
 		return false
 	
+	$Sprite.play(str(polarity))
 	return true
 
 ## =============== [ SIGNALS ] ================ ##
