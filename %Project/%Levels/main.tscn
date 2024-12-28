@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://gfm27c0guicw"]
+[gd_scene load_steps=8 format=3 uid="uid://gfm27c0guicw"]
 
 [ext_resource type="PackedScene" uid="uid://dlxns3ydfyxlu" path="res://%Project/Characters/hydrogen.tscn" id="1_fl7er"]
 [ext_resource type="Texture2D" uid="uid://67jod3wvej7v" path="res://Resources/background.png" id="1_j88ee"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/shop_button.gd" id="2_f2gkk"]
 [ext_resource type="PackedScene" uid="uid://14usl23dbv54" path="res://%Project/Characters/oxygen.tscn" id="4_aud5d"]
 [ext_resource type="PackedScene" uid="uid://d4tfyea72jwc" path="res://%Project/Characters/fluorine.tscn" id="5_7pd8u"]
+[ext_resource type="Script" path="res://%Project/%Scripts/%Managers/game_manager.gd" id="7_33h7g"]
 
 [node name="Main" type="Node2D"]
 
@@ -60,5 +61,14 @@ SPEED = null
 KNOCKBACK = null
 IS_ENEMY = null
 polarity = null
+
+[node name="CoinText" type="RichTextLabel" parent="."]
+offset_left = 234.0
+offset_top = 136.0
+offset_right = 311.0
+offset_bottom = 172.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "coins: 69"
+script = ExtResource("7_33h7g")
 
 [connection signal="pressed" from="ShopButton" to="ShopButton" method="_on_pressed"]
