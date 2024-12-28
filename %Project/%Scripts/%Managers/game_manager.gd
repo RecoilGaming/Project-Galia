@@ -40,31 +40,25 @@ func add_unit(unit: Unit):
 # Spawn unit
 func spawn_unit(pos: Vector2, index: int):
 	if coins >= 3:
-		# Instantiate unit
-		var unit: Unit = load("res://%Project/Characters/" + types[index] + ".tscn").instantiate()
-		unit.position = pos
-		
-		# Add child
-		main.add_child(unit)
-		
-		# Subtract cost
-		coins -= 3
+		if(try_to_spawn(types[index], pos)):
+			# Subtract cost
+			coins -= 3
 
 func update_coins():
 	main.get_node("CoinText").text = "Coins: " + str(coins)
 
-func try_to_spawn(u: String, x: float, y: float) -> bool:
+func try_to_spawn(u: String, pos: Vector2) -> bool:
 	for unit in units:
-		var distance = unit.global_position.distance_to(Vector2(x, y))
+		var distance = unit.global_position.distance_to(pos)
 		if(distance < 30):
 			return false
 
 	# Instantiate unit
 	var unit: Unit = load("res://%Project/Characters/" + u + ".tscn").instantiate()
-	unit.position = Vector2(x, y)
+	unit.position = pos
 	
 	# Add child
-	main.add_child(unit)
+	main.add_child.call_deferred(unit)
 	return true
 
 func new_wave():
@@ -76,7 +70,7 @@ func new_wave():
 		var unit_class = spawn[0]
 		var i := 0
 		while i < spawn[1]:
-			if(try_to_spawn(unit_class, randi_range(30, 290), randi_range(-150, 150))): # -320, -180 to 320, 180 is the canvas
+			if(try_to_spawn(unit_class, Vector2(randi_range(30, 290), randi_range(-150, 150)))): # -320, -180 to 320, 180 is the canvas
 				i += 1
 				
 	current_wave += 1
