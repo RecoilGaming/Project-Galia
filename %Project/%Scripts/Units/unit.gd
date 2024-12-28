@@ -31,6 +31,10 @@ func _process(delta: float) -> void:
 	# Find target
 	find_target()
 	
+	# No targets
+	if !is_instance_valid(target):
+		target = self
+	
 	# Track target
 	if target:
 		var dir: Vector2 = target.global_position - global_position
@@ -38,12 +42,9 @@ func _process(delta: float) -> void:
 		
 	if collision:
 		velocity = collision.get_collider_velocity().normalized() * knockback
-		if true:
-			var collider: Unit = collision.get_collider()
-			print("DAMAGE")
+		var collider: Unit = collision.get_collider()
+		if collider:
 			collider.deal_damage(damage)
-		else:
-			print("NO DAMAGE " + str(collision.get_collider().get_script()))
 
 # Physics process
 func _physics_process(delta: float) -> void:
@@ -55,9 +56,8 @@ func _physics_process(delta: float) -> void:
 func find_target() -> void:
 	# Minimum distance
 	var min_dist: float = 1000000
-	if(!is_instance_valid(target)):
-		target = self
-	# Loop through units
+	
+	# Loop through edits
 	for unit in GM.units:
 		# Get distance
 		var dist: float = global_position.distance_to(unit.global_position)
@@ -70,10 +70,12 @@ func find_target() -> void:
 # Deal damage	
 func deal_damage(val: int):
 	health -= val
-	if(health <= 0):
-		print("goodbye")
+	
+	# Dying
+	if health <= 0:
 		die()
 
+# Dyging
 func die():
 	GM.units.erase(self)
 	queue_free()
