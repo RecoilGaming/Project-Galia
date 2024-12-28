@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://gfm27c0guicw"]
+[gd_scene load_steps=10 format=3 uid="uid://gfm27c0guicw"]
 
+[ext_resource type="PackedScene" uid="uid://dlxns3ydfyxlu" path="res://%Project/Characters/hydrogen.tscn" id="1_fl7er"]
 [ext_resource type="Texture2D" uid="uid://67jod3wvej7v" path="res://Resources/background.png" id="1_j88ee"]
 [ext_resource type="Texture2D" uid="uid://cpe0ds574sqks" path="res://Resources/shop_button1.png" id="2_3t6fu"]
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/shop_button.gd" id="2_f2gkk"]
+[ext_resource type="PackedScene" uid="uid://14usl23dbv54" path="res://%Project/Characters/oxygen.tscn" id="4_aud5d"]
+[ext_resource type="FontFile" uid="uid://bcp7y8bedygee" path="res://Resources/Stepalange-x3BLm.otf" id="5_x6f26"]
+[ext_resource type="PackedScene" path="res://%Project/Characters/tungsten.tscn" id="6_naupy"]
 [ext_resource type="Script" path="res://%Project/%Scripts/%Managers/game_manager.gd" id="7_33h7g"]
+[ext_resource type="PackedScene" uid="uid://p6njdmydsy6n" path="res://%Project/Characters/uranium.tscn" id="7_jb222"]
 
 [node name="Main" type="Node2D"]
 
@@ -22,6 +27,9 @@ icon = ExtResource("2_3t6fu")
 expand_icon = true
 script = ExtResource("2_f2gkk")
 
+[node name="Oxygen" parent="." instance=ExtResource("4_aud5d")]
+position = Vector2(-307, -124)
+
 [node name="CoinText" type="RichTextLabel" parent="."]
 offset_left = 163.0
 offset_top = 144.0
@@ -33,5 +41,14 @@ theme_override_font_sizes/normal_font_size = 32
 text = "coins: 100"
 text_direction = 2
 script = ExtResource("7_33h7g")
+
+[node name="Tungsten" parent="." instance=ExtResource("6_naupy")]
+position = Vector2(64, 125)
+
+[node name="Uranium" parent="." instance=ExtResource("7_jb222")]
+position = Vector2(187, 68)
+
+[node name="Hydrogen" parent="." instance=ExtResource("1_fl7er")]
+position = Vector2(60, -97)
 
 [connection signal="pressed" from="ShopButton" to="ShopButton" method="_on_pressed"]
