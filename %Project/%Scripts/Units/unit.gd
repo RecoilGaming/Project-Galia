@@ -10,11 +10,11 @@ class_name Unit
 @export var KNOCKBACK: float = 10
 var health: float = 0
 
-enum POLARITY {BIG_POSITIVE, POSITIVE, NEUTRAL, NEGATIVE, BIG_NEGATIVE}
+enum Polarity { BIG_POSITIVE, POSITIVE, NEUTRAL, NEGATIVE, BIG_NEGATIVE }
 
-@export var polarity: POLARITY = POLARITY.NEUTRAL:
+@export var polarity: Polarity = Polarity.NEUTRAL:
 	set(value):
-		polarity = clamp(value, POLARITY.BIG_POSITIVE, POLARITY.BIG_NEGATIVE)
+		polarity = clamp(value, Polarity.BIG_POSITIVE, Polarity.BIG_NEGATIVE)
 		# Changes animation
 		$Sprite.play(str(polarity))
 
@@ -76,7 +76,7 @@ func find_target() -> void:
 			target = unit
 
 # Deal physical damage
-func take_damage(amt: int, dc_polarity: POLARITY): # Amount of damage, Damage component polarity
+func take_damage(amt: int, dc_polarity: Polarity): # Amount of damage, Damage component polarity
 	# FLOWCHART TIME!!!
 	# If they're the same, this is 1
 	# If they're the different by 1, this is 2
