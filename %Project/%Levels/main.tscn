@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://gfm27c0guicw"]
+[gd_scene load_steps=10 format=3 uid="uid://gfm27c0guicw"]
 
 [ext_resource type="PackedScene" uid="uid://dlxns3ydfyxlu" path="res://%Project/Characters/hydrogen.tscn" id="1_fl7er"]
 [ext_resource type="Texture2D" uid="uid://67jod3wvej7v" path="res://Resources/background.png" id="1_j88ee"]
 [ext_resource type="Texture2D" uid="uid://cpe0ds574sqks" path="res://Resources/shop_button1.png" id="2_3t6fu"]
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/shop_button.gd" id="2_f2gkk"]
 [ext_resource type="PackedScene" uid="uid://14usl23dbv54" path="res://%Project/Characters/oxygen.tscn" id="4_aud5d"]
+[ext_resource type="FontFile" uid="uid://bcp7y8bedygee" path="res://Resources/Stepalange-x3BLm.otf" id="5_x6f26"]
 [ext_resource type="PackedScene" path="res://%Project/Characters/tungsten.tscn" id="6_naupy"]
 [ext_resource type="Script" path="res://%Project/%Scripts/%Managers/game_manager.gd" id="7_33h7g"]
-[ext_resource type="PackedScene" path="res://%Project/Characters/uranium.tscn" id="7_jb222"]
+[ext_resource type="PackedScene" uid="uid://p6njdmydsy6n" path="res://%Project/Characters/uranium.tscn" id="7_jb222"]
 
 [node name="Main" type="Node2D"]
 
@@ -18,10 +19,10 @@ texture = ExtResource("1_j88ee")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="ShopButton" type="Button" parent="."]
-offset_left = -294.0
-offset_top = 113.0
-offset_right = -207.0
-offset_bottom = 160.0
+offset_left = -314.0
+offset_top = 127.0
+offset_right = -227.0
+offset_bottom = 174.0
 icon = ExtResource("2_3t6fu")
 expand_icon = true
 script = ExtResource("2_f2gkk")
@@ -30,12 +31,15 @@ script = ExtResource("2_f2gkk")
 position = Vector2(-307, -124)
 
 [node name="CoinText" type="RichTextLabel" parent="."]
-offset_left = 225.0
-offset_top = 135.0
-offset_right = 313.0
-offset_bottom = 176.0
+offset_left = 163.0
+offset_top = 144.0
+offset_right = 315.0
+offset_bottom = 180.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "coins: 69"
+theme_override_fonts/normal_font = ExtResource("5_x6f26")
+theme_override_font_sizes/normal_font_size = 32
+text = "coins: 100"
+text_direction = 2
 script = ExtResource("7_33h7g")
 
 [node name="Tungsten" parent="." instance=ExtResource("6_naupy")]

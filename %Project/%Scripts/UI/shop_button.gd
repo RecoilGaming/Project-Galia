@@ -9,4 +9,6 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_pressed() -> void:
+	if GM.polarizing:
+		get_parent().get_node("SelectUnit")._on_back_button_pressed()
 	get_parent().add_child(load("res://%Project/%Levels/shop.tscn").instantiate())

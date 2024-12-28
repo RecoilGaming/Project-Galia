@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cceh0q54dgcxe"]
+[gd_scene load_steps=13 format=3 uid="uid://cceh0q54dgcxe"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/add_unit.gd" id="1_a06ko"]
+[ext_resource type="FontFile" uid="uid://bcp7y8bedygee" path="res://Resources/Stepalange-x3BLm.otf" id="2_6v4k4"]
 [ext_resource type="Texture2D" uid="uid://beqmyrgswqfmp" path="res://Resources/hydrogen.png" id="3_8tngi"]
 [ext_resource type="Texture2D" uid="uid://wqj3pi30xf1r" path="res://Resources/oxygen.png" id="4_vw7u1"]
 [ext_resource type="Texture2D" uid="uid://ds7yg4sqp34xp" path="res://Resources/fluorine.png" id="5_8buu2"]
@@ -41,53 +42,55 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -324.0
-offset_top = 45.0
-offset_right = 315.0
-offset_bottom = 143.0
+offset_top = 62.0
+offset_right = 156.0
+offset_bottom = 120.0
 grow_horizontal = 2
 scale = Vector2(1.01063, 0.973659)
 color = Color(0.266667, 0.419608, 1, 0.87451)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
 layout_mode = 0
-offset_left = 165.243
-offset_top = 22.5952
-offset_right = 418.243
-offset_bottom = 82.5952
-theme_override_font_sizes/normal_font_size = 40
-text = "Add unit"
+offset_left = 71.0
+offset_top = 14.0
+offset_right = 195.0
+offset_bottom = 57.0
+theme_override_fonts/normal_font = ExtResource("2_6v4k4")
+theme_override_font_sizes/normal_font_size = 32
+text = "Add unit:"
 
 [node name="AddButton" type="Button" parent="ColorRect"]
 clip_contents = true
 layout_mode = 0
-offset_left = 558.068
-offset_top = 27.7304
-offset_right = 602.068
-offset_bottom = 73.7305
+offset_left = 395.874
+offset_top = 15.8647
+offset_right = 448.874
+offset_bottom = 41.8647
 text_overrun_behavior = 1
 clip_text = true
 icon_alignment = 1
 vertical_icon_alignment = 0
 script = ExtResource("1_a06ko")
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="ColorRect"]
-layout_mode = 0
-offset_left = 565.984
-offset_top = 14.3787
-offset_right = 629.984
-offset_bottom = 89.3788
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/AddButton"]
+offset_left = 8.8243
+offset_top = 5.32465
+offset_right = 132.824
+offset_bottom = 48.3246
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 50
-text = "+"
+theme_override_fonts/normal_font = ExtResource("2_6v4k4")
+theme_override_font_sizes/normal_font_size = 16
+text = "push !"
 
 [node name="UnitDropdown" type="OptionButton" parent="ColorRect"]
 layout_mode = 0
-offset_left = 360.171
-offset_top = 27.7304
-offset_right = 692.171
-offset_bottom = 117.73
+offset_left = 201.854
+offset_top = 7.18938
+offset_right = 533.854
+offset_bottom = 97.189
 scale = Vector2(0.5, 0.5)
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("2_6v4k4")
+theme_override_font_sizes/font_size = 48
 toggle_mode = false
 alignment = 1
 expand_icon = true
@@ -107,13 +110,21 @@ script = ExtResource("1_a06ko")
 
 [node name="BackButton" type="Button" parent="ColorRect"]
 layout_mode = 0
-offset_left = 17.8107
-offset_top = 23.6222
-offset_right = 135.811
-offset_bottom = 73.6222
+offset_left = 14.8422
+offset_top = 10.2705
+offset_right = 48.8422
+offset_bottom = 47.2705
 theme_override_font_sizes/font_size = 30
-text = "← back"
 script = ExtResource("1_a06ko")
+
+[node name="x" type="RichTextLabel" parent="ColorRect/BackButton"]
+offset_left = 7.72653
+offset_top = -6.54009
+offset_right = 48.7265
+offset_bottom = 52.4599
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "x"
 
 [node name="Pointer" type="Sprite2D" parent="."]
 scale = Vector2(0.512048, 0.512048)
