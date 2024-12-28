@@ -1,2 +1,2 @@
-extends Unit
+extends Hydrogen
 class_name Oxygen
