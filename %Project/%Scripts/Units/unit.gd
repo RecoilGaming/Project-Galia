@@ -9,8 +9,10 @@ class_name Unit
 @export var SPEED: float = 100
 @export var KNOCKBACK: float = 10
 @export var IS_ENEMY: bool = false
+@export var ATTACK_COOLDOWN: float = 0.1
 
 var health: float = MAX_HEALTH
+var attack_cooldown := ATTACK_COOLDOWN
 
 enum Polarity { BIG_POSITIVE, POSITIVE, NEUTRAL, NEGATIVE, BIG_NEGATIVE }
 
@@ -19,20 +21,9 @@ enum Polarity { BIG_POSITIVE, POSITIVE, NEUTRAL, NEGATIVE, BIG_NEGATIVE }
 # Target unit
 var target: Unit
 var collision: KinematicCollision2D
+var bodies_to_attack: Array[Node2D]
 
 ## =============== [ METHODS ] ================ ##
-
-func set_polarity(value):
-	var old_polarity = polarity
-	
-	polarity = clamp(value, Polarity.BIG_POSITIVE, Polarity.BIG_NEGATIVE)
-	
-	if(old_polarity == polarity):
-		return false
-	else:
-		# Changes animation
-		$Sprite.play(str(polarity))
-		return true
 
 # Ready
 func _ready() -> void:
@@ -40,8 +31,12 @@ func _ready() -> void:
 	$Sprite.play(str(polarity))
 	self.input_event.connect(_on_input_event)
 	IS_ENEMY = randi_range(0, 1)
+	polarity = randi_range(0, 4)
 	# Add to global list
 	GM.add_unit(self)
+	
+	$NotArea2D.body_entered.connect(_body_entered)
+	$NotArea2D.body_exited.connect(_body_exited)
 
 # Process
 func _process(delta: float) -> void:
@@ -55,18 +50,26 @@ func _process(delta: float) -> void:
 	# Track target
 	if target:
 		move(target.global_position - global_position, delta)
+	
+	attack_cooldown -= delta
+	if(attack_cooldown <= 0):
+		attack_cooldown = ATTACK_COOLDOWN
 		
-	# Deal collision CONTACT_DAMAGE
-	if collision:
-		velocity = collision.get_collider_velocity().normalized() * KNOCKBACK
-		var collider: Unit = collision.get_collider()
-		if collider: # Needs to be unit
-			if(target.IS_ENEMY != self.IS_ENEMY):
-				collider.take_damage(CONTACT_DAMAGE, self.polarity)
+		if(!bodies_to_attack.is_empty()):
+			var not_null = bodies_to_attack.pick_random()
+			
+			if(not_null):
+				not_null.take_damage(CONTACT_DAMAGE, polarity)
+				
+				# Collides the thing
+				if collision:
+					velocity = collision.get_collider_velocity().normalized() * KNOCKBACK
 
 # Physics process
 func _physics_process(delta: float) -> void:
-	collision = move_and_collide(velocity)
+	var potential_collision = move_and_collide(velocity)
+	#if potential_collision:
+	collision = potential_collision
 
 ## =============== [ HELPERS ] ================ ##
 
@@ -100,6 +103,9 @@ func take_damage(amt: int, dc_polarity: Polarity): # Amount of damage, Damage co
 	health -= amt*damage_multiplier
 	#print("I, "+ str(self.name) +" have " + str(health) + "hp and are taking " + str(damage_multiplier))
 	
+	#print("TAKING DAMAGE " + str(amt))
+	#print("HEALTH IS " + str(health))
+	
 	# Dying
 	if health <= 0:
 		die()
@@ -116,7 +122,14 @@ func move(dir: Vector2, delta: float):
 
 # Change polarity, returns whether it was successful
 func change_polarity(amt: int) -> bool:
-	return set_polarity(polarity+amt)
+	var old_polarity = polarity
+	polarity += amt
+	
+	# If the polarity didn't change
+	if(polarity == old_polarity):
+		return false
+	
+	return true
 
 ## =============== [ SIGNALS ] ================ ##
 
@@ -124,3 +137,10 @@ func change_polarity(amt: int) -> bool:
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT and GM.polarizing:
 		change_polarity(GM.click_polarity)
+
+func _body_entered(body: Node2D):
+	if(body is Unit and body != self):
+		bodies_to_attack.append(body)
+
+func _body_exited(body: Node2D):
+	bodies_to_attack.erase(body)

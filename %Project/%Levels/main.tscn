@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://gfm27c0guicw"]
+[gd_scene load_steps=6 format=3 uid="uid://gfm27c0guicw"]
 
-[ext_resource type="PackedScene" uid="uid://dlxns3ydfyxlu" path="res://%Project/Characters/hydrogen.tscn" id="1_fl7er"]
 [ext_resource type="Texture2D" uid="uid://67jod3wvej7v" path="res://Resources/background.png" id="1_j88ee"]
 [ext_resource type="Texture2D" uid="uid://cpe0ds574sqks" path="res://Resources/shop_button1.png" id="2_3t6fu"]
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/shop_button.gd" id="2_f2gkk"]
 [ext_resource type="PackedScene" uid="uid://14usl23dbv54" path="res://%Project/Characters/oxygen.tscn" id="4_aud5d"]
-[ext_resource type="PackedScene" uid="uid://d4tfyea72jwc" path="res://%Project/Characters/fluorine.tscn" id="5_7pd8u"]
 [ext_resource type="Script" path="res://%Project/%Scripts/%Managers/game_manager.gd" id="7_33h7g"]
 
 [node name="Main" type="Node2D"]
@@ -25,24 +23,8 @@ icon = ExtResource("2_3t6fu")
 expand_icon = true
 script = ExtResource("2_f2gkk")
 
-[node name="Hydrogen" parent="." instance=ExtResource("1_fl7er")]
-IS_ENEMY = true
-polarity = 4
-
-[node name="Hydrogen2" parent="." instance=ExtResource("1_fl7er")]
-position = Vector2(100, 0)
-polarity = 0
-
-[node name="Hydrogen3" parent="." instance=ExtResource("1_fl7er")]
-position = Vector2(100, 100)
-IS_ENEMY = true
-polarity = 0
-
 [node name="Oxygen" parent="." instance=ExtResource("4_aud5d")]
 position = Vector2(-307, -124)
-
-[node name="Fluorine" parent="." instance=ExtResource("5_7pd8u")]
-position = Vector2(75, -113)
 
 [node name="CoinText" type="RichTextLabel" parent="."]
 offset_left = 234.0
@@ -52,5 +34,14 @@ offset_bottom = 172.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "coins: 69"
 script = ExtResource("7_33h7g")
+
+[node name="Oxygen2" parent="." instance=ExtResource("4_aud5d")]
+position = Vector2(195, -50)
+
+[node name="Oxygen3" parent="." instance=ExtResource("4_aud5d")]
+position = Vector2(-53, 56)
+
+[node name="Oxygen4" parent="." instance=ExtResource("4_aud5d")]
+position = Vector2(23, -116)
 
 [connection signal="pressed" from="ShopButton" to="ShopButton" method="_on_pressed"]

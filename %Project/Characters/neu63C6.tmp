@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://tidsrn13xota"]
+[gd_scene load_steps=4 format=3 uid="uid://tidsrn13xota"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/neutron.gd" id="1_jklin"]
 [ext_resource type="SpriteFrames" uid="uid://dvxkrbletolyb" path="res://%Project/Characters/neutron_anim.tres" id="2_50f21"]
@@ -6,12 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_04t31"]
 radius = 4.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jyfd5"]
-radius = 5.0
-
 [node name="Neutron" type="CharacterBody2D"]
 script = ExtResource("1_jklin")
-MAX_HEALTH = 2.0
+MAX_HEALTH = 10.0
 SPEED = 400.0
 KNOCKBACK = 0.0
 polarity = 3
@@ -23,11 +20,3 @@ frame_progress = 0.385607
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_04t31")
-disabled = true
-
-[node name="NotArea2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NotArea2D"]
-shape = SubResource("CircleShape2D_jyfd5")
-
-[connection signal="body_entered" from="NotArea2D" to="." method="_on_not_area_2d_body_entered"]
