@@ -35,6 +35,5 @@ position = Vector2(-307, -124)
 
 [node name="Fluorine" parent="." instance=ExtResource("5_7pd8u")]
 position = Vector2(75, -113)
-CONTACT_DAMAGE = 0.0
 
 [connection signal="pressed" from="ShopButton" to="ShopButton" method="_on_pressed"]
