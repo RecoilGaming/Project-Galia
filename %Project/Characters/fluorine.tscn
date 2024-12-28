@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4tfyea72jwc"]
+[gd_scene load_steps=5 format=3 uid="uid://d4tfyea72jwc"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Units/fluorine.gd" id="1_c707q"]
-[ext_resource type="SpriteFrames" uid="uid://bfy2pobjyt62x" path="res://%Project/Characters/fluorine_anim.tres" id="2_b2owd"]
+[ext_resource type="SpriteFrames" uid="uid://croo870vqqify" path="res://%Project/Characters/fluorine_anim.tres" id="2_b2owd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ms6eo"]
 radius = 14.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_825pd"]
+radius = 23.0217
+
 [node name="Fluorine" type="CharacterBody2D"]
 input_pickable = true
 script = ExtResource("1_c707q")
-CONTACT_DAMAGE = 0.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_b2owd")
@@ -17,3 +19,8 @@ animation = &"2"
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ms6eo")
+
+[node name="NotArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NotArea2D"]
+shape = SubResource("CircleShape2D_825pd")
