@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/select_unit.gd" id="1_y3xdy"]
 
-[node name="Control" type="Control"]
+[node name="SelectUnit" type="Control"]
 top_level = true
 layout_mode = 3
 anchors_preset = 0
