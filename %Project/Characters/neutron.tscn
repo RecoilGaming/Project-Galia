@@ -7,7 +7,7 @@
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jyfd5"]
-radius = 8.0
+radius = 5.0
 
 [node name="Neutron" type="CharacterBody2D"]
 script = ExtResource("1_jklin")
@@ -23,8 +23,11 @@ frame_progress = 0.385607
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_04t31")
+disabled = true
 
 [node name="NotArea2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NotArea2D"]
 shape = SubResource("CircleShape2D_jyfd5")
+
+[connection signal="body_entered" from="NotArea2D" to="." method="_on_not_area_2d_body_entered"]

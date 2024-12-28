@@ -24,3 +24,9 @@ func _process(delta: float) -> void:
 	super(delta)
 	if(target == null or target == self):
 		die()
+
+
+func _on_not_area_2d_body_entered(body: Node2D) -> void:
+	if(body is Unit and body.IS_ENEMY != self.IS_ENEMY):
+		body.take_damage(CONTACT_DAMAGE, polarity)
+		die()
