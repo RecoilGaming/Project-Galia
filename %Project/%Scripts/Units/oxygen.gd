@@ -37,5 +37,5 @@ func _process(delta: float) -> void:
 func shoot():
 	var electron = load("res://%Project/Characters/neutron.tscn").instantiate()
 	get_parent().add_child(electron)
-	electron.global_position = global_position
+	electron.global_position = global_position + 20* (target.global_position - global_position).normalized()
 	electron.IS_ENEMY = self.IS_ENEMY
