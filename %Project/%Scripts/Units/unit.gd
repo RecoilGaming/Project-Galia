@@ -5,7 +5,7 @@ class_name Unit
 
 # Attributes
 @export var MAX_HEALTH: float = 100
-@export var CONTACT_DAMAGE: float = 2
+@export var CONTACT_DAMAGE: float = 10
 @export var SPEED: float = 100
 @export var KNOCKBACK: float = 10
 @export var IS_ENEMY: bool = false
@@ -115,6 +115,11 @@ func do_attacks() -> void:
 			var not_null = bodies_to_attack.pick_random()
 			
 			if is_valid_target(not_null):
+				var fancy_thing: Sprite2D = load("res://%Project/Resources/Effects/attack.tscn").instantiate()
+				fancy_thing.rotation = (not_null.global_position - global_position).angle()
+				fancy_thing.position += Vector2(32, 0).rotated(fancy_thing.rotation)
+				add_child(fancy_thing)
+				
 				not_null.take_damage(CONTACT_DAMAGE)
 				
 				## Collides the thing

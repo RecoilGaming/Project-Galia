@@ -13,7 +13,7 @@ radius = 24.0
 [node name="Oxygen" type="CharacterBody2D"]
 input_pickable = true
 script = ExtResource("1_qq8k8")
-SHOOT_DAMAGE = 5
+SHOOT_DAMAGE = 15
 MAX_HEALTH = 30.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
