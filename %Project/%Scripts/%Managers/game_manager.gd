@@ -28,6 +28,9 @@ var waiting_for_continue := false
 
 func _ready():
 	update_coins()
+	
+	var menu: Control = load("res://%Project/%Levels/menu.tscn").instantiate()
+	main.add_child(menu)
 
 func _process(delta: float) -> void:
 	pass

@@ -61,6 +61,7 @@ _data = {
 }
 
 [node name="Menu" type="Control"]
+z_index = 100
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,20 +80,20 @@ grow_vertical = 2
 texture = ExtResource("2_xy6by")
 
 [node name="Title" type="Sprite2D" parent="."]
-position = Vector2(307, 188)
+position = Vector2(-13, 8)
 texture = ExtResource("3_kk5ea")
 offset = Vector2(0, -100)
 
 [node name="Start" type="Sprite2D" parent="."]
-position = Vector2(320, 339)
+position = Vector2(0, 159)
 texture = ExtResource("2_v8h3u")
 
 [node name="Guydrogen" type="Sprite2D" parent="."]
-position = Vector2(60.5, 280)
+position = Vector2(-259.5, 100)
 texture = ExtResource("5_fdnrs")
 
 [node name="Oxyguy" type="AnimatedSprite2D" parent="."]
-position = Vector2(400.5, 220.5)
+position = Vector2(80.5, 40.5)
 sprite_frames = ExtResource("6_bjlhc")
 autoplay = "default"
 frame_progress = 0.707523
