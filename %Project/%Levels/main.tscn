@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://gfm27c0guicw"]
 
 [ext_resource type="PackedScene" uid="uid://dlxns3ydfyxlu" path="res://%Project/Characters/hydrogen.tscn" id="1_fl7er"]
-[ext_resource type="Texture2D" uid="uid://67jod3wvej7v" path="res://Resources/background.png" id="1_j88ee"]
+[ext_resource type="Texture2D" uid="uid://67jod3wvej7v" path="res://Resources/Menu/background.png" id="1_j88ee"]
 [ext_resource type="Texture2D" uid="uid://cpe0ds574sqks" path="res://Resources/shop_button1.png" id="2_3t6fu"]
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/shop_button.gd" id="2_f2gkk"]
 [ext_resource type="PackedScene" uid="uid://14usl23dbv54" path="res://%Project/Characters/oxygen.tscn" id="4_aud5d"]
 [ext_resource type="FontFile" uid="uid://bcp7y8bedygee" path="res://Resources/Stepalange-x3BLm.otf" id="5_x6f26"]
-[ext_resource type="PackedScene" path="res://%Project/Characters/tungsten.tscn" id="6_naupy"]
+[ext_resource type="PackedScene" uid="uid://dhmjyfwhpcy5y" path="res://%Project/Characters/tungsten.tscn" id="6_naupy"]
 [ext_resource type="Script" path="res://%Project/%Scripts/%Managers/game_manager.gd" id="7_33h7g"]
-[ext_resource type="PackedScene" uid="uid://p6njdmydsy6n" path="res://%Project/Characters/uranium.tscn" id="7_jb222"]
+[ext_resource type="PackedScene" uid="uid://o7hoju52v1bi" path="res://%Project/Characters/uranium.tscn" id="7_jb222"]
 
 [node name="Main" type="Node2D"]
 
