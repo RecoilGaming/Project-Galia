@@ -12,7 +12,7 @@ func _ready() -> void:
 func set_polarity(value):
 	var old_polarity = polarity
 	
-	polarity = clamp(value, Polarity.BIG_POSITIVE, Polarity.BIG_NEGATIVE)
+	polarity = clamp(value, Polarity.POSITIVE, Polarity.NEGATIVE)
 	
 	if(old_polarity == polarity):
 		return false
