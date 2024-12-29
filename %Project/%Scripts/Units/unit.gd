@@ -65,8 +65,7 @@ func _process(delta: float) -> void:
 				## Collides the thing
 				#if collision:
 					#velocity = collision.get_collider_velocity().normalized() * KNOCKBACK
-	
-	
+	update_healthbar()
 
 # Physics process
 func _physics_process(delta: float) -> void:
@@ -148,4 +147,5 @@ func _body_exited(body: Node2D):
 	bodies_to_attack.erase(body)
 
 func update_healthbar():
-	$HealthBar.value = health/MAX_HEALTH
+	if has_node("HealthBar"):
+		$HealthBar.value = health/MAX_HEALTH
