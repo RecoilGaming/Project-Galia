@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://o7hoju52v1bi"]
+[gd_scene load_steps=6 format=3 uid="uid://o7hoju52v1bi"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Units/uranium.gd" id="1_46yvj"]
 [ext_resource type="SpriteFrames" uid="uid://yx236qgpwlan" path="res://%Project/Characters/uranium_anim.tres" id="2_kh0tw"]
+[ext_resource type="Theme" uid="uid://v7u7ajl3cgy1" path="res://%Project/Resources/green1.tres" id="3_m1kmc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nahrt"]
 radius = 16.0
@@ -27,3 +28,13 @@ shape = SubResource("CircleShape2D_nahrt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NotArea2D"]
 shape = SubResource("CircleShape2D_58r6o")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -18.0
+offset_top = 25.0
+offset_right = 18.0
+offset_bottom = 30.0
+theme = ExtResource("3_m1kmc")
+max_value = 1.0
+value = 0.5
+show_percentage = false

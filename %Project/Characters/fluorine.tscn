@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4tfyea72jwc"]
+[gd_scene load_steps=6 format=3 uid="uid://d4tfyea72jwc"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Units/fluorine.gd" id="1_c707q"]
 [ext_resource type="SpriteFrames" uid="uid://bfy2pobjyt62x" path="res://%Project/Characters/fluorine_anim.tres" id="2_b2owd"]
+[ext_resource type="Theme" uid="uid://v7u7ajl3cgy1" path="res://%Project/Resources/green1.tres" id="3_qj3fe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ms6eo"]
 radius = 14.0
@@ -26,4 +27,15 @@ shape = SubResource("CircleShape2D_ms6eo")
 [node name="NotArea2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NotArea2D"]
+top_level = true
 shape = SubResource("CircleShape2D_825pd")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -18.0
+offset_top = 17.0
+offset_right = 18.0
+offset_bottom = 22.0
+theme = ExtResource("3_qj3fe")
+max_value = 1.0
+value = 0.5
+show_percentage = false
