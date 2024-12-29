@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8hap51pac2qp"]
+[gd_scene load_steps=6 format=3 uid="uid://c8hap51pac2qp"]
 
 [ext_resource type="Texture2D" uid="uid://cpe0ds574sqks" path="res://Resources/shop_button1.png" id="1_sj05n"]
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/shop_button.gd" id="2_0jbbo"]
 [ext_resource type="FontFile" uid="uid://bcp7y8bedygee" path="res://Resources/Stepalange-x3BLm.otf" id="3_nx8tu"]
 [ext_resource type="Script" path="res://%Project/%Scripts/%Managers/game_manager.gd" id="4_7ld01"]
+[ext_resource type="Theme" uid="uid://bo8ub25x8am2v" path="res://Resources/theme.tres" id="5_hwxph"]
 
-[node name="MainUI" type="Node2D"]
+[node name="MainUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="ShopButton" type="Button" parent="."]
 offset_left = -317.0
@@ -29,7 +32,18 @@ text = "coins: 100"
 text_direction = 2
 script = ExtResource("4_7ld01")
 
-[node name="FakeCamera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
 enabled = false
 
+[node name="GoButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = -178.0
+offset_top = -172.0
+offset_right = -104.0
+offset_bottom = -118.0
+theme = ExtResource("5_hwxph")
+text = "Go!"
+script = ExtResource("4_7ld01")
+
 [connection signal="pressed" from="ShopButton" to="ShopButton" method="_on_pressed"]
+[connection signal="pressed" from="GoButton" to="GoButton" method="_on_go_button_pressed"]

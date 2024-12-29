@@ -34,9 +34,6 @@ func _ready():
 	#var menu: Control = load("res://%Project/%Levels/menu.tscn").instantiate()
 	#main.add_child.call_deferred(menu)
 
-func _process(delta: float) -> void:
-	pass
-
 ## =============== [ METHODS ] ================
 
 # Add unit
@@ -89,3 +86,15 @@ func new_wave():
 				i += 1
 				#print("UNIT SPAWNED")
 	current_wave += 1
+
+
+func _on_go_button_pressed() -> void:
+	new_wave()
+	main.get_node("MainUI/GoButton").hide()
+	
+func on_unit_death() -> void:
+	# search for remaining enemies
+	for unit in units:
+		if unit.IS_ENEMY:
+			return
+	main.get_node("MainUI/GoButton").show()
