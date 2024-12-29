@@ -28,7 +28,8 @@ var waiting_for_continue := false
 
 func _ready():
 	update_coins()
-	
+	#new_wave()
+	#new_wave()
 	var menu: Control = load("res://%Project/%Levels/menu.tscn").instantiate()
 	main.add_child(menu)
 
@@ -44,14 +45,14 @@ func add_unit(unit: Unit):
 # Spawn unit
 func spawn_unit(pos: Vector2, index: int):
 	if coins >= 3:
-		if(try_to_spawn(types[index], pos)):
+		if(try_to_spawn(types[index], pos, false)): # Spawns an ally
 			# Subtract cost
 			coins -= 3
 
 func update_coins():
 	main.get_node("CoinText").text = "Coins: " + str(coins)
 
-func try_to_spawn(u: String, pos: Vector2) -> bool:
+func try_to_spawn(u: String, pos: Vector2, enemy: bool) -> bool:
 	for unit in units:
 		var distance = unit.global_position.distance_to(pos)
 		if(distance < 30):
@@ -61,13 +62,13 @@ func try_to_spawn(u: String, pos: Vector2) -> bool:
 	var unit: Unit = load("res://%Project/Characters/" + u + ".tscn").instantiate()
 	unit.position = pos
 	#print("swawning unit")
-	
+	unit.IS_ENEMY = enemy
 	# Add child
 	main.add_child.call_deferred(unit)
 	return true
 
 func new_wave():
-	Engine.set_time_scale(0)
+	#Engine.set_time_scale(0)
 	#print("Wave incoming!")
 	waiting_for_continue = true
 	var wave_to_spawn = waves[current_wave]
@@ -78,7 +79,7 @@ func new_wave():
 		var i := 0
 		#print(spawn[1])
 		while i < spawn[1]:
-			if(try_to_spawn(unit_class, Vector2(randi_range(30, 290), randi_range(-150, 150)))): # -320, -180 to 320, 180 is the canvas
+			if(try_to_spawn(unit_class, Vector2(randi_range(30, 290), randi_range(-150, 150)), true)): # -320, -180 to 320, 180 is the canvas
 				i += 1
 				#print("UNIT SPAWNED")
 				
