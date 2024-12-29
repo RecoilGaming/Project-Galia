@@ -1,4 +1,4 @@
-extends Hydrogen
+extends Unit
 class_name Oxygen
 
 @export var SHOOT_DAMAGE = 100

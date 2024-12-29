@@ -1,4 +1,4 @@
-extends Hydrogen
+extends Unit
 class_name Fluorine
 
 @export var DEATH_DAMAGE := 75
