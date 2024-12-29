@@ -13,16 +13,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_o86bi")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2, -1)
+enabled = false
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -468.0
-offset_top = 126.0
-offset_right = -176.0
-offset_bottom = 171.0
-grow_horizontal = 2
+offset_left = -146.0
+offset_top = 121.0
+offset_right = 146.0
+offset_bottom = 166.0
 scale = Vector2(1.01063, 0.973659)
 mouse_filter = 2
 color = Color(0.266667, 0.419608, 1, 0.87451)
@@ -56,8 +56,5 @@ mouse_filter = 2
 theme = ExtResource("3_8ivys")
 theme_override_font_sizes/normal_font_size = 24
 text = "done"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-enabled = false
 
 [connection signal="pressed" from="ColorRect/BackButton" to="." method="_on_back_button_pressed"]

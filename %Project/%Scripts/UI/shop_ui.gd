@@ -4,15 +4,11 @@ func _on_back_button_pressed():
 	queue_free()
 
 func _on_polarize_button_pressed():
-	if GM.is_polarizing: return
-	if get_parent().has_node("AddUnit"):
-		get_parent().get_node("AddUnit")._on_back_button_pressed()
+	clear_popups()
 	get_parent().add_child(load("res://%Project/%Levels/polarize.tscn").instantiate())
 
 func _on_add_unit_button_pressed():
-	if GM.is_summoning: return
-	if get_parent().has_node("PolarizeUnit"):
-		get_parent().get_node("PolarizeUnit")._on_back_button_pressed()
+	clear_popups()
 	get_parent().add_child(load("res://%Project/%Levels/add_unit.tscn").instantiate())
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
@@ -25,3 +21,15 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 
 func _on_go_button_pressed() -> void:
 	GM._on_go_button_pressed()
+
+func _on_sell_unit_button_pressed() -> void:
+	clear_popups()
+	get_parent().add_child(load("res://%Project/%Levels/sell_unit.tscn").instantiate())
+
+func clear_popups():
+	if get_parent().has_node("AddUnit"):
+		get_parent().get_node("AddUnit")._on_back_button_pressed()
+	if get_parent().has_node("SellUnit"):
+		get_parent().get_node("SellUnit")._on_back_button_pressed()
+	if get_parent().has_node("PolarizeUnit"):
+		get_parent().get_node("PolarizeUnit")._on_back_button_pressed()
