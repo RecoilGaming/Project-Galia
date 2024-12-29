@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://jka8axmfulsf"]
+
+[ext_resource type="Texture2D" uid="uid://065ud6duhsb0" path="res://%Project/Resources/Effects/explosion.png" id="1_5rq63"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36nck"]
+atlas = ExtResource("1_5rq63")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvjlb"]
+atlas = ExtResource("1_5rq63")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkga7"]
+atlas = ExtResource("1_5rq63")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjj6r"]
+atlas = ExtResource("1_5rq63")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_asg5l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36nck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvjlb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkga7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjj6r")
+}],
+"loop": false,
+"name": &"boom",
+"speed": 15.0
+}]
+
+[node name="Explosion" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_asg5l")
+animation = &"boom"
+autoplay = "boom"
+frame = 3
+frame_progress = 1.0
