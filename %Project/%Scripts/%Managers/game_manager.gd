@@ -78,6 +78,7 @@ func try_to_spawn(u: String, pos: Vector2, enemy: bool) -> bool:
 	unit.IS_ENEMY = enemy
 	# Add child
 	main.add_child.call_deferred(unit)
+	coins -= UNIT_COSTS[u]
 	return true
 
 func new_wave():
