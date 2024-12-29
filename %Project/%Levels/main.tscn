@@ -7,7 +7,7 @@
 [node name="Main" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
-z_index = -1
+z_index = -100
 texture = ExtResource("1_j88ee")
 
 [node name="Camera2D" type="Camera2D" parent="."]
