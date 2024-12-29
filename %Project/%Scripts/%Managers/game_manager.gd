@@ -12,8 +12,8 @@ var coins: int = 100:
 		update_coins()
 var units: Array[Unit] = []
 var unit_spawn_index: int = 0
-var types = ["hydrogen", "oxygen", "fluorine"]
-var polarizing: bool = false
+var types = ["hydrogen", "oxygen", "fluorine", "tungsten", "uranium"]
+var polarizing_window_open: bool = false
 
 var current_wave := 0
 var waves = [

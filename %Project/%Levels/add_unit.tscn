@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cceh0q54dgcxe"]
+[gd_scene load_steps=17 format=3 uid="uid://cceh0q54dgcxe"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/add_unit.gd" id="1_a06ko"]
 [ext_resource type="FontFile" uid="uid://bcp7y8bedygee" path="res://Resources/Stepalange-x3BLm.otf" id="2_6v4k4"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://ds7yg4sqp34xp" path="res://Resources/fluorine.png" id="5_8buu2"]
 [ext_resource type="Texture2D" uid="uid://dq4wc36j373fd" path="res://Resources/bad_circle.png" id="5_v0m5v"]
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/unit_position_pointer.gd" id="6_hl8am"]
+[ext_resource type="Texture2D" uid="uid://bi0uiww8dojf1" path="res://Resources/tungsten.png" id="6_jg6e5"]
+[ext_resource type="Texture2D" uid="uid://bgffxe3bpt02e" path="res://Resources/uranium.png" id="7_f46h1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sj8q3"]
 atlas = ExtResource("3_8tngi")
@@ -19,6 +21,14 @@ region = Rect2(4, 96, 41, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gf3f"]
 atlas = ExtResource("5_8buu2")
 region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r685s"]
+atlas = ExtResource("6_jg6e5")
+region = Rect2(97, 97, 47, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p41v0"]
+atlas = ExtResource("7_f46h1")
+region = Rect2(0, 97, 46, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b3qbe"]
 atlas = ExtResource("5_v0m5v")
@@ -41,10 +51,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -324.0
-offset_top = 62.0
-offset_right = 156.0
-offset_bottom = 120.0
+offset_left = -320.0
+offset_top = 103.0
+offset_right = 160.0
+offset_bottom = 161.0
 grow_horizontal = 2
 scale = Vector2(1.01063, 0.973659)
 color = Color(0.266667, 0.419608, 1, 0.87451)
@@ -73,6 +83,7 @@ vertical_icon_alignment = 0
 script = ExtResource("1_a06ko")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/AddButton"]
+layout_mode = 0
 offset_left = 8.8243
 offset_top = 5.32465
 offset_right = 132.824
@@ -97,7 +108,7 @@ expand_icon = true
 selected = 0
 fit_to_longest_item = false
 allow_reselect = true
-item_count = 3
+item_count = 5
 popup/item_0/text = "Hydrogen"
 popup/item_0/icon = SubResource("AtlasTexture_sj8q3")
 popup/item_1/text = "Oxygen"
@@ -106,6 +117,12 @@ popup/item_1/id = 1
 popup/item_2/text = "Fluorine"
 popup/item_2/icon = SubResource("AtlasTexture_8gf3f")
 popup/item_2/id = 2
+popup/item_3/text = "Tungsten"
+popup/item_3/icon = SubResource("AtlasTexture_r685s")
+popup/item_3/id = 3
+popup/item_4/text = "Uranium"
+popup/item_4/icon = SubResource("AtlasTexture_p41v0")
+popup/item_4/id = 4
 script = ExtResource("1_a06ko")
 
 [node name="BackButton" type="Button" parent="ColorRect"]
@@ -118,6 +135,7 @@ theme_override_font_sizes/font_size = 30
 script = ExtResource("1_a06ko")
 
 [node name="x" type="RichTextLabel" parent="ColorRect/BackButton"]
+layout_mode = 0
 offset_left = 7.72653
 offset_top = -6.54009
 offset_right = 48.7265
