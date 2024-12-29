@@ -1,6 +1,6 @@
-extends Sprite2D
+extends Node2D
 
-var life = 0.1
+@export var life = 0.1
 
 func _process(delta: float) -> void:
 	life -= delta
