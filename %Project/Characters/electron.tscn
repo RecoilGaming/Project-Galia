@@ -15,6 +15,8 @@ MAX_HEALTH = 10.0
 CONTACT_DAMAGE = 11.31
 SPEED = 400.0
 KNOCKBACK = 0.0
+IS_ENEMY = null
+ATTACK_COOLDOWN = null
 polarity = 3
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

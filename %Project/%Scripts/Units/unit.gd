@@ -14,11 +14,11 @@ class_name Unit
 var health: float = MAX_HEALTH
 var attack_cooldown := ATTACK_COOLDOWN
 
-enum Polarity { BIG_POSITIVE, POSITIVE, NEUTRAL, NEGATIVE, BIG_NEGATIVE }
-
-@export var polarity: Polarity = Polarity.NEUTRAL:
+@export var polarity: int = 0:
 	set(value):
-		polarity = clamp(value, 1, 3)
+		if(value == -1 || value == 1):
+			polarity = value
+			$Sprite.play(str(polarity*2+2))
 
 # Target unit
 var target: Unit
@@ -31,8 +31,7 @@ var bodies_to_attack: Array[Node2D]
 func _ready() -> void:
 	# Apply values
 	self.input_event.connect(_on_input_event)
-	polarity = Polarity.NEUTRAL
-	$Sprite.play(str(polarity))
+	polarity = polarity
 	# Add to global list
 	GM.add_unit(self)
 	
@@ -84,23 +83,14 @@ func find_target() -> void:
 		var dist: float = global_position.distance_to(unit.global_position)
 		
 		# Check unit
-		if unit != self and dist < min_dist and unit.IS_ENEMY != self.IS_ENEMY and unit.polarity != self.polarity:
+		if dist < min_dist and is_valid_target(unit):
 			min_dist = dist
 			target = unit
 
 # Deal physical damage
-func take_damage(amt: int, dc_polarity: Polarity): # Amount of damage, Damage component polarity
-	# FLOWCHART TIME!!!
-	# If they're the same, this is 1
-	# If they're the different by 1, this is 2
-	# If they're the different by 2, this is 5
-	# If they're the different by 3, this is 10
-	# If they're the different by 4, this is 17
-	# Note: Make base damage take this into account i.e. have it be small
-	var damage_multiplier = abs(dc_polarity-self.polarity)
-	damage_multiplier *= damage_multiplier
-	damage_multiplier += 1
-	health -= amt*damage_multiplier
+func take_damage(amt: int, dc_polarity: int): # Amount of damage, Damage component polarity
+	
+	health -= amt
 	
 	# Dying
 	if health <= 0:
@@ -119,15 +109,11 @@ func move(dir: Vector2, delta: float):
 # Change polarity, returns whether it was successful
 func change_polarity(amt: int) -> bool:
 	var temp = polarity
-	polarity = clamp(polarity+amt, Polarity.BIG_POSITIVE, Polarity.BIG_NEGATIVE)
-	
-	var changed: bool = (polarity != temp)
-	
-	#print("old: " + str(temp) + ", new: " + str(polarity) + ", amt: " + str(amt))
-	
-	if changed:
-		$Sprite.play(str(polarity))
-	return changed
+	polarity += amt
+	return temp != polarity
+
+func is_valid_target(unit: Unit) -> bool:
+	return unit != self and unit.IS_ENEMY != self.IS_ENEMY and unit.polarity != self.polarity
 
 ## =============== [ SIGNALS ] ================ ##
 
@@ -135,9 +121,9 @@ func change_polarity(amt: int) -> bool:
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_pressed() and GM.polarizing_window_open:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			change_polarity(-1)
+			change_polarity(-2)
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
-			change_polarity(1)
+			change_polarity(2)
 
 func _body_entered(body: Node2D):
 	if(body is Unit and body != self):

@@ -100,5 +100,5 @@ func on_unit_death() -> void:
 	main.get_node("MainUI/GoButton").show()
 
 func play_theme() -> void:
-	main.get_node("Sounds").stream = load("res://Resources/Sounds/poland_theme.mp3")
+	main.get_node("Sounds").stream = load("res://%Project/Resources/Sounds/poland_theme.mp3")
 	main.get_node("Sounds").play()
