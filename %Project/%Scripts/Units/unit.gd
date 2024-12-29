@@ -58,7 +58,7 @@ func _process(delta: float) -> void:
 		if(!bodies_to_attack.is_empty()):
 			var not_null = bodies_to_attack.pick_random()
 			
-			if(not_null and is_valid_target(not_null)):
+			if(is_valid_target(not_null)):
 				not_null.take_damage(CONTACT_DAMAGE)
 				
 				## Collides the thing

@@ -7,11 +7,12 @@
 radius = 14.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_825pd"]
-radius = 23.0217
+radius = 54.7449
 
 [node name="Fluorine" type="CharacterBody2D"]
 input_pickable = true
 script = ExtResource("1_c707q")
+MAX_HEALTH = 50.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_b2owd")
