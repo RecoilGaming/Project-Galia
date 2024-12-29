@@ -22,7 +22,10 @@ var waves = [
 	[["hydrogen", 3], ["oxygen", 2]],
 	[["hydrogen", 5], ["oxygen", 4]],
 	[["hydrogen", 3], ["oxygen", 2], ["fluorine", 2]],
-	[["hydrogen", 3], ["oxygen", 0], ["fluorine", 5]],
+	[["hydrogen", 0], ["oxygen", 5], ["fluorine", 0], ["tungsten", 2]],
+	[["hydrogen", 0], ["oxygen", 0], ["fluorine", 0], ["uranium", 10]],
+	[["hydrogen", 5], ["oxygen", 5], ["fluorine", 5], ["tungsten", 5], ["uranium", 5]],
+	[["hydrogen", 30], ["oxygen", 20], ["fluorine", 0], ["tungsten", 0], ["uranium", 0]],
 ]
 
 var UNIT_COSTS = {
@@ -52,9 +55,10 @@ func spawn_unit(pos: Vector2, index: int):
 		if(try_to_spawn(types[index], pos, false)): # Spawns an ally
 			# Subtract cost
 			coins -= UNIT_COSTS[types[index]]
+			print("subtracted " + str(UNIT_COSTS[types[index]]) + " coins")
 
 func update_coins():
-	main.get_node("MainUI/CoinText").text = "Coins: " + str(coins)
+	main.get_node("MainUI/CoinText").text = "Yer got " + str(coins) + " cainz"
 
 func can_spawn(pos: Vector2) -> bool:
 	for unit in units:
