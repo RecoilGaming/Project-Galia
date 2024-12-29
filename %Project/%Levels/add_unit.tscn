@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://beqmyrgswqfmp" path="res://Resources/hydrogen.png" id="3_8tngi"]
 [ext_resource type="Texture2D" uid="uid://wqj3pi30xf1r" path="res://Resources/oxygen.png" id="4_vw7u1"]
 [ext_resource type="Texture2D" uid="uid://ds7yg4sqp34xp" path="res://Resources/fluorine.png" id="5_8buu2"]
-[ext_resource type="Texture2D" uid="uid://dq4wc36j373fd" path="res://Resources/bad_circle.png" id="5_v0m5v"]
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/unit_position_pointer.gd" id="6_hl8am"]
 [ext_resource type="Texture2D" uid="uid://bi0uiww8dojf1" path="res://Resources/tungsten.png" id="6_jg6e5"]
 [ext_resource type="Texture2D" uid="uid://bgffxe3bpt02e" path="res://Resources/uranium.png" id="7_f46h1"]
+[ext_resource type="Texture2D" uid="uid://bdjpge21ou7ya" path="res://Resources/crosshair1.png" id="8_pkgg3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sj8q3"]
 atlas = ExtResource("3_8tngi")
@@ -30,12 +30,12 @@ region = Rect2(97, 97, 47, 46)
 atlas = ExtResource("7_f46h1")
 region = Rect2(0, 97, 46, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b3qbe"]
-atlas = ExtResource("5_v0m5v")
-region = Rect2(1321, 1628.92, 88, 83)
+[sub_resource type="AtlasTexture" id="AtlasTexture_sem4i"]
+atlas = ExtResource("8_pkgg3")
+region = Rect2(434.807, 598.852, 1294.6, 1360.2)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_on6t6"]
-radius = 33.0151
+radius = 382.415
 
 [node name="AddUnit" type="Control"]
 layout_mode = 3
@@ -44,17 +44,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_a06ko")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -320.0
-offset_top = 103.0
-offset_right = 160.0
-offset_bottom = 161.0
+anchors_preset = -1
+anchor_top = -0.001
+anchor_bottom = -0.001
+offset_left = -194.0
+offset_top = 100.36
+offset_right = 286.0
+offset_bottom = 158.36
 grow_horizontal = 2
 scale = Vector2(1.01063, 0.973659)
 color = Color(0.266667, 0.419608, 1, 0.87451)
@@ -96,9 +97,9 @@ text = "push !"
 [node name="UnitDropdown" type="OptionButton" parent="ColorRect"]
 layout_mode = 0
 offset_left = 201.854
-offset_top = 7.18938
+offset_top = 6.16233
 offset_right = 533.854
-offset_bottom = 97.189
+offset_bottom = 96.162
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("2_6v4k4")
 theme_override_font_sizes/font_size = 48
@@ -136,26 +137,30 @@ script = ExtResource("1_a06ko")
 
 [node name="x" type="RichTextLabel" parent="ColorRect/BackButton"]
 layout_mode = 0
-offset_left = 7.72653
-offset_top = -6.54009
-offset_right = 48.7265
-offset_bottom = 52.4599
+offset_left = 7.91589
+offset_top = -5.13522
+offset_right = 48.9159
+offset_bottom = 53.8648
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 32
-text = "x"
+text = "×"
 
 [node name="Pointer" type="Sprite2D" parent="."]
-scale = Vector2(0.512048, 0.512048)
-texture = SubResource("AtlasTexture_b3qbe")
+position = Vector2(62.7131, 35.2796)
+scale = Vector2(0.0638128, 0.0638128)
+texture = SubResource("AtlasTexture_sem4i")
 script = ExtResource("6_hl8am")
 
 [node name="PointerArea" type="Area2D" parent="Pointer"]
-position = Vector2(82, -13)
+position = Vector2(97.7245, -28.7253)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pointer/PointerArea"]
 position = Vector2(-82, 12)
 shape = SubResource("CircleShape2D_on6t6")
 metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
 
 [connection signal="pressed" from="ColorRect/AddButton" to="." method="_on_add_button_pressed"]
 [connection signal="item_selected" from="ColorRect/UnitDropdown" to="." method="_on_unit_dropdown_item_selected"]

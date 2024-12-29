@@ -14,6 +14,7 @@ var units: Array[Unit] = []
 var unit_spawn_index: int = 0
 var types = ["hydrogen", "oxygen", "fluorine", "tungsten", "uranium"]
 var polarizing_window_open: bool = false
+var adding_window_open: bool = false
 
 var current_wave := 0
 var waves = [
@@ -50,7 +51,7 @@ func spawn_unit(pos: Vector2, index: int):
 			coins -= 3
 
 func update_coins():
-	main.get_node("CoinText").text = "Coins: " + str(coins)
+	main.get_node("MainUI/CoinText").text = "Coins: " + str(coins)
 
 func try_to_spawn(u: String, pos: Vector2, enemy: bool) -> bool:
 	for unit in units:

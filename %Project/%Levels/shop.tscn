@@ -1,6 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwi7qexeqldtt"]
+[gd_scene load_steps=6 format=3 uid="uid://cwi7qexeqldtt"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/shop_ui.gd" id="1_tbhn0"]
+[ext_resource type="Theme" uid="uid://bo8ub25x8am2v" path="res://Resources/theme.tres" id="2_8rtuw"]
+[ext_resource type="Texture2D" uid="uid://4y3jnrja5ef1" path="res://Resources/shop1.png" id="2_jx1e8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0pjd"]
+atlas = ExtResource("2_jx1e8")
+region = Rect2(0, 133.5, 340, 223)
+
+[sub_resource type="FontFile" id="FontFile_sk0qq"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
 
 [node name="Shop" type="Control"]
 z_index = 1
@@ -13,54 +31,60 @@ offset_bottom = -201.0
 mouse_filter = 2
 script = ExtResource("1_tbhn0")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-offset_left = -5.0
-offset_top = 22.0
-offset_right = 619.0
-offset_bottom = 386.0
-scale = Vector2(1.01063, 0.973659)
-color = Color(0, 0.470588, 0.317647, 0.87451)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.54902)
 layout_mode = 0
-offset_left = 238.465
-offset_top = 23.6222
-offset_right = 414.465
-offset_bottom = 100.622
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 50
-text = "Shop"
+offset_left = -10.0
+offset_top = 19.0
+offset_right = 634.0
+offset_bottom = 388.0
+texture = SubResource("AtlasTexture_d0pjd")
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 71.0
-offset_top = 60.0
-offset_right = 171.0
-offset_bottom = 103.0
+offset_left = 8.0
+offset_top = 36.0
+offset_right = 44.0
+offset_bottom = 72.0
+theme = ExtResource("2_8rtuw")
 theme_override_font_sizes/font_size = 25
-text = "← back"
 script = ExtResource("1_tbhn0")
+
+[node name="x" type="RichTextLabel" parent="BackButton"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -8.0
+offset_right = 60.0
+offset_bottom = 45.0
+mouse_filter = 2
+theme_override_fonts/normal_font = SubResource("FontFile_sk0qq")
+text = "×"
 
 [node name="AddUnitButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 130.0
-offset_top = 261.0
-offset_right = 292.0
-offset_bottom = 311.0
+offset_left = 123.0
+offset_top = 217.0
+offset_right = 251.0
+offset_bottom = 267.0
+theme = ExtResource("2_8rtuw")
 theme_override_font_sizes/font_size = 30
-text = "Add unit"
+text = "Add units"
 script = ExtResource("1_tbhn0")
 
 [node name="PolarizeButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 102.0
-offset_top = 174.0
-offset_right = 264.0
-offset_bottom = 224.0
+offset_left = 364.0
+offset_top = 215.0
+offset_right = 546.0
+offset_bottom = 270.0
+theme = ExtResource("2_8rtuw")
 theme_override_font_sizes/font_size = 30
-text = "Polarize"
+text = "Polarize units"
 script = ExtResource("1_tbhn0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(312, 201)
+enabled = false
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="ready" from="BackButton" to="." method="_on_back_button_ready"]
