@@ -3,7 +3,7 @@ class_name Oxygen
 
 @export var SHOOT_DAMAGE = 100
 @export var FOLLOWING_DISTANCE = 300
-@export var SHOT_COOLDOWN = 1
+@export var SHOT_COOLDOWN: float = 1
 const FOLLOWING_MARGINS = 10
 const BACKUP_SLOWDOWN = 0.2
 var shot_cooldown: float = 1

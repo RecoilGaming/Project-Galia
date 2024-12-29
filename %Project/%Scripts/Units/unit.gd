@@ -107,6 +107,7 @@ func change_polarity(amt: int) -> bool:
 func is_valid_target(unit: Node2D) -> bool:
 	return unit is Unit and unit != self and unit.IS_ENEMY != self.IS_ENEMY and unit.polarity != self.polarity
 
+# Does an attack
 func do_attacks() -> void:
 	if attack_cooldown <= 0:
 		attack_cooldown = ATTACK_COOLDOWN

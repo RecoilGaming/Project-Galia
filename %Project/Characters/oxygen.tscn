@@ -14,6 +14,7 @@ radius = 24.0
 input_pickable = true
 script = ExtResource("1_qq8k8")
 SHOOT_DAMAGE = 15
+SHOT_COOLDOWN = 0.3
 MAX_HEALTH = 30.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

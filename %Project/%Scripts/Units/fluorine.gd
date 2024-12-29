@@ -28,7 +28,7 @@ func die():
 # Shoots a bullet	
 func shoot(direction: Vector2):
 	var neutron = load("res://%Project/Characters/neutron.tscn").instantiate()
-	get_parent().add_child(neutron)
+	get_parent().add_child.call_deferred(neutron)
 	# Moves it to 20 pixels in front
 	neutron.global_position = global_position + 20* (direction).normalized()
 	neutron.IS_ENEMY = self.IS_ENEMY

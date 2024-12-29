@@ -12,12 +12,18 @@ var coins: int = 100:
 		update_coins()
 var units: Array[Unit] = []
 var unit_spawn_index: int = 0
-var types = ["hydrogen", "oxygen", "fluorine", "tungsten", "uranium"]
+var types = {
+	{0 = "hydrogen"}
+	{1 = "oxygen"}
+	{2 = "fluorine"}
+	{3 = "tungsten"} 
+	{4 = "uranium"}
+}
 var polarizing_window_open: bool = false
 var adding_window_open: bool = false
 
 var current_wave := 0
-var waves = [
+var waves := [
 	[["hydrogen", 3]],
 	[["hydrogen", 3], ["oxygen", 2]],
 	[["hydrogen", 5], ["oxygen", 4]],
@@ -35,8 +41,6 @@ var UNIT_COSTS = {
 	"tungsten" = 20,
 	"uranium" = 15,
 }
-
-var waiting_for_continue := false
 
 func _ready():
 	update_coins()
@@ -81,10 +85,8 @@ func try_to_spawn(u: String, pos: Vector2, enemy: bool) -> bool:
 
 func new_wave():
 	Engine.set_time_scale(0.5)
-	#print("Wave incoming!")
-	waiting_for_continue = true
+	
 	var wave_to_spawn = waves[current_wave]
-	#print(wave_to_spawn)
 	
 	for spawn in wave_to_spawn:
 		var unit_class = spawn[0]
