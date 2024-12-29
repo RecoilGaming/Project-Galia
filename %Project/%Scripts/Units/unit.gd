@@ -84,7 +84,7 @@ func find_target() -> void:
 		var dist: float = global_position.distance_to(unit.global_position)
 		
 		# Check unit
-		if unit != self and dist < min_dist and unit.IS_ENEMY != self.IS_ENEMY and unit.polarity != self.polarity:
+		if dist < min_dist and is_valid_target(unit):
 			min_dist = dist
 			target = unit
 
@@ -112,6 +112,9 @@ func change_polarity(amt: int) -> bool:
 	var temp = polarity
 	polarity += amt
 	return temp != polarity
+
+func is_valid_target(unit: Unit) -> bool:
+	return unit != self and unit.IS_ENEMY != self.IS_ENEMY and unit.polarity != self.polarity
 
 ## =============== [ SIGNALS ] ================ ##
 
