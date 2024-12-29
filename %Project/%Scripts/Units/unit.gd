@@ -106,6 +106,7 @@ func take_damage(amt: int, dc_polarity: Polarity): # Amount of damage, Damage co
 # Dyging
 func die():
 	GM.units.erase(self)
+	GM.on_unit_death()
 	queue_free()
 
 # Movint
@@ -119,7 +120,7 @@ func change_polarity(amt: int) -> bool:
 	
 	var changed: bool = (polarity != temp)
 	
-	print("old: " + str(temp) + ", new: " + str(polarity) + ", amt: " + str(amt))
+	#print("old: " + str(temp) + ", new: " + str(polarity) + ", amt: " + str(amt))
 	
 	if changed:
 		$Sprite.play(str(polarity))
@@ -128,7 +129,7 @@ func change_polarity(amt: int) -> bool:
 ## =============== [ SIGNALS ] ================ ##
 
 # Left click detection
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_pressed() and GM.polarizing_window_open:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			change_polarity(-1)
