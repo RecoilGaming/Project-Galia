@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://jka8axmfulsf"]
+[gd_scene load_steps=8 format=3 uid="uid://jka8axmfulsf"]
 
 [ext_resource type="Texture2D" uid="uid://065ud6duhsb0" path="res://%Project/Resources/Effects/explosion.png" id="1_5rq63"]
+[ext_resource type="Script" path="res://%Project/%Scripts/kys.gd" id="2_k1otq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_36nck"]
 atlas = ExtResource("1_5rq63")
@@ -44,3 +45,5 @@ animation = &"boom"
 autoplay = "boom"
 frame = 3
 frame_progress = 1.0
+script = ExtResource("2_k1otq")
+life = 0.3

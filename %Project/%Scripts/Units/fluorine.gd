@@ -1,4 +1,4 @@
-extends Hydrogen
+extends Unit
 class_name Fluorine
 
 @export var DEATH_DAMAGE := 75
@@ -6,6 +6,7 @@ class_name Fluorine
 @export var SHOOT_DAMAGE := 10
 
 func _ready() -> void:
+	super()
 	CONTACT_DAMAGE = 0
 
 # Dyging
@@ -17,9 +18,12 @@ func die():
 	for i in range(0, ELECTRONS_SPAWN):
 		shoot(Vector2.UP.rotated(2*PI*i/ELECTRONS_SPAWN))
 	
-	GM.units.erase(self)
-	GM.on_unit_death()
-	queue_free()
+	# Make exploision animation
+	var explosion = load("res://%Project/Resources/Effects/explosion.tscn").instantiate()
+	get_parent().add_child(explosion)
+	explosion.global_position = global_position
+	
+	super.die()
 
 # Shoots a bullet	
 func shoot(direction: Vector2):
