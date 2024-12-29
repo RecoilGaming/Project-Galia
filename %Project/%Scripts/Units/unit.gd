@@ -98,12 +98,6 @@ func die():
 func move(dir: Vector2, delta: float):
 	velocity = dir.normalized() * SPEED * delta
 
-# Change polarity, returns whether it was successful
-func change_polarity(amt: int) -> bool:
-	var temp = polarity
-	polarity += amt
-	return temp != polarity
-
 func is_valid_target(unit: Node2D) -> bool:
 	return unit is Unit and unit != self and unit.IS_ENEMY != self.IS_ENEMY and unit.polarity != self.polarity
 
@@ -132,7 +126,7 @@ func do_attacks() -> void:
 
 # Left click detection
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event.is_pressed() and GM.polarizing_window_open:
+	if event.is_pressed() and GM.polarizing_window_open and !IS_ENEMY:
 		polarity = -polarity;
 
 func _body_entered(body: Node2D):

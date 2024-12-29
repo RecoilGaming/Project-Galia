@@ -20,7 +20,7 @@ func die():
 	
 	# Make exploision animation
 	var explosion = load("res://%Project/Resources/Effects/explosion.tscn").instantiate()
-	get_parent().add_child(explosion)
+	get_parent().add_child.call_deferred(explosion)
 	explosion.global_position = global_position
 	
 	super.die()
