@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	super(delta)
-	if(target == null or target == self):
+	if(global_position.x > 600 or global_position.x < -600 or global_position.y > 400 or global_position.y < -400):
 		die()
 
 
