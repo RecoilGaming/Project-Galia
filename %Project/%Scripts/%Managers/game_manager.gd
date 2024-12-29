@@ -6,7 +6,7 @@ extends Node
 @onready var main: Node2D = get_tree().root.get_node("Main")
 
 # Shop
-var coins: int = 30:
+var coins: int = 40:
 	set(_coins):
 		coins = _coins
 		update_coins()
@@ -38,7 +38,7 @@ var unit_price: Dictionary = {
 var cur_wave: int = 0
 var wave_value: float = 25 # Determines amount spawned
 var wave_scaler: float = 1.2 # Amount of wave value increase
-var wave_yields: float = 1 # Amount of wave value given to player
+var wave_yields: float = 1.2 # Amount of wave value given to player
 
 ## =============== [ METHODS ] ================ ##
 
@@ -149,6 +149,11 @@ func clean_wave() -> void:
 		# Scale difficulty & distribute rewards
 		wave_value *= wave_scaler
 		coins += wave_value * wave_yields
+		
+		print("=====")
+		print(wave_value)
+		print(wave_value * wave_yields)
+		print(coins)
 		
 		# Increment wave
 		cur_wave += 1
