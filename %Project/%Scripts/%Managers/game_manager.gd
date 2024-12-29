@@ -58,7 +58,7 @@ func spawn_unit(pos: Vector2, index: int):
 			print("subtracted " + str(UNIT_COSTS[types[index]]) + " coins")
 
 func update_coins():
-	main.get_node("MainUI/CoinText").text = "Yer got " + str(coins) + " cainz"
+	main.get_node("MainUI/CoinText").text = str(coins)
 
 func can_spawn(pos: Vector2) -> bool:
 	for unit in units:
