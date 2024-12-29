@@ -17,24 +17,33 @@ script = ExtResource("6_jhrvn")
 
 [node name="AddUnitButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = -144.0
+offset_left = -110.0
 offset_top = -171.0
-offset_right = -16.0
+offset_right = -32.0
 offset_bottom = -121.0
 theme = ExtResource("5_hwxph")
 theme_override_font_sizes/font_size = 30
-text = "Add units"
+text = "Buy"
 script = ExtResource("6_jhrvn")
+
+[node name="SellUnitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = -12.0
+offset_top = -171.0
+offset_right = 61.0
+offset_bottom = -120.0
+theme = ExtResource("5_hwxph")
+text = "Sell"
 
 [node name="PolarizeButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 14.0
+offset_left = 82.0
 offset_top = -173.0
 offset_right = 196.0
 offset_bottom = -118.0
 theme = ExtResource("5_hwxph")
 theme_override_font_sizes/font_size = 30
-text = "Polarize units"
+text = "Polarize"
 script = ExtResource("6_jhrvn")
 
 [node name="CoinText" type="RichTextLabel" parent="."]
