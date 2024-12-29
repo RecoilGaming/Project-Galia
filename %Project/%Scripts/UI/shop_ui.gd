@@ -4,14 +4,14 @@ func _on_back_button_pressed():
 	queue_free()
 
 func _on_polarize_button_pressed():
-	if !GM.polarizing_window_open:
-		if GM.adding_window_open:
+	if !GM.is_polarizing:
+		if GM.is_summoning:
 			get_parent().get_node("AddUnit")._on_back_button_pressed()
 		get_parent().add_child(load("res://%Project/%Levels/select_unit.tscn").instantiate())
 
 func _on_add_unit_button_pressed():
-	if !GM.adding_window_open:
-		if GM.polarizing_window_open:
+	if !GM.is_summoning:
+		if GM.is_polarizing:
 			get_parent().get_node("SelectUnit")._on_back_button_pressed()
 		get_parent().add_child(load("res://%Project/%Levels/add_unit.tscn").instantiate())
 
