@@ -5,7 +5,7 @@ class_name Unit
 
 # Attributes
 @export var MAX_HEALTH: float = 100
-@export var CONTACT_DAMAGE: float = 2
+@export var CONTACT_DAMAGE: float = 10
 @export var SPEED: float = 100
 @export var KNOCKBACK: float = 10
 @export var IS_ENEMY: bool = false
