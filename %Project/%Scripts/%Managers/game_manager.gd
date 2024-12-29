@@ -53,11 +53,16 @@ func spawn_unit(pos: Vector2, index: int):
 func update_coins():
 	main.get_node("MainUI/CoinText").text = "Coins: " + str(coins)
 
-func try_to_spawn(u: String, pos: Vector2, enemy: bool) -> bool:
+func can_spawn(pos: Vector2) -> bool:
 	for unit in units:
 		var distance = unit.global_position.distance_to(pos)
 		if(distance < 30):
 			return false
+	return true
+
+func try_to_spawn(u: String, pos: Vector2, enemy: bool) -> bool:
+	if (!can_spawn(pos)):
+		return false
 
 	# Instantiate unit
 	var unit: Unit = load("res://%Project/Characters/" + u + ".tscn").instantiate()

@@ -15,3 +15,6 @@ func _process(delta: float):
 		global_position = get_global_mouse_position()
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		isSelected = false
+	var valid: bool = GM.can_spawn(global_position)
+	flip_h = !valid
+	flip_v = !valid

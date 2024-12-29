@@ -48,16 +48,19 @@ mouse_filter = 2
 script = ExtResource("1_a06ko")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+process_priority = 1
+z_index = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.001
 anchor_bottom = -0.001
-offset_left = -194.0
+offset_left = -242.0
 offset_top = 100.36
-offset_right = 286.0
+offset_right = 238.0
 offset_bottom = 158.36
 grow_horizontal = 2
 scale = Vector2(1.01063, 0.973659)
+mouse_filter = 2
 color = Color(0.266667, 0.419608, 1, 0.87451)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
@@ -66,6 +69,7 @@ offset_left = 71.0
 offset_top = 14.0
 offset_right = 195.0
 offset_bottom = 57.0
+mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("2_6v4k4")
 theme_override_font_sizes/normal_font_size = 32
 text = "Add unit:"
@@ -146,7 +150,8 @@ theme_override_font_sizes/normal_font_size = 32
 text = "×"
 
 [node name="Pointer" type="Sprite2D" parent="."]
-position = Vector2(62.7131, 35.2796)
+z_index = 3
+position = Vector2(-1.2869, -4.7204)
 scale = Vector2(0.0638128, 0.0638128)
 texture = SubResource("AtlasTexture_sem4i")
 script = ExtResource("6_hl8am")
