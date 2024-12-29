@@ -5,11 +5,9 @@ func _on_back_button_pressed():
 
 func _on_polarize_button_pressed():
 	get_parent().add_child(load("res://%Project/%Levels/select_unit.tscn").instantiate())
-	queue_free()
 
 func _on_add_unit_button_pressed():
 	get_parent().add_child(load("res://%Project/%Levels/add_unit.tscn").instantiate())
-	queue_free()
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if (event is InputEventMouseButton

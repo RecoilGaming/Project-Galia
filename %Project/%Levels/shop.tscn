@@ -59,33 +59,9 @@ mouse_filter = 2
 theme_override_fonts/normal_font = SubResource("FontFile_sk0qq")
 text = "×"
 
-[node name="AddUnitButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 123.0
-offset_top = 217.0
-offset_right = 251.0
-offset_bottom = 267.0
-theme = ExtResource("2_8rtuw")
-theme_override_font_sizes/font_size = 30
-text = "Add units"
-script = ExtResource("1_tbhn0")
-
-[node name="PolarizeButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 364.0
-offset_top = 215.0
-offset_right = 546.0
-offset_bottom = 270.0
-theme = ExtResource("2_8rtuw")
-theme_override_font_sizes/font_size = 30
-text = "Polarize units"
-script = ExtResource("1_tbhn0")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(312, 201)
 enabled = false
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="ready" from="BackButton" to="." method="_on_back_button_ready"]
-[connection signal="pressed" from="AddUnitButton" to="." method="_on_add_unit_button_pressed"]
-[connection signal="pressed" from="PolarizeButton" to="." method="_on_polarize_button_pressed"]

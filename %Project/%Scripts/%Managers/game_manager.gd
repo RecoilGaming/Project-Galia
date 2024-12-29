@@ -46,13 +46,6 @@ func _ready():
 func add_unit(unit: Unit):
 	units.append(unit)
 
-# Spawn unit
-func spawn_unit(pos: Vector2, index: int):
-	if coins >= UNIT_COSTS[types[index]]:
-		if(try_to_spawn(types[index], pos, false)): # Spawns an ally
-			# Subtract cost
-			coins -= UNIT_COSTS[types[index]]
-
 func update_coins():
 	main.get_node("MainUI/CoinText").text = "Coins: " + str(coins)
 
@@ -74,6 +67,7 @@ func try_to_spawn(u: String, pos: Vector2, enemy: bool) -> bool:
 	unit.IS_ENEMY = enemy
 	# Add child
 	main.add_child.call_deferred(unit)
+	coins -= UNIT_COSTS[u]
 	return true
 
 func new_wave():
