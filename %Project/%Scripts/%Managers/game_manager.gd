@@ -28,10 +28,10 @@ var waiting_for_continue := false
 
 func _ready():
 	update_coins()
+	new_wave()
 	#new_wave()
-	#new_wave()
-	var menu: Control = load("res://%Project/%Levels/menu.tscn").instantiate()
-	main.add_child(menu)
+	#var menu: Control = load("res://%Project/%Levels/menu.tscn").instantiate()
+	#main.add_child.call_deferred(menu)
 
 func _process(delta: float) -> void:
 	pass
@@ -68,7 +68,7 @@ func try_to_spawn(u: String, pos: Vector2, enemy: bool) -> bool:
 	return true
 
 func new_wave():
-	#Engine.set_time_scale(0)
+	Engine.set_time_scale(0.5)
 	#print("Wave incoming!")
 	waiting_for_continue = true
 	var wave_to_spawn = waves[current_wave]
@@ -82,5 +82,4 @@ func new_wave():
 			if(try_to_spawn(unit_class, Vector2(randi_range(30, 290), randi_range(-150, 150)), true)): # -320, -180 to 320, 180 is the canvas
 				i += 1
 				#print("UNIT SPAWNED")
-				
 	current_wave += 1

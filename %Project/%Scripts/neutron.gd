@@ -1,8 +1,6 @@
 extends Unit
 class_name Nuetron
 
-#@export var LIFESPAN = 2
-#var alive_time = LIFESPAN
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,6 +20,7 @@ func set_polarity(value):
 
 func _process(delta: float) -> void:
 	super(delta)
+	print("DEALING " + str(CONTACT_DAMAGE))
 	if(target == null or target == self):
 		die()
 
@@ -29,4 +28,5 @@ func _process(delta: float) -> void:
 func _on_not_area_2d_body_entered(body: Node2D) -> void:
 	if(body is Unit and body.IS_ENEMY != self.IS_ENEMY):
 		body.take_damage(CONTACT_DAMAGE, polarity)
+		print("DEALING " + str(CONTACT_DAMAGE))
 		die()

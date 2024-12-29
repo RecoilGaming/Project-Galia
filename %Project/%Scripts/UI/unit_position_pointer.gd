@@ -13,5 +13,5 @@ func _on_pointer_area_input_event(viewport: Node, event: InputEvent, shape_idx: 
 func _process(delta: float):
 	if (isSelected):
 		global_position = get_global_mouse_position()
-	if Input.is_action_just_released("click"):
-		isSelected = false
+	#if Input.is_action_just_released("click"):
+		#isSelected = false
