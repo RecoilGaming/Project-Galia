@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8hap51pac2qp"]
+
+[ext_resource type="Texture2D" uid="uid://cpe0ds574sqks" path="res://Resources/shop_button1.png" id="1_sj05n"]
+[ext_resource type="Script" path="res://%Project/%Scripts/UI/shop_button.gd" id="2_0jbbo"]
+[ext_resource type="FontFile" uid="uid://bcp7y8bedygee" path="res://Resources/Stepalange-x3BLm.otf" id="3_nx8tu"]
+[ext_resource type="Script" path="res://%Project/%Scripts/%Managers/game_manager.gd" id="4_7ld01"]
+
+[node name="MainUI" type="Node2D"]
+
+[node name="ShopButton" type="Button" parent="."]
+offset_left = -314.0
+offset_top = 109.0
+offset_right = -194.0
+offset_bottom = 174.0
+icon = ExtResource("1_sj05n")
+expand_icon = true
+script = ExtResource("2_0jbbo")
+
+[node name="CoinText" type="RichTextLabel" parent="."]
+z_index = 2
+offset_left = 164.0
+offset_top = 141.0
+offset_right = 316.0
+offset_bottom = 177.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_nx8tu")
+theme_override_font_sizes/normal_font_size = 32
+text = "coins: 100"
+text_direction = 2
+script = ExtResource("4_7ld01")
+
+[node name="FakeCamera2D" type="Camera2D" parent="."]
+enabled = false
+
+[connection signal="pressed" from="ShopButton" to="ShopButton" method="_on_pressed"]

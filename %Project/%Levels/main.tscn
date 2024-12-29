@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://gfm27c0guicw"]
+[gd_scene load_steps=3 format=3 uid="uid://gfm27c0guicw"]
 
 [ext_resource type="Texture2D" uid="uid://67jod3wvej7v" path="res://Resources/Menu/background.png" id="1_j88ee"]
-[ext_resource type="Texture2D" uid="uid://cpe0ds574sqks" path="res://Resources/shop_button1.png" id="2_3t6fu"]
-[ext_resource type="Script" path="res://%Project/%Scripts/UI/shop_button.gd" id="2_f2gkk"]
-[ext_resource type="FontFile" uid="uid://bcp7y8bedygee" path="res://Resources/Stepalange-x3BLm.otf" id="5_x6f26"]
-[ext_resource type="Script" path="res://%Project/%Scripts/%Managers/game_manager.gd" id="7_33h7g"]
+[ext_resource type="PackedScene" uid="uid://c8hap51pac2qp" path="res://%Project/%Levels/main_ui.tscn" id="2_35u2j"]
 
 [node name="Main" type="Node2D"]
 
@@ -14,25 +11,4 @@ texture = ExtResource("1_j88ee")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="ShopButton" type="Button" parent="."]
-offset_left = -314.0
-offset_top = 127.0
-offset_right = -227.0
-offset_bottom = 174.0
-icon = ExtResource("2_3t6fu")
-expand_icon = true
-script = ExtResource("2_f2gkk")
-
-[node name="CoinText" type="RichTextLabel" parent="."]
-offset_left = 163.0
-offset_top = 144.0
-offset_right = 315.0
-offset_bottom = 180.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("5_x6f26")
-theme_override_font_sizes/normal_font_size = 32
-text = "coins: 100"
-text_direction = 2
-script = ExtResource("7_33h7g")
-
-[connection signal="pressed" from="ShopButton" to="ShopButton" method="_on_pressed"]
+[node name="MainUI" parent="." instance=ExtResource("2_35u2j")]
