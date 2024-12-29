@@ -16,9 +16,7 @@ var attack_cooldown := ATTACK_COOLDOWN
 
 enum Polarity { BIG_POSITIVE, POSITIVE, NEUTRAL, NEGATIVE, BIG_NEGATIVE }
 
-@export var polarity: Polarity = Polarity.NEUTRAL:
-	set(value):
-		polarity = clamp(value, Polarity.BIG_POSITIVE, Polarity.BIG_NEGATIVE)
+@export var polarity: Polarity = Polarity.NEUTRAL
 
 # Target unit
 var target: Unit
@@ -117,15 +115,10 @@ func move(dir: Vector2, delta: float):
 
 # Change polarity, returns whether it was successful
 func change_polarity(amt: int) -> bool:
-	var old_polarity = polarity
+	if polarity + amt < 0 || polarity + amt > 4 || !amt: return 0
 	polarity += amt
-	
-	# If the polarity didn't change
-	if(polarity == old_polarity):
-		return false
-	
 	$Sprite.play(str(polarity))
-	return true
+	return 1
 
 ## =============== [ SIGNALS ] ================ ##
 
