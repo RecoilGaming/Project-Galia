@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://birsnvm3gcote"
-path="res://.godot/imported/shop_bg.png-89aee931faa34c4b764e9e128d98dbf6.ctex"
+uid="uid://cpe0ds574sqks"
+path="res://.godot/imported/shop_button.png-cdc96a8ecabaecc92ee8427a3f1b7efb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/shop_bg.png"
-dest_files=["res://.godot/imported/shop_bg.png-89aee931faa34c4b764e9e128d98dbf6.ctex"]
+source_file="res://%Project/Resources/Shop/shop_button.png"
+dest_files=["res://.godot/imported/shop_button.png-cdc96a8ecabaecc92ee8427a3f1b7efb.ctex"]
 
 [params]
 

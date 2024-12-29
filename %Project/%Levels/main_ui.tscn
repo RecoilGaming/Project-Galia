@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c8hap51pac2qp"]
 
-[ext_resource type="Texture2D" uid="uid://cpe0ds574sqks" path="res://Resources/shop_button1.png" id="1_sj05n"]
+[ext_resource type="Texture2D" uid="uid://cpe0ds574sqks" path="res://%Project/Resources/Shop/shop_button.png" id="1_sj05n"]
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/shop_button.gd" id="2_0jbbo"]
 [ext_resource type="FontFile" uid="uid://bcp7y8bedygee" path="res://%Project/UI/stepalange.otf" id="3_nx8tu"]
 [ext_resource type="Script" path="res://%Project/%Scripts/%Managers/game_manager.gd" id="4_7ld01"]

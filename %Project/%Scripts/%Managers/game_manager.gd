@@ -29,8 +29,6 @@ var waiting_for_continue := false
 
 func _ready():
 	update_coins()
-	new_wave()
-	#new_wave()
 	var menu: Control = load("res://%Project/%Levels/menu.tscn").instantiate()
 	main.add_child.call_deferred(menu)
 
@@ -64,7 +62,7 @@ func try_to_spawn(u: String, pos: Vector2, enemy: bool) -> bool:
 	# Instantiate unit
 	var unit: Unit = load("res://%Project/Characters/" + u + ".tscn").instantiate()
 	unit.position = pos
-	#print("swawning unit")
+	unit.polarity = randi_range(0, 1)*2-1
 	unit.IS_ENEMY = enemy
 	# Add child
 	main.add_child.call_deferred(unit)
