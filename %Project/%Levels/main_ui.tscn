@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8hap51pac2qp"]
+[gd_scene load_steps=8 format=3 uid="uid://jlbt3tsevkp3"]
 
 [ext_resource type="Texture2D" uid="uid://cpe0ds574sqks" path="res://%Project/Resources/Shop/shop_button.png" id="1_sj05n"]
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/shop_button.gd" id="2_0jbbo"]

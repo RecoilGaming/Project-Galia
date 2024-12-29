@@ -59,19 +59,7 @@ func _process(delta: float) -> void:
 		move(target.global_position - global_position, delta)
 	
 	attack_cooldown -= delta
-	if(attack_cooldown <= 0):
-		attack_cooldown = ATTACK_COOLDOWN
-		
-		if(!bodies_to_attack.is_empty()):
-			var not_null = bodies_to_attack.pick_random()
-			
-			if(is_valid_target(not_null)):
-				not_null.take_damage(CONTACT_DAMAGE)
-				
-				## Collides the thing
-				#if collision:
-					#velocity = collision.get_collider_velocity().normalized() * KNOCKBACK
-	update_healthbar()
+	do_attacks()
 
 # Physics process
 func _physics_process(_delta: float) -> void:
@@ -122,6 +110,21 @@ func change_polarity(amt: int) -> bool:
 
 func is_valid_target(unit: Node2D) -> bool:
 	return unit is Unit and unit != self and unit.IS_ENEMY != self.IS_ENEMY and unit.polarity != self.polarity
+
+func do_attacks() -> void:
+	if attack_cooldown <= 0:
+		attack_cooldown = ATTACK_COOLDOWN
+		
+		if !bodies_to_attack.is_empty():
+			var not_null = bodies_to_attack.pick_random()
+			
+			if is_valid_target(not_null):
+				not_null.take_damage(CONTACT_DAMAGE)
+				
+				## Collides the thing
+				#if collision:
+					#velocity = collision.get_collider_velocity().normalized() * KNOCKBACK
+	update_healthbar()
 
 ## =============== [ SIGNALS ] ================ ##
 
