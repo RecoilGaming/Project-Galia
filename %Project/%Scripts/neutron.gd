@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 
 
 func _on_not_area_2d_body_entered(body: Node2D) -> void:
-	if(body is Unit and body.IS_ENEMY != self.IS_ENEMY):
-		body.take_damage(CONTACT_DAMAGE, polarity)
+	if(body is Unit and is_valid_target(body)):
+		body.take_damage(CONTACT_DAMAGE)
 		print("DEALING " + str(CONTACT_DAMAGE))
 		die()

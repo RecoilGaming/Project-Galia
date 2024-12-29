@@ -58,8 +58,8 @@ func _process(delta: float) -> void:
 		if(!bodies_to_attack.is_empty()):
 			var not_null = bodies_to_attack.pick_random()
 			
-			if(not_null):
-				not_null.take_damage(CONTACT_DAMAGE, polarity)
+			if(not_null and is_valid_target(not_null)):
+				not_null.take_damage(CONTACT_DAMAGE)
 				
 				## Collides the thing
 				#if collision:
@@ -88,7 +88,7 @@ func find_target() -> void:
 			target = unit
 
 # Deal physical damage
-func take_damage(amt: int, dc_polarity: int): # Amount of damage, Damage component polarity
+func take_damage(amt: int): # Amount of damage, Damage component polarity
 	
 	health -= amt
 	
@@ -112,8 +112,8 @@ func change_polarity(amt: int) -> bool:
 	polarity += amt
 	return temp != polarity
 
-func is_valid_target(unit: Unit) -> bool:
-	return unit != self and unit.IS_ENEMY != self.IS_ENEMY and unit.polarity != self.polarity
+func is_valid_target(unit: Node2D) -> bool:
+	return unit is Unit and unit != self and unit.IS_ENEMY != self.IS_ENEMY and unit.polarity != self.polarity
 
 ## =============== [ SIGNALS ] ================ ##
 
