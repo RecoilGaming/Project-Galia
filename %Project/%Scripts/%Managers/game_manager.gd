@@ -17,7 +17,7 @@ var polarizing: bool = false
 
 var current_wave := 0
 var waves = [
-	[["hydrogen", 5]],
+	[["hydrogen", 3]],
 	[["hydrogen", 3], ["oxygen", 2]],
 	[["hydrogen", 5], ["oxygen", 4]],
 	[["hydrogen", 3], ["oxygen", 2], ["fluorine", 2]],
@@ -55,6 +55,7 @@ func try_to_spawn(u: String, pos: Vector2) -> bool:
 	# Instantiate unit
 	var unit: Unit = load("res://%Project/Characters/" + u + ".tscn").instantiate()
 	unit.position = pos
+	print("swawning unit")
 	
 	# Add child
 	main.add_child.call_deferred(unit)
@@ -71,5 +72,6 @@ func new_wave():
 		while i < spawn[1]:
 			if(try_to_spawn(unit_class, Vector2(randi_range(30, 290), randi_range(-150, 150)))): # -320, -180 to 320, 180 is the canvas
 				i += 1
+				print("UNIT SPAWNED")
 				
 	current_wave += 1
