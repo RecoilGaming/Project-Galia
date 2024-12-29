@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlxns3ydfyxlu"]
+[gd_scene load_steps=6 format=3 uid="uid://dlxns3ydfyxlu"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Units/hydrogen.gd" id="1_op452"]
 [ext_resource type="SpriteFrames" uid="uid://21klnqkg875y" path="res://%Project/Characters/hydrogen_anim.tres" id="2_pvy7m"]
@@ -8,6 +8,14 @@ radius = 14.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jlxl5"]
 radius = 23.3452
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aye2c"]
+bg_color = Color(1.63645e-06, 0.704604, 0.537261, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 18
 
 [node name="Hydrogen" type="CharacterBody2D"]
 input_pickable = true
@@ -24,3 +32,13 @@ shape = SubResource("CircleShape2D_lwi1o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NotArea2D"]
 shape = SubResource("CircleShape2D_jlxl5")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -18.0
+offset_top = 18.0
+offset_right = 18.0
+offset_bottom = 23.0
+theme_override_styles/background = SubResource("StyleBoxFlat_aye2c")
+max_value = 1.0
+value = 1.0
+show_percentage = false
