@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/poland_theme.mp3-5d2ee2e09b0e906285d80011bf14
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
