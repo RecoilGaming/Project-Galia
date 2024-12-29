@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cpe0ds574sqks" path="res://Resources/shop_button1.png" id="2_3t6fu"]
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/shop_button.gd" id="2_f2gkk"]
 [ext_resource type="PackedScene" uid="uid://14usl23dbv54" path="res://%Project/Characters/oxygen.tscn" id="4_aud5d"]
+[ext_resource type="FontFile" uid="uid://bcp7y8bedygee" path="res://Resources/Stepalange-x3BLm.otf" id="5_x6f26"]
 [ext_resource type="PackedScene" uid="uid://dhmjyfwhpcy5y" path="res://%Project/Characters/tungsten.tscn" id="6_naupy"]
 [ext_resource type="Script" path="res://%Project/%Scripts/%Managers/game_manager.gd" id="7_33h7g"]
 [ext_resource type="PackedScene" uid="uid://o7hoju52v1bi" path="res://%Project/Characters/uranium.tscn" id="7_jb222"]
