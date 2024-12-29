@@ -2,20 +2,13 @@
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Units/hydrogen.gd" id="1_op452"]
 [ext_resource type="SpriteFrames" uid="uid://21klnqkg875y" path="res://%Project/Characters/hydrogen_anim.tres" id="2_pvy7m"]
+[ext_resource type="Theme" uid="uid://v7u7ajl3cgy1" path="res://%Project/Resources/green1.tres" id="3_6fjt1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lwi1o"]
 radius = 14.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jlxl5"]
 radius = 23.3452
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aye2c"]
-bg_color = Color(0.484242, 0.000500752, 0.564882, 0.772549)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-corner_detail = 18
 
 [node name="Hydrogen" type="CharacterBody2D"]
 input_pickable = true
@@ -38,7 +31,7 @@ offset_left = -18.0
 offset_top = 17.0
 offset_right = 18.0
 offset_bottom = 22.0
-theme_override_styles/background = SubResource("StyleBoxFlat_aye2c")
+theme = ExtResource("3_6fjt1")
 max_value = 1.0
 value = 0.5
 show_percentage = false

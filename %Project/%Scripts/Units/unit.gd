@@ -37,7 +37,10 @@ func _ready() -> void:
 	
 	$NotArea2D.body_entered.connect(_body_entered)
 	$NotArea2D.body_exited.connect(_body_exited)
-	
+	if (has_node("HealthBar")):
+		$HealthBar.theme = load("res://%Project/Resources/" + ("purple" if IS_ENEMY else "green") + "1.tres")
+	else:
+		print("no health bar faound")
 
 # Process
 func _process(delta: float) -> void:
@@ -121,10 +124,7 @@ func is_valid_target(unit: Node2D) -> bool:
 # Left click detection
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_pressed() and GM.polarizing_window_open:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			change_polarity(-2)
-		elif event.button_index == MOUSE_BUTTON_RIGHT:
-			change_polarity(2)
+		polarity = -polarity;
 
 func _body_entered(body: Node2D):
 	if (body is Unit and body != self):
