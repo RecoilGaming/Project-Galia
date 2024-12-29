@@ -2,5 +2,9 @@ extends Control
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
-		GM.play_theme()
-		queue_free()
+		match event.keycode:
+			KEY_VOLUMEUP, KEY_VOLUMEDOWN, KEY_VOLUMEMUTE:
+				pass
+			_:
+				GM.play_theme()
+				queue_free()
