@@ -13,11 +13,11 @@ var coins: int = 100:
 var units: Array[Unit] = []
 var unit_spawn_index: int = 0
 var types = {
-	{0 = "hydrogen"}
-	{1 = "oxygen"}
-	{2 = "fluorine"}
-	{3 = "tungsten"} 
-	{4 = "uranium"}
+	0: "hydrogen",
+	1: "oxygen",
+	2: "fluorine",
+	3: "tungsten",
+	4: "uranium",
 }
 var polarizing_window_open: bool = false
 var adding_window_open: bool = false
