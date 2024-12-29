@@ -1,8 +1,8 @@
 extends Control
 
 func _ready():
-	GM.polarizing_window_open = true
+	GM.is_polarizing = true
 
 func _on_back_button_pressed():
-	GM.polarizing_window_open = false
+	GM.is_polarizing = false
 	queue_free()

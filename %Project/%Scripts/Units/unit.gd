@@ -91,7 +91,7 @@ func take_damage(amt: int): # Amount of damage, Damage component polarity
 # Dyging
 func die():
 	GM.units.erase(self)
-	GM.on_unit_death()
+	GM.clean_wave()
 	queue_free()
 
 # Movint
@@ -126,7 +126,7 @@ func do_attacks() -> void:
 
 # Left click detection
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event.is_pressed() and GM.polarizing_window_open and !IS_ENEMY:
+	if event.is_pressed() and GM.is_polarizing and !IS_ENEMY:
 		polarity = -polarity;
 
 func _body_entered(body: Node2D):

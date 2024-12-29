@@ -20,13 +20,13 @@ region = Rect2(4, 96, 41, 48)
 atlas = ExtResource("5_8buu2")
 region = Rect2(64, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r685s"]
-atlas = ExtResource("6_jg6e5")
-region = Rect2(97, 97, 47, 46)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_p41v0"]
 atlas = ExtResource("7_f46h1")
 region = Rect2(0, 97, 46, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r685s"]
+atlas = ExtResource("6_jg6e5")
+region = Rect2(97, 97, 47, 46)
 
 [node name="AddUnit" type="Control"]
 layout_mode = 3
@@ -89,11 +89,11 @@ popup/item_1/id = 1
 popup/item_2/text = "Fluorine"
 popup/item_2/icon = SubResource("AtlasTexture_8gf3f")
 popup/item_2/id = 2
-popup/item_3/text = "Tungsten"
-popup/item_3/icon = SubResource("AtlasTexture_r685s")
+popup/item_3/text = "Uranium"
+popup/item_3/icon = SubResource("AtlasTexture_p41v0")
 popup/item_3/id = 3
-popup/item_4/text = "Uranium"
-popup/item_4/icon = SubResource("AtlasTexture_p41v0")
+popup/item_4/text = "Tungsten"
+popup/item_4/icon = SubResource("AtlasTexture_r685s")
 popup/item_4/id = 4
 script = ExtResource("1_a06ko")
 
