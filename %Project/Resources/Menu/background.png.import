@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvbg5pgmu6keq"
-path="res://.godot/imported/poland_text.png-c9f77059a541e8a31f6cae2d1f934a61.ctex"
+uid="uid://67jod3wvej7v"
+path="res://.godot/imported/background.png-0a8df44a0171f8af34d3af8d656321c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Menu/poland_text.png"
-dest_files=["res://.godot/imported/poland_text.png-c9f77059a541e8a31f6cae2d1f934a61.ctex"]
+source_file="res://%Project/Resources/Menu/background.png"
+dest_files=["res://.godot/imported/background.png-0a8df44a0171f8af34d3af8d656321c6.ctex"]
 
 [params]
 

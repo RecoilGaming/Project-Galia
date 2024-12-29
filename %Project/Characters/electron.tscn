@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b1ky5kk67khul"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/neutron.gd" id="1_fnitx"]
-[ext_resource type="SpriteFrames" uid="uid://c5sucmm055c87" path="res://%Project/Characters/neutron_anim.tres" id="2_gogsx"]
+[ext_resource type="SpriteFrames" uid="uid://bqy4k362c4c04" path="res://%Project/Characters/electron_anim.tres" id="2_0nfof"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_04t31"]
 radius = 4.0
@@ -20,8 +20,8 @@ ATTACK_COOLDOWN = null
 polarity = 3
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("2_gogsx")
-autoplay = "default"
+sprite_frames = ExtResource("2_0nfof")
+animation = &"1"
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_04t31")

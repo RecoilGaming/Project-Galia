@@ -31,8 +31,8 @@ func _ready():
 	update_coins()
 	new_wave()
 	#new_wave()
-	#var menu: Control = load("res://%Project/%Levels/menu.tscn").instantiate()
-	#main.add_child.call_deferred(menu)
+	var menu: Control = load("res://%Project/%Levels/menu.tscn").instantiate()
+	main.add_child.call_deferred(menu)
 
 ## =============== [ METHODS ] ================
 
@@ -98,3 +98,7 @@ func on_unit_death() -> void:
 		if unit.IS_ENEMY:
 			return
 	main.get_node("MainUI/GoButton").show()
+
+func play_theme() -> void:
+	main.get_node("Sounds").stream = load("res://Resources/Sounds/poland_theme.mp3")
+	main.get_node("Sounds").play()

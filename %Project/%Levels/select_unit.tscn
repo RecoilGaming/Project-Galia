@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://do5d5q70kmxg1"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/select_unit.gd" id="1_y3xdy"]
-[ext_resource type="FontFile" uid="uid://bcp7y8bedygee" path="res://Resources/Stepalange-x3BLm.otf" id="2_xy1b8"]
-[ext_resource type="Theme" uid="uid://bo8ub25x8am2v" path="res://Resources/theme.tres" id="3_1v637"]
+[ext_resource type="FontFile" uid="uid://bcp7y8bedygee" path="res://%Project/UI/stepalange.otf" id="2_xy1b8"]
+[ext_resource type="Theme" uid="uid://bo8ub25x8am2v" path="res://%Project/UI/theme.tres" id="3_1v637"]
 
 [node name="SelectUnit" type="Control"]
 top_level = true

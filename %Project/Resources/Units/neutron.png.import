@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp6nxfod8x3w6"
-path="res://.godot/imported/oxyguy.png-e01e3e545d94419485abd3320aa83f5b.ctex"
+uid="uid://c1x36mbg32awk"
+path="res://.godot/imported/neutron.png-c7118e74111613e091a51827bd634939.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Menu/oxyguy.png"
-dest_files=["res://.godot/imported/oxyguy.png-e01e3e545d94419485abd3320aa83f5b.ctex"]
+source_file="res://%Project/Resources/Units/neutron.png"
+dest_files=["res://.godot/imported/neutron.png-c7118e74111613e091a51827bd634939.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beqmyrgswqfmp"
-path="res://.godot/imported/hydrogen.png-08d22012f93a9f2e65d83755f48c430f.ctex"
+uid="uid://ds7yg4sqp34xp"
+path="res://.godot/imported/fluorine.png-23eeda1997cd3bbbe21a0028e87043cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/hydrogen.png"
-dest_files=["res://.godot/imported/hydrogen.png-08d22012f93a9f2e65d83755f48c430f.ctex"]
+source_file="res://%Project/Resources/Units/fluorine.png"
+dest_files=["res://.godot/imported/fluorine.png-23eeda1997cd3bbbe21a0028e87043cd.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
