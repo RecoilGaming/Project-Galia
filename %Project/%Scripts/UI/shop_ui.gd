@@ -4,10 +4,12 @@ func _on_back_button_pressed():
 	queue_free()
 
 func _on_polarize_button_pressed():
-	get_parent().add_child(load("res://%Project/%Levels/select_unit.tscn").instantiate())
+	if (!GM.polarizing_window_open && !GM.adding_window_open):
+		get_parent().add_child(load("res://%Project/%Levels/select_unit.tscn").instantiate())
 
 func _on_add_unit_button_pressed():
-	get_parent().add_child(load("res://%Project/%Levels/add_unit.tscn").instantiate())
+	if (!GM.polarizing_window_open && !GM.adding_window_open):
+		get_parent().add_child(load("res://%Project/%Levels/add_unit.tscn").instantiate())
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if (event is InputEventMouseButton
