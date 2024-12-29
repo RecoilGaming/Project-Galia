@@ -37,6 +37,7 @@ func _ready() -> void:
 	
 	$NotArea2D.body_entered.connect(_body_entered)
 	$NotArea2D.body_exited.connect(_body_exited)
+	
 
 # Process
 func _process(delta: float) -> void:
@@ -67,7 +68,7 @@ func _process(delta: float) -> void:
 	update_healthbar()
 
 # Physics process
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	collision = move_and_collide(velocity)
 
 ## =============== [ HELPERS ] ================ ##
