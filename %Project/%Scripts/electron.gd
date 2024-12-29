@@ -7,6 +7,7 @@ class_name Electron
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	KNOCKBACK = 0
+	CONTACT_DAMAGE = 10
 	$Sprite.play("default")
 
 func _process(delta: float) -> void:
@@ -16,7 +17,7 @@ func _process(delta: float) -> void:
 
 
 func _on_not_area_2d_body_entered(body: Node2D) -> void:
-	if(body is Unit and body.IS_ENEMY != self.IS_ENEMY):
-		body.change_polarity(self.polarity)
+	if(is_valid_target(body)):
+		body.polarity = self.polarity
 		body.take_damage(CONTACT_DAMAGE, polarity)
 		die()
