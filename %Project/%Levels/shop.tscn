@@ -32,6 +32,7 @@ mouse_filter = 2
 script = ExtResource("1_tbhn0")
 
 [node name="Background" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.54902)
 layout_mode = 0
 offset_left = -10.0
 offset_top = 19.0
