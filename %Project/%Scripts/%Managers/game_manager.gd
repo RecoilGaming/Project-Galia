@@ -120,6 +120,35 @@ func spawn_wave():
 	# Increment wave
 	cur_wave += 1
 
+# Check for surviving enemies
+func enemies_alive() -> int:
+	var amt: int = 0
+	for unit in units:
+		if unit.IS_ENEMY:
+			amt += 1
+	return amt
+
+# Check for surviving allies
+func allies_alive() -> int:
+	var amt: int = 0
+	for unit in units:
+		if !unit.IS_ENEMY:
+			amt += 1
+	return amt
+
+# Check / end wave
+func clean_wave() -> void:
+	# Check for surviving enemies
+	if enemies_alive():
+		# Lose condition
+		if !allies_alive() && coins == 0:
+			get_tree().quit()
+	
+	# End wave and pause game
+	else:
+		main.get_node("MainUI/GoButton").show()
+		Engine.set_time_scale(0)
+
 # Start theme song
 func play_theme() -> void:
 	main.get_node("Sounds").stream = load("res://%Project/Resources/Sounds/poland_theme.mp3")
@@ -131,14 +160,3 @@ func play_theme() -> void:
 func _on_go_button_pressed() -> void:
 	spawn_wave()
 	main.get_node("MainUI/GoButton").hide()
-
-# Check / end wave
-func clean_wave() -> void:
-	# Check for surviving enemies
-	for unit in units:
-		if unit.IS_ENEMY:
-			return
-	
-	# End wave and pause game
-	main.get_node("MainUI/GoButton").show()
-	Engine.set_time_scale(0)
