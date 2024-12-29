@@ -10,7 +10,7 @@ radius = 14.0
 radius = 23.3452
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aye2c"]
-bg_color = Color(1.63645e-06, 0.704604, 0.537261, 1)
+bg_color = Color(0.484242, 0.000500752, 0.564882, 0.772549)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -35,10 +35,10 @@ shape = SubResource("CircleShape2D_jlxl5")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -18.0
-offset_top = 18.0
+offset_top = 17.0
 offset_right = 18.0
-offset_bottom = 23.0
+offset_bottom = 22.0
 theme_override_styles/background = SubResource("StyleBoxFlat_aye2c")
 max_value = 1.0
-value = 1.0
+value = 0.5
 show_percentage = false

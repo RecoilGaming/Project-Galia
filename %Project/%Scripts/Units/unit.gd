@@ -126,7 +126,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 			change_polarity(2)
 
 func _body_entered(body: Node2D):
-	if(body is Unit and body != self):
+	if (body is Unit and body != self):
 		bodies_to_attack.append(body)
 
 func _body_exited(body: Node2D):
