@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://14usl23dbv54"]
+[gd_scene load_steps=6 format=3 uid="uid://14usl23dbv54"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Units/oxygen.gd" id="1_qq8k8"]
 [ext_resource type="SpriteFrames" uid="uid://x022s6cbl6d4" path="res://%Project/Characters/oxygen_anim.tres" id="2_fft31"]
+[ext_resource type="Theme" uid="uid://v7u7ajl3cgy1" path="res://%Project/Resources/green1.tres" id="3_j6md6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_04t31"]
 radius = 16.0
@@ -26,3 +27,13 @@ shape = SubResource("CircleShape2D_04t31")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NotArea2D"]
 shape = SubResource("CircleShape2D_kn3o6")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -18.0
+offset_top = 24.0
+offset_right = 18.0
+offset_bottom = 29.0
+theme = ExtResource("3_j6md6")
+max_value = 1.0
+value = 0.5
+show_percentage = false

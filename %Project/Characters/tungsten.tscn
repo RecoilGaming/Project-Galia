@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ciye11ymmm6iu"]
+[gd_scene load_steps=6 format=3 uid="uid://ciye11ymmm6iu"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Units/tungsten.gd" id="1_bg1ie"]
 [ext_resource type="SpriteFrames" uid="uid://crl1pvq7tbk72" path="res://%Project/Characters/tungsten_anim.tres" id="2_wf3bp"]
+[ext_resource type="Theme" uid="uid://v7u7ajl3cgy1" path="res://%Project/Resources/green1.tres" id="3_xxyn3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4nkcf"]
 radius = 15.0
@@ -24,3 +25,13 @@ shape = SubResource("CircleShape2D_4nkcf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NotArea2D"]
 shape = SubResource("CircleShape2D_ce844")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -18.0
+offset_top = 25.0
+offset_right = 18.0
+offset_bottom = 30.0
+theme = ExtResource("3_xxyn3")
+max_value = 1.0
+value = 0.5
+show_percentage = false
