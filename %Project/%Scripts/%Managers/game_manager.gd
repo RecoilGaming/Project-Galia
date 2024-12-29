@@ -29,8 +29,6 @@ var waiting_for_continue := false
 
 func _ready():
 	update_coins()
-	new_wave()
-	#new_wave()
 	var menu: Control = load("res://%Project/%Levels/menu.tscn").instantiate()
 	main.add_child.call_deferred(menu)
 
