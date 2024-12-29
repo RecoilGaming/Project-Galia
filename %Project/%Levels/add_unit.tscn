@@ -96,7 +96,6 @@ popup/item_3/id = 3
 popup/item_4/text = "Tungsten"
 popup/item_4/icon = SubResource("AtlasTexture_r685s")
 popup/item_4/id = 4
-script = ExtResource("1_a06ko")
 
 [node name="BackButton" type="Button" parent="ColorRect"]
 layout_mode = 0
@@ -105,7 +104,6 @@ offset_top = 7.18934
 offset_right = 76.8843
 offset_bottom = 41.1893
 theme_override_font_sizes/font_size = 30
-script = ExtResource("1_a06ko")
 
 [node name="x" type="RichTextLabel" parent="ColorRect/BackButton"]
 layout_mode = 0
