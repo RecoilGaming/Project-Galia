@@ -100,3 +100,11 @@ func on_unit_death() -> void:
 func play_theme() -> void:
 	main.get_node("Sounds").stream = load("res://%Project/Resources/Sounds/poland_theme.mp3")
 	main.get_node("Sounds").play()
+
+func _input(event:InputEvent) -> void:
+	if (event is InputEventMouseButton
+	 and event.button_index == MOUSE_BUTTON_LEFT
+	 and event.pressed
+	 and !event.canceled):
+			if (adding_window_open):
+				try_to_spawn(types[unit_spawn_index], event.position - Vector2(640, 360)/2, false)
