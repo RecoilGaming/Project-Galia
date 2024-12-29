@@ -77,7 +77,7 @@ func _physics_process(_delta: float) -> void:
 func find_target() -> void:
 	# Minimum distance
 	var min_dist: float = 1000000
-	
+	var temp_target
 	# Loop through edits
 	for unit in GM.units:
 		# Get distance
@@ -86,7 +86,8 @@ func find_target() -> void:
 		# Check unit
 		if dist < min_dist and is_valid_target(unit):
 			min_dist = dist
-			target = unit
+			temp_target = unit
+	target = temp_target
 
 # Deal physical damage
 func take_damage(amt: int): # Amount of damage, Damage component polarity

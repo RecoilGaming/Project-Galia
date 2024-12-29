@@ -17,9 +17,7 @@ func die():
 	for i in range(0, ELECTRONS_SPAWN):
 		shoot(Vector2.UP.rotated(2*PI*i/ELECTRONS_SPAWN))
 	
-	GM.units.erase(self)
-	GM.on_unit_death()
-	queue_free()
+	super.die()
 
 # Shoots a bullet	
 func shoot(direction: Vector2):
