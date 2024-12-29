@@ -4,138 +4,150 @@ class_name Unit
 ## =============== [ FIELDS ] ================ ##
 
 # Attributes
+# Max health of the unit
 @export var MAX_HEALTH: float = 100
-@export var CONTACT_DAMAGE: float = 10
+# Damage of the unit, both ranged and melee
+@export var DAMAGE: float = 10
+# Speed of the unit
 @export var SPEED: float = 100
+# KB of the unit, maybe temporary
 @export var KNOCKBACK: float = 10
-@export var IS_ENEMY: bool = false
+# Every ATTACK_COOLDOWN+(~0.010) seconds, do_attack() is called
 @export var ATTACK_COOLDOWN: float = 0.1
 
-var health: float = MAX_HEALTH
+# Whether the unit is an enemy unit
+var IS_ENEMY: bool = false
+
+var health: float = MAX_HEALTH:
+	set(value):
+		health = value
+		update_healthbar()
 var attack_cooldown := ATTACK_COOLDOWN
 
+# Polarity: -1 for negative, 1 for positive
 @export var polarity: int = 0:
 	set(value):
+		value = clamp(value, -1, 1)
 		if(value == -1 || value == 1):
 			polarity = value
 			$Sprite.play(str(polarity*2+2))
 
-# Target unit
+# The unit that will be followed and shot at and attacked
 var target: Unit
+
+# Collision upon MOVING FORWARD
 var collision: KinematicCollision2D
-var bodies_to_attack: Array[Node2D]
 
 ## =============== [ METHODS ] ================ ##
 
-# Ready
+# Gets called hopefuly once
 func _ready() -> void:
-	# Apply values
-	self.input_event.connect(_on_input_event)
-	polarity = polarity
-	# Add to global list
-	GM.add_unit(self)
 	
-	$NotArea2D.body_entered.connect(_body_entered)
-	$NotArea2D.body_exited.connect(_body_exited)
+	# Add this to global list of units
+	GM.units.append(self)
+	
+	# Connects signals
+	self.input_event.connect(_on_input_event)
+	
+	
+	# Sets the health bar to be purple if enemy otherwise green
 	if (has_node("HealthBar")):
 		$HealthBar.theme = load("res://%Project/Resources/" + ("purple" if IS_ENEMY else "green") + "1.tres")
 	else:
-		print("no health bar faound")
+		print("no health bar found")
+	update_healthbar()
 
-# Process
+# Being called every frame
 func _process(delta: float) -> void:
-	# Find target
+	
+	# Finds the nearest target
 	find_target()
-	# No targets
+	
+	# If the target died aka it's invalid, it will be self
+	# This is useful in the move function to stop moving
 	if !is_instance_valid(target):
 		target = self
 	
-	# Track target
+	# Tracks the target, moves and then attacks
 	if target:
+		
+		# Even if the target is self, we should call this to update velocity
 		move(target.global_position - global_position, delta)
-	
-	attack_cooldown -= delta
-	do_attacks()
+		
+		# However attacks should only be called if the target is not self
+		if is_valid_target(target):
+			
+			# Executes an attack every ATTACK_COOLDOWN seconds
+			attack_cooldown -= delta
+			if(attack_cooldown <= 0):
+				do_attack()
+				attack_cooldown = ATTACK_COOLDOWN
 
-# Physics process
+# Moves the unit
 func _physics_process(_delta: float) -> void:
 	collision = move_and_collide(velocity)
+
+# Does an attack, overwrite for different attack behavior
+func do_attack() -> void:
+	pass
 
 ## =============== [ HELPERS ] ================ ##
 
 # Finds the nearest target
 func find_target() -> void:
-	# Minimum distance
 	var min_dist: float = 1000000
+	
+	# This is so that target doesn't switch mid-function
 	var temp_target
-	# Loop through edits
+	
+	# Loop through all units
 	for unit in GM.units:
+		
 		# Get distance
 		var dist: float = global_position.distance_to(unit.global_position)
 		
-		# Check unit
+		# Check whether this is the closest unit and is valid
 		if dist < min_dist and is_valid_target(unit):
 			min_dist = dist
 			temp_target = unit
+			
 	target = temp_target
 
-# Deal physical damage
-func take_damage(amt: int): # Amount of damage, Damage component polarity
+# Call this to deal physical damage to the unit, automatically dies and updates healthbar
+func take_damage(amt: int):
 	
+	# This will internally update healthbar
 	health -= amt
 	
 	# Dying
 	if health <= 0:
 		die()
 
-# Dyging
+# Called when you want to delete this unit, 
 func die():
 	GM.units.erase(self)
 	GM.on_unit_death()
 	queue_free()
 
-# Movint
+# Moving, can be overwritten to have different move behavior
 func move(dir: Vector2, delta: float):
-	velocity = dir.normalized() * SPEED * delta
+	if not target:
+		velocity = Vector2.ZERO
+	else:
+		velocity = dir.normalized() * SPEED * delta
 
+# Checks whether the target is valid, overwrite to change what should be targetted and attacked
 func is_valid_target(unit: Node2D) -> bool:
 	return unit is Unit and unit != self and unit.IS_ENEMY != self.IS_ENEMY and unit.polarity != self.polarity
 
-# Does an attack
-func do_attacks() -> void:
-	if attack_cooldown <= 0:
-		attack_cooldown = ATTACK_COOLDOWN
-		
-		if !bodies_to_attack.is_empty():
-			var not_null = bodies_to_attack.pick_random()
-			
-			if is_valid_target(not_null):
-				var fancy_thing: Sprite2D = load("res://%Project/Resources/Effects/attack.tscn").instantiate()
-				fancy_thing.rotation = (not_null.global_position - global_position).angle()
-				fancy_thing.position += Vector2(32, 0).rotated(fancy_thing.rotation)
-				add_child(fancy_thing)
-				
-				not_null.take_damage(CONTACT_DAMAGE)
-				
-				## Collides the thing
-				#if collision:
-					#velocity = collision.get_collider_velocity().normalized() * KNOCKBACK
-	update_healthbar()
-
 ## =============== [ SIGNALS ] ================ ##
 
-# Left click detection
+# Left click detection to change polarity
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_pressed() and GM.polarizing_window_open and !IS_ENEMY:
 		polarity = -polarity;
 
-func _body_entered(body: Node2D):
-	if (body is Unit and body != self):
-		bodies_to_attack.append(body)
-
-func _body_exited(body: Node2D):
-	bodies_to_attack.erase(body)
-
+# Updates healthbar
 func update_healthbar():
 	if has_node("HealthBar"):
 		$HealthBar.value = health/MAX_HEALTH

@@ -13,7 +13,6 @@ radius = 25.0799
 [node name="Uranium" type="CharacterBody2D"]
 input_pickable = true
 script = ExtResource("1_46yvj")
-SHOOT_DAMAGE = 10
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_kh0tw")

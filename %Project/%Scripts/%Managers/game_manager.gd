@@ -49,9 +49,6 @@ func _ready():
 
 ## =============== [ METHODS ] ================
 
-# Add unit
-func add_unit(unit: Unit):
-	units.append(unit)
 
 # Spawn unit with subtract coins
 func spawn_unit(pos: Vector2, index: int):

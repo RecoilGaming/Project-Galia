@@ -13,10 +13,6 @@ radius = 5.0
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_jklin")
-MAX_HEALTH = 2.0
-SPEED = 800.0
-KNOCKBACK = 0.0
-polarity = 3
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_50f21")

@@ -1,22 +1,24 @@
 extends Unit
 class_name Fluorine
 
-@export var DEATH_DAMAGE := 75
-@export var ELECTRONS_SPAWN := 10
-@export var SHOOT_DAMAGE := 10
+# Spawns an equal amount of electrons and neutrons
+@export var DEATH_BULLET_SPAWN := 20
 
 func _ready() -> void:
 	super()
-	CONTACT_DAMAGE = 0
+	DAMAGE = 0
 
-# Dyging
+# Makes explosion boom spawning electrons and neutrons all around
 func die():
-	for unit in bodies_to_attack:
-		if(is_valid_target(unit)):
-			unit.take_damage(DEATH_DAMAGE)
-			
-	for i in range(0, ELECTRONS_SPAWN):
-		shoot(Vector2.UP.rotated(2*PI*i/ELECTRONS_SPAWN))
+	var neutron_path = "res://%Project/Characters/neutron.tscn"
+	var electron_path = "res://%Project/Characters/electron.tscn"
+	
+	# Goes in a circle and alternates electrons and neutrons
+	for i in range(0, DEATH_BULLET_SPAWN):
+		if(i%2==0):
+			do_exploding_attack(Vector2.UP.rotated(2*PI*i/DEATH_BULLET_SPAWN), neutron_path)
+		else:
+			do_exploding_attack(Vector2.UP.rotated(2*PI*i/DEATH_BULLET_SPAWN), electron_path)
 	
 	# Make exploision animation
 	var explosion = load("res://%Project/Resources/Effects/explosion.tscn").instantiate()
@@ -26,10 +28,15 @@ func die():
 	super.die()
 
 # Shoots a bullet	
-func shoot(direction: Vector2):
-	var neutron = load("res://%Project/Characters/neutron.tscn").instantiate()
-	get_parent().add_child.call_deferred(neutron)
+func do_exploding_attack(direction: Vector2, path: String):
+	var bullet = load(path).instantiate()
+	get_parent().add_child.call_deferred(bullet)
+	
 	# Moves it to 20 pixels in front
-	neutron.global_position = global_position + 20* (direction).normalized()
-	neutron.IS_ENEMY = self.IS_ENEMY
-	neutron.CONTACT_DAMAGE = SHOOT_DAMAGE
+	bullet.global_position = global_position + 20 * (direction).normalized()
+	bullet.IS_ENEMY = self.IS_ENEMY
+	bullet.DAMAGE = DAMAGE
+	bullet.velocity = direction.normalized() * bullet.SPEED
+	
+	if bullet is Electron:
+		bullet.polarity = self.polarity
