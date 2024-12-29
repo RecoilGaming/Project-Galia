@@ -7,4 +7,5 @@ func _input(event):
 				pass
 			_:
 				GM.play_theme()
+				GM.prepare_wave()
 				queue_free()

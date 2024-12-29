@@ -6,9 +6,9 @@ extends Node
 @onready var main: Node2D = get_tree().root.get_node("Main")
 
 # Shop
-var coins: int = 100:
-	set(value):
-		coins = value
+var coins: int = 40:
+	set(_coins):
+		coins = _coins
 		update_coins()
 
 var last_purchased: int = 0
@@ -18,7 +18,7 @@ var is_summoning: bool = false
 # Units
 var units: Array[Unit] = []
 
-var unit_map: Dictionary = {
+var unit_name: Dictionary = {
 	0 : "hydrogen",
 	1 : "oxygen",
 	2 : "fluorine",
@@ -26,35 +26,29 @@ var unit_map: Dictionary = {
 	4 : "tungsten"
 }
 
-var price_map: Dictionary = {
-	"hydrogen" : 5,
-	"oxygen" : 15,
-	"fluorine" : 10,
-	"uranium" : 15,
-	"tungsten" : 20
+var unit_price: Dictionary = {
+	0 : 10,
+	1 : 50,
+	2 : 35,
+	3 : 75,
+	4 : 120
 }
 
 # Waves
-var cur_wave: int= 0
-var waves: Array = [
-	[[0, 3]],
-	[[0, 3], [1, 2]],
-	[[0, 5], [1, 4]],
-	[[0, 3], [1, 2], [2, 2]],
-	[[1, 5], [4, 2]],
-	[[3, 10]],
-	[[0, 5], [1, 5], [2, 5], [3, 5], [4, 5]],
-	[[0, 30], [1, 20]],
-]
+var cur_wave: int = 0
+var wave_value: float = 25 # Determines amount spawned
+var wave_scaler: float = 1.2 # Amount of wave value increase
+var wave_yields: float = 1.2 # Amount of wave value given to player
 
 ## =============== [ METHODS ] ================ ##
 
 # Ready
 func _ready():
+	update_coins()
+	
 	# Spawn main menu
 	var menu: Control = load("res://%Project/%Levels/menu.tscn").instantiate()
-	main.add_child.call_deferred(menu)
-	#update_coins()
+	main.add_child(menu)
 
 ## =============== [ HELPERS ] ================ ##
 
@@ -69,7 +63,7 @@ func add_unit(unit: Unit):
 # Spawn unit with subtract coins
 func spawn_unit(id: int, pos: Vector2):
 	# Grab unit
-	var price: int = price_map[unit_map[id]]
+	var price: int = unit_price[id]
 	
 	# Enough coins check
 	if coins >= price:
@@ -87,7 +81,7 @@ func attempt_spawn(id: int, pos: Vector2, is_enemy: bool) -> bool:
 			return false
 	
 	# Instantiate unit
-	var _unit: Unit = load("res://%Project/Characters/" + unit_map[id] + ".tscn").instantiate()
+	var _unit: Unit = load("res://%Project/Characters/" + unit_name[id] + ".tscn").instantiate()
 	_unit.position = pos
 	_unit.polarity = randi_range(0, 1)*2 - 1
 	_unit.IS_ENEMY = is_enemy
@@ -98,29 +92,33 @@ func attempt_spawn(id: int, pos: Vector2, is_enemy: bool) -> bool:
 	# Successful spawn
 	return true
 
-# Spawns a wave
-func spawn_wave():
+# Starts a wave
+func start_wave():
 	# Resume game
 	Engine.set_time_scale(1)
+
+# Prepare wave
+func prepare_wave() -> void:
+	var temp_value: int = wave_value
 	
-	## TODO: Replace with actual wave spawner
-	var _wave: Array = waves[cur_wave]
-	
-	# TEMP HARDCODED WAVES
-	for unit in _wave:
-		var id: int = unit[0]
+	# While there is usable value
+	while temp_value >= unit_price[0]:
+		# Get random unit
+		var id: int = randi_range(0, 4)
 		
-		for i in range(0, unit[1]):
-			var pos: Vector2 = Vector2(
-				randi_range(30, 290),
-				randi_range(-150, 150)
-			)
-			
-			if !attempt_spawn(id, pos, true):
-				i -= 1
+		# Random position
+		var pos: Vector2 = Vector2(
+			randi_range(30, 290),
+			randi_range(-150, 150)
+		)
+		
+		# Check price and spawn conditions
+		if unit_price[id] <= temp_value && attempt_spawn(id, pos, true):
+			temp_value -= unit_price[id]
 	
-	# Increment wave
-	cur_wave += 1
+	# Show next wave button
+	main.get_node("MainUI/GoButton").show()
+	Engine.set_time_scale(0)
 
 # Check for surviving enemies
 func enemies_alive() -> int:
@@ -143,13 +141,25 @@ func clean_wave() -> void:
 	# Check for surviving enemies
 	if enemies_alive():
 		# Lose condition
-		if !allies_alive() && coins == 0:
+		if !allies_alive() && coins < unit_price[0]:
 			get_tree().quit()
 	
 	# End wave and pause game
 	else:
-		main.get_node("MainUI/GoButton").show()
-		Engine.set_time_scale(0)
+		# Scale difficulty & distribute rewards
+		wave_value *= wave_scaler
+		coins += wave_value * wave_yields
+		
+		print("=====")
+		print(wave_value)
+		print(wave_value * wave_yields)
+		print(coins)
+		
+		# Increment wave
+		cur_wave += 1
+		
+		# Prepare next wave
+		prepare_wave()
 
 # Start theme song
 func play_theme() -> void:
@@ -160,5 +170,5 @@ func play_theme() -> void:
 
 # Start next wave
 func _on_go_button_pressed() -> void:
-	spawn_wave()
+	start_wave()
 	main.get_node("MainUI/GoButton").hide()
