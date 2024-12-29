@@ -68,7 +68,7 @@ func can_spawn(pos: Vector2) -> bool:
 	return true
 
 func try_to_spawn(u: String, pos: Vector2, enemy: bool) -> bool:
-	if (!can_spawn(pos)):
+	if ((coins - UNIT_COSTS[u] < 0) or !can_spawn(pos)):
 		return false
 
 	# Instantiate unit
