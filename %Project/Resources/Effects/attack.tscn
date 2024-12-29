@@ -4,5 +4,7 @@
 [ext_resource type="Script" path="res://%Project/%Scripts/kys.gd" id="2_23s0l"]
 
 [node name="Attack" type="Sprite2D"]
+z_index = 10
 texture = ExtResource("1_5qos5")
 script = ExtResource("2_23s0l")
+life = 0.05
