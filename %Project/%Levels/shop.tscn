@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cwi7qexeqldtt"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/shop_ui.gd" id="1_tbhn0"]
-[ext_resource type="Theme" path="res://Resources/theme.tres" id="2_8rtuw"]
+[ext_resource type="Theme" uid="uid://bo8ub25x8am2v" path="res://%Project/UI/theme.tres" id="2_8rtuw"]
 [ext_resource type="Texture2D" uid="uid://4y3jnrja5ef1" path="res://Resources/shop1.png" id="2_jx1e8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d0pjd"]

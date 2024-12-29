@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://67jod3wvej7v"
-path="res://.godot/imported/background.png-e8001057467c270777cde80392506d03.ctex"
+uid="uid://bgffxe3bpt02e"
+path="res://.godot/imported/uranium.png-61255a125dddf38fb5c04b47e6a8c0c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Menu/background.png"
-dest_files=["res://.godot/imported/background.png-e8001057467c270777cde80392506d03.ctex"]
+source_file="res://%Project/Resources/Units/uranium.png"
+dest_files=["res://.godot/imported/uranium.png-61255a125dddf38fb5c04b47e6a8c0c1.ctex"]
 
 [params]
 

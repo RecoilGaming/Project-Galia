@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bcp7y8bedygee"
-path="res://.godot/imported/Stepalange-x3BLm.otf-4ceb5ed73d5e0863c1ea240b7843804a.fontdata"
+path="res://.godot/imported/stepalange.otf-4da27a33ecb707459408626195e55d2e.fontdata"
 
 [deps]
 
-source_file="res://Resources/Stepalange-x3BLm.otf"
-dest_files=["res://.godot/imported/Stepalange-x3BLm.otf-4ceb5ed73d5e0863c1ea240b7843804a.fontdata"]
+source_file="res://%Project/UI/stepalange.otf"
+dest_files=["res://.godot/imported/stepalange.otf-4da27a33ecb707459408626195e55d2e.fontdata"]
 
 [params]
 

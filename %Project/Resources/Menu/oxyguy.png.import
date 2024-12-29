@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds7yg4sqp34xp"
-path="res://.godot/imported/fluorine.png-5da723ffd2712ea58384c43e61cf393e.ctex"
+uid="uid://dp6nxfod8x3w6"
+path="res://.godot/imported/oxyguy.png-92f5bf7ca03e3491740656a98613a2ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/fluorine.png"
-dest_files=["res://.godot/imported/fluorine.png-5da723ffd2712ea58384c43e61cf393e.ctex"]
+source_file="res://%Project/Resources/Menu/oxyguy.png"
+dest_files=["res://.godot/imported/oxyguy.png-92f5bf7ca03e3491740656a98613a2ac.ctex"]
 
 [params]
 

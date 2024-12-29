@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgffxe3bpt02e"
-path="res://.godot/imported/uranium.png-2270f04e8b861bb549959acb57989ece.ctex"
+uid="uid://dlk4wmtvnefuq"
+path="res://.godot/imported/electron.png-0dafc104f8ea1ebc084fabf7b396ac89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/uranium.png"
-dest_files=["res://.godot/imported/uranium.png-2270f04e8b861bb549959acb57989ece.ctex"]
+source_file="res://%Project/Resources/Units/electron.png"
+dest_files=["res://.godot/imported/electron.png-0dafc104f8ea1ebc084fabf7b396ac89.ctex"]
 
 [params]
 
