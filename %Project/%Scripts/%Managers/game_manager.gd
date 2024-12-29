@@ -5,108 +5,170 @@ extends Node
 # Scenes
 @onready var main: Node2D = get_tree().root.get_node("Main")
 
-# Units
-var coins: int = 100:
-	set(value):
-		coins = value
+# Shop
+var coins: int = 40:
+	set(_coins):
+		coins = _coins
 		update_coins()
+
+var last_purchased: int = 0
+var is_polarizing: bool = false
+var is_summoning: bool = false
+
+# Units
 var units: Array[Unit] = []
-var unit_spawn_index: int = 0
-var types = {
-	0: "hydrogen",
-	1: "oxygen",
-	2: "fluorine",
-	3: "tungsten",
-	4: "uranium",
-}
-var polarizing_window_open: bool = false
-var adding_window_open: bool = false
 
-var current_wave := 0
-var waves := [
-	[["hydrogen", 3]],
-	[["hydrogen", 3], ["oxygen", 2]],
-	[["hydrogen", 5], ["oxygen", 4]],
-	[["hydrogen", 3], ["oxygen", 2], ["fluorine", 2]],
-	[["hydrogen", 0], ["oxygen", 5], ["fluorine", 0], ["tungsten", 2]],
-	[["hydrogen", 0], ["oxygen", 0], ["fluorine", 0], ["uranium", 10]],
-	[["hydrogen", 5], ["oxygen", 5], ["fluorine", 5], ["tungsten", 5], ["uranium", 5]],
-	[["hydrogen", 30], ["oxygen", 20], ["fluorine", 0], ["tungsten", 0], ["uranium", 0]],
-]
-
-var UNIT_COSTS = {
-	"hydrogen" = 5,
-	"oxygen" = 15,
-	"fluorine" = 10,
-	"tungsten" = 20,
-	"uranium" = 15,
+var unit_name: Dictionary = {
+	0 : "hydrogen",
+	1 : "oxygen",
+	2 : "fluorine",
+	3 : "uranium",
+	4 : "tungsten"
 }
 
+var unit_price: Dictionary = {
+	0 : 10,
+	1 : 50,
+	2 : 35,
+	3 : 75,
+	4 : 120
+}
+
+# Waves
+var cur_wave: int = 0
+var wave_value: float = 25 # Determines amount spawned
+var wave_scaler: float = 1.2 # Amount of wave value increase
+var wave_yields: float = 1.2 # Amount of wave value given to player
+
+## =============== [ METHODS ] ================ ##
+
+# Ready
 func _ready():
 	update_coins()
+	
+	# Spawn main menu
 	var menu: Control = load("res://%Project/%Levels/menu.tscn").instantiate()
-	main.add_child.call_deferred(menu)
+	main.add_child(menu)
 
-## =============== [ METHODS ] ================
+## =============== [ HELPERS ] ================ ##
 
-
-# Spawn unit with subtract coins
-func spawn_unit(pos: Vector2, index: int):
-	if coins >= UNIT_COSTS[types[index]]:
-		if(try_to_spawn(types[index], pos, false)): # Spawns an ally
-			# Subtract cost
-			coins -= UNIT_COSTS[types[index]]
-			print("subtracted " + str(UNIT_COSTS[types[index]]) + " coins")
-
+# Update coins
 func update_coins():
 	main.get_node("MainUI/CoinText").text = str(coins)
 
-func can_spawn(pos: Vector2) -> bool:
+# Add unit to global map
+func add_unit(unit: Unit):
+	units.append(unit)
+
+# Spawn unit with subtract coins
+func spawn_unit(id: int, pos: Vector2):
+	# Grab unit
+	var price: int = unit_price[id]
+	
+	# Enough coins check
+	if coins >= price:
+		# Subtract coins on successful spawn
+		if attempt_spawn(id, pos, false):
+			coins -= price
+
+# Attempts a spawn
+func attempt_spawn(id: int, pos: Vector2, is_enemy: bool) -> bool:
+	# Check for spawning space
 	for unit in units:
-		var distance = unit.global_position.distance_to(pos)
-		if(distance < 30):
+		# Distance check
+		var dist = unit.global_position.distance_to(pos)
+		if dist < 30:
 			return false
-	return true
-
-# Attempts to spawn WITHOUT coins, checks for valid location
-func try_to_spawn(u: String, pos: Vector2, enemy: bool) -> bool:
-
+	
 	# Instantiate unit
-	var unit: Unit = load("res://%Project/Characters/" + u + ".tscn").instantiate()
-	unit.position = pos
-	unit.polarity = randi_range(0, 1)*2-1
-	unit.IS_ENEMY = enemy
-	# Add child
-	main.add_child.call_deferred(unit)	
+	var _unit: Unit = load("res://%Project/Characters/" + unit_name[id] + ".tscn").instantiate()
+	_unit.position = pos
+	_unit.polarity = randi_range(0, 1)*2 - 1
+	_unit.IS_ENEMY = is_enemy
+	
+	# Add instance
+	main.add_child.call_deferred(_unit)
+	
+	# Successful spawn
 	return true
 
-func new_wave():
-	Engine.set_time_scale(0.5)
-	
-	var wave_to_spawn = waves[current_wave]
-	
-	for spawn in wave_to_spawn:
-		var unit_class = spawn[0]
-		var i := 0
-		#print(spawn[1])
-		while i < spawn[1]:
-			if(try_to_spawn(unit_class, Vector2(randi_range(30, 290), randi_range(-150, 150)), true)): # -320, -180 to 320, 180 is the canvas
-				i += 1
-				#print("UNIT SPAWNED")
-	current_wave += 1
+# Starts a wave
+func start_wave():
+	# Resume game
+	Engine.set_time_scale(1)
 
-
-func _on_go_button_pressed() -> void:
-	new_wave()
-	main.get_node("MainUI/GoButton").hide()
+# Prepare wave
+func prepare_wave() -> void:
+	var temp_value: int = wave_value
 	
-func on_unit_death() -> void:
-	# search for remaining enemies
+	# While there is usable value
+	while temp_value >= unit_price[0]:
+		# Get random unit
+		var id: int = randi_range(0, 4)
+		
+		# Random position
+		var pos: Vector2 = Vector2(
+			randi_range(30, 290),
+			randi_range(-150, 150)
+		)
+		
+		# Check price and spawn conditions
+		if unit_price[id] <= temp_value && attempt_spawn(id, pos, true):
+			temp_value -= unit_price[id]
+	
+	# Show next wave button
+	main.get_node("MainUI/GoButton").show()
+	Engine.set_time_scale(0)
+
+# Check for surviving enemies
+func enemies_alive() -> int:
+	var amt: int = 0
 	for unit in units:
 		if unit.IS_ENEMY:
-			return
-	main.get_node("MainUI/GoButton").show()
+			amt += 1
+	return amt
 
+# Check for surviving allies
+func allies_alive() -> int:
+	var amt: int = 0
+	for unit in units:
+		if !unit.IS_ENEMY:
+			amt += 1
+	return amt
+
+# Check / end wave
+func clean_wave() -> void:
+	# Check for surviving enemies
+	if enemies_alive():
+		# Lose condition
+		if !allies_alive() && coins < unit_price[0]:
+			get_tree().quit()
+	
+	# End wave and pause game
+	else:
+		# Scale difficulty & distribute rewards
+		wave_value *= wave_scaler
+		coins += wave_value * wave_yields
+		
+		print("=====")
+		print(wave_value)
+		print(wave_value * wave_yields)
+		print(coins)
+		
+		# Increment wave
+		cur_wave += 1
+		
+		# Prepare next wave
+		prepare_wave()
+
+# Start theme song
 func play_theme() -> void:
 	main.get_node("Sounds").stream = load("res://%Project/Resources/Sounds/poland_theme.mp3")
 	main.get_node("Sounds").play()
+
+## =============== [ SIGNALS ] ================ ##
+
+# Start next wave
+func _on_go_button_pressed() -> void:
+	start_wave()
+	main.get_node("MainUI/GoButton").hide()

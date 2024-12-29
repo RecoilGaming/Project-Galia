@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpmbpj8po8oil"]
+[gd_scene load_steps=4 format=3 uid="uid://do5d5q70kmxg1"]
 
-[ext_resource type="Script" path="res://%Project/%Scripts/UI/select_unit.gd" id="1_y3xdy"]
-[ext_resource type="FontFile" uid="uid://bcp7y8bedygee" path="res://%Project/UI/stepalange.otf" id="2_xy1b8"]
-[ext_resource type="Theme" uid="uid://bo8ub25x8am2v" path="res://%Project/UI/theme.tres" id="3_1v637"]
+[ext_resource type="Script" path="res://%Project/%Scripts/UI/polarize_unit.gd" id="1_66ctj"]
+[ext_resource type="FontFile" uid="uid://bcp7y8bedygee" path="res://%Project/UI/stepalange.otf" id="2_6svgk"]
+[ext_resource type="Theme" uid="uid://bo8ub25x8am2v" path="res://%Project/UI/theme.tres" id="3_l7aey"]
 
-[node name="SelectUnit" type="Control"]
+[node name="PolarizeUnit" type="Control"]
 top_level = true
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("1_y3xdy")
+script = ExtResource("1_66ctj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -33,7 +33,7 @@ offset_top = 8.21643
 offset_right = 367.895
 offset_bottom = 53.2164
 mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("2_xy1b8")
+theme_override_fonts/normal_font = ExtResource("2_6svgk")
 theme_override_font_sizes/normal_font_size = 30
 text = "Click units to polarize"
 
@@ -44,7 +44,6 @@ offset_top = 7.94589
 offset_right = 326.021
 offset_bottom = 37.9459
 theme_override_font_sizes/font_size = 10
-script = ExtResource("1_y3xdy")
 
 [node name="x" type="RichTextLabel" parent="ColorRect/BackButton"]
 layout_mode = 0
@@ -53,7 +52,7 @@ offset_top = 4.29759
 offset_right = 57.5711
 offset_bottom = 32.2976
 mouse_filter = 2
-theme = ExtResource("3_1v637")
+theme = ExtResource("3_l7aey")
 theme_override_font_sizes/normal_font_size = 24
 text = "done"
 

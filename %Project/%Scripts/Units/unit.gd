@@ -126,7 +126,7 @@ func take_damage(amt: int):
 # Called when you want to delete this unit, 
 func die():
 	GM.units.erase(self)
-	GM.on_unit_death()
+	GM.clean_wave()
 	queue_free()
 
 # Moving, can be overwritten to have different move behavior
@@ -144,7 +144,7 @@ func is_valid_target(unit: Node2D) -> bool:
 
 # Left click detection to change polarity
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event.is_pressed() and GM.polarizing_window_open and !IS_ENEMY:
+	if event.is_pressed() and GM.is_polarizing and !IS_ENEMY:
 		polarity = -polarity;
 
 # Updates healthbar
