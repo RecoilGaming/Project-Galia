@@ -28,7 +28,9 @@ var waiting_for_continue := false
 
 func _ready():
 	update_coins()
-	new_wave()
+
+func _process(delta: float) -> void:
+	pass
 
 ## =============== [ METHODS ] ================
 
@@ -55,7 +57,7 @@ func try_to_spawn(u: String, pos: Vector2) -> bool:
 	# Instantiate unit
 	var unit: Unit = load("res://%Project/Characters/" + u + ".tscn").instantiate()
 	unit.position = pos
-	print("swawning unit")
+	#print("swawning unit")
 	
 	# Add child
 	main.add_child.call_deferred(unit)
@@ -63,15 +65,18 @@ func try_to_spawn(u: String, pos: Vector2) -> bool:
 
 func new_wave():
 	Engine.set_time_scale(0)
+	#print("Wave incoming!")
 	waiting_for_continue = true
 	var wave_to_spawn = waves[current_wave]
+	#print(wave_to_spawn)
 	
 	for spawn in wave_to_spawn:
 		var unit_class = spawn[0]
 		var i := 0
+		#print(spawn[1])
 		while i < spawn[1]:
 			if(try_to_spawn(unit_class, Vector2(randi_range(30, 290), randi_range(-150, 150)))): # -320, -180 to 320, 180 is the canvas
 				i += 1
-				print("UNIT SPAWNED")
+				#print("UNIT SPAWNED")
 				
 	current_wave += 1
