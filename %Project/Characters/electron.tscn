@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://b1ky5kk67khul"]
 
-[ext_resource type="Script" path="res://%Project/%Scripts/neutron.gd" id="1_fnitx"]
+[ext_resource type="Script" path="res://%Project/%Scripts/electron.gd" id="1_yrube"]
 [ext_resource type="SpriteFrames" uid="uid://bqy4k362c4c04" path="res://%Project/Characters/electron_anim.tres" id="2_0nfof"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_04t31"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_gscqn"]
 radius = 4.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gtpdt"]
-radius = 8.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_2yrwy"]
+radius = 5.0
 
 [node name="Electron" type="CharacterBody2D"]
-script = ExtResource("1_fnitx")
+script = ExtResource("1_yrube")
 MAX_HEALTH = 10.0
 CONTACT_DAMAGE = 11.31
 SPEED = 400.0
@@ -19,12 +19,16 @@ polarity = 3
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_0nfof")
-animation = &"1"
+animation = &"-1"
+frame_progress = 0.340263
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_04t31")
+shape = SubResource("CircleShape2D_gscqn")
+disabled = true
 
 [node name="NotArea2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NotArea2D"]
-shape = SubResource("CircleShape2D_gtpdt")
+shape = SubResource("CircleShape2D_2yrwy")
+
+[connection signal="body_entered" from="NotArea2D" to="." method="_on_not_area_2d_body_entered"]
