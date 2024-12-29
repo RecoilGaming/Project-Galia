@@ -28,10 +28,9 @@ var bodies_to_attack: Array[Node2D]
 # Ready
 func _ready() -> void:
 	# Apply values
-	$Sprite.play(str(polarity))
 	self.input_event.connect(_on_input_event)
-	IS_ENEMY = randi_range(0, 1)
-	polarity = randi_range(0, 4)
+	polarity = Polarity.NEUTRAL
+	$Sprite.play(str(polarity))
 	# Add to global list
 	GM.add_unit(self)
 	
@@ -115,16 +114,22 @@ func move(dir: Vector2, delta: float):
 
 # Change polarity, returns whether it was successful
 func change_polarity(amt: int) -> bool:
-	if polarity + amt < 0 || polarity + amt > 4 || !amt: return 0
-	polarity += amt
-	$Sprite.play(str(polarity))
-	return 1
+	var temp = polarity
+	polarity = clamp(polarity+amt, Polarity.BIG_POSITIVE, Polarity.BIG_NEGATIVE)
+	
+	var changed: bool = (polarity != temp)
+	
+	print("old: " + str(temp) + ", new: " + str(polarity) + ", amt: " + str(amt))
+	
+	if changed:
+		$Sprite.play(str(polarity))
+	return changed
 
 ## =============== [ SIGNALS ] ================ ##
 
 # Left click detection
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_pressed() and GM.polarizing:
+	if event.is_pressed() and GM.polarizing_window_open:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			change_polarity(-1)
 		elif event.button_index == MOUSE_BUTTON_RIGHT:

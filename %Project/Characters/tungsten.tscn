@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://0hwrktw6n1cj"]
+[gd_scene load_steps=5 format=3 uid="uid://ciye11ymmm6iu"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Units/tungsten.gd" id="1_bg1ie"]
-[ext_resource type="SpriteFrames" uid="uid://dven6jg5fkte1" path="res://%Project/Characters/tungsten_anim.tres" id="2_wf3bp"]
+[ext_resource type="SpriteFrames" uid="uid://crl1pvq7tbk72" path="res://%Project/Characters/tungsten_anim.tres" id="2_wf3bp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4nkcf"]
 radius = 15.0
@@ -10,6 +10,7 @@ radius = 15.0
 radius = 25.0799
 
 [node name="Tungsten" type="CharacterBody2D"]
+input_pickable = true
 script = ExtResource("1_bg1ie")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
