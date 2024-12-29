@@ -1,7 +1,6 @@
-[gd_resource type="SpriteFrames" load_steps=28 format=3 uid="uid://bfy2pobjyt62x"]
+[gd_resource type="SpriteFrames" load_steps=27 format=3 uid="uid://bfy2pobjyt62x"]
 
 [ext_resource type="Texture2D" uid="uid://ds7yg4sqp34xp" path="res://%Project/Resources/Units/fluorine.png" id="1_fkgxy"]
-[ext_resource type="Texture2D" path="res://Resources/fluorine.png" id="2_5bdrv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qn0qh"]
 atlas = ExtResource("1_fkgxy")
@@ -84,23 +83,18 @@ atlas = ExtResource("1_fkgxy")
 region = Rect2(128, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8x0je"]
-atlas = ExtResource("2_5bdrv")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vj85k"]
-atlas = ExtResource("2_5bdrv")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2rhq6"]
-atlas = ExtResource("2_5bdrv")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ated"]
-atlas = ExtResource("2_5bdrv")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t3k8s"]
-atlas = ExtResource("2_5bdrv")
 region = Rect2(128, 0, 32, 32)
 
 [resource]

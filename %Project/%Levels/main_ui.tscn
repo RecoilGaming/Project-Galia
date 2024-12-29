@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://jlbt3tsevkp3"]
+[gd_scene load_steps=8 format=3 uid="uid://c8hap51pac2qp"]
 
 [ext_resource type="Texture2D" uid="uid://cpe0ds574sqks" path="res://%Project/Resources/Shop/shop_button.png" id="1_sj05n"]
 [ext_resource type="Script" path="res://%Project/%Scripts/UI/shop_button.gd" id="2_0jbbo"]
 [ext_resource type="FontFile" uid="uid://bcp7y8bedygee" path="res://%Project/UI/stepalange.otf" id="3_nx8tu"]
 [ext_resource type="Script" path="res://%Project/%Scripts/%Managers/game_manager.gd" id="4_7ld01"]
 [ext_resource type="Theme" uid="uid://bo8ub25x8am2v" path="res://%Project/UI/theme.tres" id="5_hwxph"]
+[ext_resource type="Script" path="res://%Project/%Scripts/UI/click_detection.gd" id="6_4725t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5xos"]
+size = Vector2(648, 366)
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -47,5 +51,16 @@ theme = ExtResource("5_hwxph")
 text = "Go!"
 script = ExtResource("4_7ld01")
 
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("6_4725t")
+
+[node name="Area2D" type="Area2D" parent="Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
+z_index = -2
+shape = SubResource("RectangleShape2D_g5xos")
+script = ExtResource("6_4725t")
+
 [connection signal="pressed" from="ShopButton" to="ShopButton" method="_on_pressed"]
 [connection signal="pressed" from="GoButton" to="GoButton" method="_on_go_button_pressed"]
+[connection signal="input_event" from="Node2D/Area2D" to="Node2D" method="_on_area_2d_input_event"]

@@ -15,7 +15,7 @@ func die():
 			unit.take_damage(DEATH_DAMAGE)
 			
 	for i in range(0, ELECTRONS_SPAWN):
-		shoot(Vector2.UP.rotated(2*PI*(i/ELECTRONS_SPAWN)))
+		shoot(Vector2.UP.rotated(2*PI*i/ELECTRONS_SPAWN))
 	
 	GM.units.erase(self)
 	GM.on_unit_death()
