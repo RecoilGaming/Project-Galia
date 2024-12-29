@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://janewerkhts3"
-path="res://.godot/imported/start_text.png-2ed6ff7594e7fffae419be900f172553.ctex"
+uid="uid://beqmyrgswqfmp"
+path="res://.godot/imported/hydrogen.png-4c95e8a851898a7b12009813753368c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Menu/start_text.png"
-dest_files=["res://.godot/imported/start_text.png-2ed6ff7594e7fffae419be900f172553.ctex"]
+source_file="res://%Project/Resources/Units/hydrogen.png"
+dest_files=["res://.godot/imported/hydrogen.png-4c95e8a851898a7b12009813753368c2.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

@@ -16,7 +16,9 @@ var attack_cooldown := ATTACK_COOLDOWN
 
 enum Polarity { BIG_POSITIVE, POSITIVE, NEUTRAL, NEGATIVE, BIG_NEGATIVE }
 
-@export var polarity: Polarity = Polarity.NEUTRAL
+@export var polarity: Polarity = Polarity.NEUTRAL:
+	set(value):
+		polarity = clamp(value, 1, 3)
 
 # Target unit
 var target: Unit
@@ -83,7 +85,7 @@ func find_target() -> void:
 		var dist: float = global_position.distance_to(unit.global_position)
 		
 		# Check unit
-		if unit != self and dist < min_dist and unit.IS_ENEMY != self.IS_ENEMY:
+		if unit != self and dist < min_dist and unit.IS_ENEMY != self.IS_ENEMY and unit.polarity != self.polarity:
 			min_dist = dist
 			target = unit
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8dn73de8qai8"
-path="res://.godot/imported/guydrogen.png-98fd63ab16575135bf675cb8a944f66e.ctex"
+uid="uid://bvbg5pgmu6keq"
+path="res://.godot/imported/poland_text.png-cb45ebde00984e435796d0a2869d1b7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Menu/guydrogen.png"
-dest_files=["res://.godot/imported/guydrogen.png-98fd63ab16575135bf675cb8a944f66e.ctex"]
+source_file="res://%Project/Resources/Menu/poland_text.png"
+dest_files=["res://.godot/imported/poland_text.png-cb45ebde00984e435796d0a2869d1b7e.ctex"]
 
 [params]
 

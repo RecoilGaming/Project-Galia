@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://hwnqk01gsyi0"]
 
 [ext_resource type="Script" path="res://%Project/%Scripts/menu.gd" id="1_460cf"]
-[ext_resource type="Texture2D" uid="uid://janewerkhts3" path="res://Resources/Menu/start_text.png" id="2_v8h3u"]
-[ext_resource type="Texture2D" uid="uid://67jod3wvej7v" path="res://Resources/Menu/background.png" id="2_xy6by"]
-[ext_resource type="Texture2D" uid="uid://bvbg5pgmu6keq" path="res://Resources/Menu/poland_text.png" id="3_kk5ea"]
-[ext_resource type="Texture2D" uid="uid://8dn73de8qai8" path="res://Resources/Menu/guydrogen.png" id="5_fdnrs"]
+[ext_resource type="Texture2D" uid="uid://janewerkhts3" path="res://%Project/Resources/Menu/start_text.png" id="2_v8h3u"]
+[ext_resource type="Texture2D" uid="uid://67jod3wvej7v" path="res://%Project/Resources/Menu/background.png" id="2_xy6by"]
+[ext_resource type="Texture2D" uid="uid://bvbg5pgmu6keq" path="res://%Project/Resources/Menu/poland_text.png" id="3_kk5ea"]
+[ext_resource type="Texture2D" uid="uid://8dn73de8qai8" path="res://%Project/Resources/Menu/guydrogen.png" id="5_fdnrs"]
 [ext_resource type="SpriteFrames" uid="uid://db3poxvun7lps" path="res://%Project/Characters/oxyguy_anim.tres" id="6_bjlhc"]
 
 [sub_resource type="Animation" id="Animation_l2duo"]

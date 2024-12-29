@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wqj3pi30xf1r"
-path="res://.godot/imported/oxygen.png-074da67622399b91b155f718b1ed5d38.ctex"
+uid="uid://janewerkhts3"
+path="res://.godot/imported/start_text.png-89b0eb9cc2f8f40553c25bbaae771eee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/oxygen.png"
-dest_files=["res://.godot/imported/oxygen.png-074da67622399b91b155f718b1ed5d38.ctex"]
+source_file="res://%Project/Resources/Menu/start_text.png"
+dest_files=["res://.godot/imported/start_text.png-89b0eb9cc2f8f40553c25bbaae771eee.ctex"]
 
 [params]
 

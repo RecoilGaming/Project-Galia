@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlk4wmtvnefuq"
-path="res://.godot/imported/electron.png-cc8dca086180f08ceb457e2ea64d2991.ctex"
+uid="uid://bi0uiww8dojf1"
+path="res://.godot/imported/tungsten.png-5862dca4ec768ce5947b523c654fbd89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/electron.png"
-dest_files=["res://.godot/imported/electron.png-cc8dca086180f08ceb457e2ea64d2991.ctex"]
+source_file="res://%Project/Resources/Units/tungsten.png"
+dest_files=["res://.godot/imported/tungsten.png-5862dca4ec768ce5947b523c654fbd89.ctex"]
 
 [params]
 

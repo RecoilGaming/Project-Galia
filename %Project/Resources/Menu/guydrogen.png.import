@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi0uiww8dojf1"
-path="res://.godot/imported/tungsten.png-3c1928cb31e7f1726613dec53d864680.ctex"
+uid="uid://8dn73de8qai8"
+path="res://.godot/imported/guydrogen.png-edd0af6b6961c19e54954e7202c11685.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/tungsten.png"
-dest_files=["res://.godot/imported/tungsten.png-3c1928cb31e7f1726613dec53d864680.ctex"]
+source_file="res://%Project/Resources/Menu/guydrogen.png"
+dest_files=["res://.godot/imported/guydrogen.png-edd0af6b6961c19e54954e7202c11685.ctex"]
 
 [params]
 
