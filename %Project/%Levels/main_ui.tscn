@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://jlbt3tsevkp3"]
+[gd_scene load_steps=7 format=3 uid="uid://c8hap51pac2qp"]
 
 [ext_resource type="FontFile" uid="uid://bcp7y8bedygee" path="res://%Project/UI/stepalange.otf" id="3_nx8tu"]
 [ext_resource type="Script" path="res://%Project/%Scripts/%Managers/game_manager.gd" id="4_7ld01"]

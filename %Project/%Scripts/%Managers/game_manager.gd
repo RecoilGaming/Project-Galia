@@ -76,8 +76,7 @@ func try_to_spawn(u: String, pos: Vector2, enemy: bool) -> bool:
 	unit.polarity = randi_range(0, 1)*2-1
 	unit.IS_ENEMY = enemy
 	# Add child
-	main.add_child.call_deferred(unit)
-	coins -= UNIT_COSTS[u]
+	main.add_child.call_deferred(unit)	
 	return true
 
 func new_wave():
