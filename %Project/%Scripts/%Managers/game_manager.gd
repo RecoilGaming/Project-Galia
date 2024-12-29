@@ -49,7 +49,7 @@ func _ready():
 func add_unit(unit: Unit):
 	units.append(unit)
 
-# Spawn unit
+# Spawn unit with subtract coins
 func spawn_unit(pos: Vector2, index: int):
 	if coins >= UNIT_COSTS[types[index]]:
 		if(try_to_spawn(types[index], pos, false)): # Spawns an ally
@@ -67,9 +67,8 @@ func can_spawn(pos: Vector2) -> bool:
 			return false
 	return true
 
+# Attempts to spawn WITHOUT coins, checks for valid location
 func try_to_spawn(u: String, pos: Vector2, enemy: bool) -> bool:
-	if ((coins - UNIT_COSTS[u] < 0) or !can_spawn(pos)):
-		return false
 
 	# Instantiate unit
 	var unit: Unit = load("res://%Project/Characters/" + u + ".tscn").instantiate()
