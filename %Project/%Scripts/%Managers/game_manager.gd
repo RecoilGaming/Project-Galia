@@ -17,6 +17,7 @@ var is_summoning: bool = false
 
 # Units
 var units: Array[Unit] = []
+
 var unit_map: Dictionary = {
 	0 : "hydrogen",
 	1 : "oxygen",
@@ -24,6 +25,7 @@ var unit_map: Dictionary = {
 	3 : "uranium",
 	4 : "tungsten"
 }
+
 var price_map: Dictionary = {
 	"hydrogen" : 5,
 	"oxygen" : 15,
