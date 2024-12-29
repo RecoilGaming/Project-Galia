@@ -25,6 +25,14 @@ var waves = [
 	[["hydrogen", 3], ["oxygen", 0], ["fluorine", 5]],
 ]
 
+var UNIT_COSTS = {
+	"hydrogen" = 5,
+	"oxygen" = 15,
+	"fluorine" = 10,
+	"tungsten" = 20,
+	"uranium" = 15,
+}
+
 var waiting_for_continue := false
 
 func _ready():
@@ -40,10 +48,10 @@ func add_unit(unit: Unit):
 
 # Spawn unit
 func spawn_unit(pos: Vector2, index: int):
-	if coins >= 3:
+	if coins >= UNIT_COSTS[types[index]]:
 		if(try_to_spawn(types[index], pos, false)): # Spawns an ally
 			# Subtract cost
-			coins -= 3
+			coins -= UNIT_COSTS[types[index]]
 
 func update_coins():
 	main.get_node("MainUI/CoinText").text = "Coins: " + str(coins)
