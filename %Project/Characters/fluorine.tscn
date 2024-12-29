@@ -12,6 +12,8 @@ radius = 54.7449
 [node name="Fluorine" type="CharacterBody2D"]
 input_pickable = true
 script = ExtResource("1_c707q")
+DEATH_DAMAGE = 40
+SHOOT_DAMAGE = 2
 MAX_HEALTH = 50.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
