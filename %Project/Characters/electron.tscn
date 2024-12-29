@@ -13,14 +13,14 @@ radius = 5.0
 script = ExtResource("1_yrube")
 MAX_HEALTH = 10.0
 CONTACT_DAMAGE = 11.31
-SPEED = 400.0
+SPEED = 800.0
 KNOCKBACK = 0.0
 polarity = 3
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_0nfof")
 animation = &"4"
-frame_progress = 0.714079
+frame_progress = 0.631193
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gscqn")

@@ -43,10 +43,16 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# Find target
 	find_target()
-	
 	# No targets
 	if !is_instance_valid(target):
 		target = self
+		
+	if self is Fluorine:
+		print("I am a shit")
+	
+	if self is Hydrogen and not self is Fluorine:
+		print("I am bigger shit " + str(self) + " and target " + str(target))
+		print("I want to kill myself " + str(self == target))
 	
 	# Track target
 	if target:
