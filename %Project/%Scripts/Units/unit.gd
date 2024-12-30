@@ -15,6 +15,8 @@ class_name Unit
 # Every ATTACK_COOLDOWN+(~0.010) seconds, do_attack() is called
 @export var ATTACK_COOLDOWN: float = 0.1
 
+@export var INDEX: int = 0 # todo
+
 # Whether the unit is an enemy unit
 var IS_ENEMY: bool = false
 
@@ -144,8 +146,12 @@ func is_valid_target(unit: Node2D) -> bool:
 
 # Left click detection to change polarity
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event.is_pressed() and GM.is_polarizing and !IS_ENEMY:
-		polarity = -polarity;
+	if event.is_pressed() and !IS_ENEMY:
+		if GM.is_polarizing:
+			polarity = -polarity;
+		if GM.is_selling:
+			GM.coins += GM.unit_price[INDEX]
+			die()
 
 # Updates healthbar
 func update_healthbar():
