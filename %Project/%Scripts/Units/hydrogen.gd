@@ -52,6 +52,12 @@ func validate_units():
 		if !is_valid_target(unit):
 			units_to_attack.erase(unit)
 
+# Moves the unit
+func _physics_process(_delta: float) -> void:
+	collision = move_and_collide(velocity)
+	if collision:
+		speed = -speed
+
 # ------------- SIGNALS --------------
 
 # Called on body entered

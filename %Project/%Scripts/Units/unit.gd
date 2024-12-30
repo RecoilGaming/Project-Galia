@@ -88,6 +88,7 @@ func _process(delta: float) -> void:
 # Moves the unit
 func _physics_process(_delta: float) -> void:
 	collision = move_and_collide(velocity)
+	
 
 # Does an attack, overwrite for different attack behavior
 func do_attack() -> void:
