@@ -1,7 +1,7 @@
 extends Control
 
 func _input(event):
-	if event is InputEventKey and event.pressed:
+	if (event is InputEventKey and event.pressed):
 		match event.keycode:
 			KEY_VOLUMEUP, KEY_VOLUMEDOWN, KEY_VOLUMEMUTE:
 				pass
@@ -9,3 +9,8 @@ func _input(event):
 				GM.play_theme()
 				GM.prepare_wave(false)
 				queue_free()
+	elif (event is InputEventMouseButton):
+		# frick you qinzhao
+		GM.play_theme()
+		GM.prepare_wave(false)
+		queue_free()
