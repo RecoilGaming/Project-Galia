@@ -23,7 +23,6 @@ func _on_add_unit_button_pressed():
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if (event is InputEventMouseButton
-	 and event.button_index == MOUSE_BUTTON_LEFT
 	 and event.pressed
 	 and !event.canceled):
 			if (GM.is_summoning):
