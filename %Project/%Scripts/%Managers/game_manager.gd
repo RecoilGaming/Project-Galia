@@ -89,7 +89,7 @@ func attempt_spawn(id: int, pos: Vector2, is_enemy: bool) -> bool:
 	var _unit: Unit = load("res://%Project/Characters/" + unit_name[id] + ".tscn").instantiate()
 	_unit.position = pos
 	_unit.polarity = randi_range(0, 1)*2 - 1
-	_unit.IS_ENEMY = is_enemy
+	_unit.is_enemy = is_enemy
 	
 	# Add instance
 	main.add_child.call_deferred(_unit)
@@ -129,7 +129,7 @@ func prepare_wave() -> void:
 func enemies_alive() -> int:
 	var amt: int = 0
 	for unit in units:
-		if unit.IS_ENEMY:
+		if unit.is_enemy:
 			amt += 1
 	return amt
 
@@ -137,7 +137,7 @@ func enemies_alive() -> int:
 func allies_alive() -> int:
 	var amt: int = 0
 	for unit in units:
-		if !unit.IS_ENEMY:
+		if !unit.is_enemy:
 			amt += 1
 	return amt
 

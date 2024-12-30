@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Units/uranium.gd" id="1_46yvj"]
 [ext_resource type="SpriteFrames" uid="uid://yx236qgpwlan" path="res://%Project/Characters/uranium_anim.tres" id="2_kh0tw"]
-[ext_resource type="Theme" uid="uid://v7u7ajl3cgy1" path="res://%Project/Resources/green1.tres" id="3_m1kmc"]
+[ext_resource type="Theme" uid="uid://cvajvxk7s5icf" path="res://%Project/Resources/green1.tres" id="3_m1kmc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nahrt"]
 radius = 16.0

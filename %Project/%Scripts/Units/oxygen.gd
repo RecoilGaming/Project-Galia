@@ -36,7 +36,7 @@ func do_attack():
 	
 	# Moves it to 20 pixels in front of the oxygen
 	bullet.global_position = global_position + 20 * (target.global_position - global_position).normalized()
-	bullet.IS_ENEMY = self.IS_ENEMY
+	bullet.is_enemy = self.is_enemy
 	bullet.DAMAGE = DAMAGE
 	bullet.velocity = (target.global_position - global_position).normalized() * bullet.SPEED
 	

@@ -4,21 +4,21 @@ class_name Unit
 ## =============== [ FIELDS ] ================ ##
 
 # Attributes
-# Max health of the unit
+## Max health of the unit
 @export var MAX_HEALTH: float = 100
-# Damage of the unit, both ranged and melee
+## Damage of the unit, both ranged and melee
 @export var DAMAGE: float = 10
-# Speed of the unit
+## Speed of the unit
 @export var SPEED: float = 100
-# KB of the unit, maybe temporary
+## KB of the unit, maybe temporary
 @export var KNOCKBACK: float = 10
-# Every ATTACK_COOLDOWN+(~0.010) seconds, do_attack() is called
+## Every ATTACK_COOLDOWN+(~0.010) seconds, do_attack() is called
 @export var ATTACK_COOLDOWN: float = 0.1
 
 @export var INDEX: int = 0 # todo
 
 # Whether the unit is an enemy unit
-var IS_ENEMY: bool = false
+var is_enemy: bool = false
 
 var health: float = MAX_HEALTH:
 	set(value):
@@ -54,7 +54,7 @@ func _ready() -> void:
 	
 	# Sets the health bar to be purple if enemy otherwise green
 	if (has_node("HealthBar")):
-		$HealthBar.theme = load("res://%Project/Resources/" + ("purple" if IS_ENEMY else "green") + "1.tres")
+		$HealthBar.theme = load("res://%Project/Resources/" + ("purple" if is_enemy else "green") + "1.tres")
 	else:
 		print("no health bar found")
 	update_healthbar()
@@ -140,13 +140,13 @@ func move(dir: Vector2, delta: float):
 
 # Checks whether the target is valid, overwrite to change what should be targetted and attacked
 func is_valid_target(unit: Node2D) -> bool:
-	return unit is Unit and unit != self and unit.IS_ENEMY != self.IS_ENEMY and unit.polarity != self.polarity
+	return unit is Unit and unit != self and unit.is_enemy != self.is_enemy and unit.polarity != self.polarity
 
 ## =============== [ SIGNALS ] ================ ##
 
 # Left click detection to change polarity
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event.is_pressed() and !IS_ENEMY:
+	if event.is_pressed() and !is_enemy:
 		if GM.is_polarizing:
 			polarity = -polarity;
 		if GM.is_selling:

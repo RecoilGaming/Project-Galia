@@ -34,7 +34,7 @@ func do_exploding_attack(direction: Vector2, path: String):
 	
 	# Moves it to 20 pixels in front
 	bullet.global_position = global_position + 20 * (direction).normalized()
-	bullet.IS_ENEMY = self.IS_ENEMY
+	bullet.is_enemy = self.is_enemy
 	bullet.DAMAGE = DAMAGE
 	bullet.velocity = direction.normalized() * bullet.SPEED
 	

@@ -1,6 +1,9 @@
 extends Unit
 class_name Hydrogen
 
+var speed: float
+const ACCELERATION = 2
+
 # Units within melee range to attack melee
 var units_to_attack: Array[Node2D]
 
@@ -11,7 +14,7 @@ func _ready() -> void:
 	$NotArea2D.body_entered.connect(_body_entered)
 	$NotArea2D.body_exited.connect(_body_exited)
 
-# Does a melee attack
+# Does a melee attack and bounces everything back
 func do_attack() -> void:
 	validate_units()
 	
@@ -34,6 +37,14 @@ func do_attack() -> void:
 		# If there's a collision it bounces it
 		if collision:
 			velocity = collision.get_collider_velocity().normalized() * KNOCKBACK
+
+# Moving, can be overwritten to have different move behavior
+func move(dir: Vector2, delta: float):
+	if not target:
+		velocity = Vector2.ZERO
+	else:
+		speed = lerp(speed, SPEED, ACCELERATION * delta)
+		velocity = (target.global_position - self.global_position).normalized() * speed * delta
 
 # Removes units that shouldn't be targetted anymore from the list of units to target
 func validate_units():
