@@ -44,6 +44,7 @@ var wave_value: float = 25 # Determines amount spawned
 var wave_scaler: float = 1.3 # Amount of wave value increase
 var wave_yields: float = 0.8 # Amount of wave value given to player
 var is_cleaing: bool = false
+var lose_timer: float = 10000000
 
 ## =============== [ METHODS ] ================ ##
 
@@ -55,6 +56,18 @@ func _ready():
 	var menu: Control = load("res://%Project/%Levels/menu.tscn").instantiate()
 	main.add_child(menu)
 	#update_coins()
+
+# Process
+func _process(delta: float) -> void:
+	# Update timers
+	lose_timer -= delta
+	
+	# Losing
+	if lose_timer < 0:
+		if enemies_alive() && !allies_alive() && coins < unit_price[0]:
+			get_tree().quit()
+		else:
+			lose_timer = 10000000
 
 ## =============== [ HELPERS ] ================ ##
 
@@ -148,9 +161,7 @@ func clean_wave() -> void:
 	if enemies_alive():
 		# Lose condition
 		if !allies_alive() && coins < unit_price[0]:
-			await get_tree().create_timer(0.5).timeout
-			if enemies_alive():
-				get_tree().quit()
+			lose_timer = 0.2
 	
 	# End wave and pause game
 	else:
