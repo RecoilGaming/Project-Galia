@@ -30,7 +30,7 @@ var unit_name: Dictionary = {
 var unit_price: Dictionary = {
 	0 : 10,
 	1 : 40,
-	2 : 35,
+	2 : 25,
 	3 : 80,
 	4 : 110
 }
@@ -40,11 +40,15 @@ var cur_wave: int = 0:
 	set(value):
 		cur_wave = value
 		main.get_node("MainUI/WaveText").text = "Wave " + str(cur_wave+1)
+
 var wave_value: float = 25 # Determines amount spawned
 var wave_scaler: float = 1.3 # Amount of wave value increase
 var wave_yields: float = 0.8 # Amount of wave value given to player
 var is_cleaing: bool = false
+var is_initial: bool = true
+
 var lose_timer: float = 10000000
+var setup_timer: float = 0
 
 ## =============== [ METHODS ] ================ ##
 
@@ -55,12 +59,12 @@ func _ready():
 	# Spawn main menu
 	var menu: Control = load("res://%Project/%Levels/menu.tscn").instantiate()
 	main.add_child(menu)
-	#update_coins()
 
 # Process
 func _process(delta: float) -> void:
 	# Update timers
 	lose_timer -= delta
+	setup_timer -= delta
 	
 	# Losing
 	if lose_timer < 0:
@@ -106,7 +110,7 @@ func attempt_spawn(id: int, pos: Vector2, is_enemy: bool) -> bool:
 	_unit.is_enemy = is_enemy
 	
 	# Add instance
-	main.add_child.call_deferred(_unit)
+	main.add_child(_unit)
 	
 	# Successful spawn
 	return true
@@ -117,7 +121,20 @@ func start_wave():
 	Engine.set_time_scale(1)
 
 # Prepare wave
-func prepare_wave() -> void:
+func prepare_wave(toggle: bool = true) -> void:
+	if setup_timer >= 0:
+		return
+	
+	if toggle:
+		# Scale difficulty & distribute rewards
+		wave_value *= wave_scaler
+		coins += wave_value * wave_yields
+
+		# Increment wave
+		cur_wave += 1
+	
+	# Setup timer
+	setup_timer = 1
 	var temp_value: int = wave_value
 	
 	# While there is usable value
@@ -165,17 +182,9 @@ func clean_wave() -> void:
 	
 	# End wave and pause game
 	else:
-		# Scale difficulty & distribute rewards
-		wave_value *= wave_scaler
-		coins += wave_value * wave_yields
-		
-		# Increment wave
-		cur_wave += 1
-		
 		# Prepare next wave
 		await get_tree().create_timer(0.5).timeout
 		prepare_wave()
-	
 
 # Start theme song
 func play_theme() -> void:
