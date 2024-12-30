@@ -6,7 +6,7 @@ extends Node
 @onready var main: Node2D = get_tree().root.get_node("Main")
 
 # Shop
-var coins: int = 40:
+var coins: int = 30:
 	set(_coins):
 		coins = _coins
 		update_coins()
@@ -29,10 +29,10 @@ var unit_name: Dictionary = {
 
 var unit_price: Dictionary = {
 	0 : 10,
-	1 : 50,
-	2 : 35,
-	3 : 75,
-	4 : 120
+	1 : 35,
+	2 : 30,
+	3 : 65,
+	4 : 100
 }
 
 # Waves
@@ -41,8 +41,8 @@ var cur_wave: int = 0:
 		cur_wave = value
 		main.get_node("MainUI/WaveText").text = "Wave " + str(cur_wave+1)
 var wave_value: float = 25 # Determines amount spawned
-var wave_scaler: float = 1.2 # Amount of wave value increase
-var wave_yields: float = 1.2 # Amount of wave value given to player
+var wave_scaler: float = 1.3 # Amount of wave value increase
+var wave_yields: float = 0.7 # Amount of wave value given to player
 
 ## =============== [ METHODS ] ================ ##
 
@@ -143,6 +143,8 @@ func allies_alive() -> int:
 
 # Check / end wave
 func clean_wave() -> void:
+	await get_tree().create_timer(0.5).timeout
+	
 	# Check for surviving enemies
 	if enemies_alive():
 		# Lose condition
@@ -159,7 +161,6 @@ func clean_wave() -> void:
 		cur_wave += 1
 		
 		# Prepare next wave
-		await get_tree().create_timer(0.5).timeout
 		prepare_wave()
 
 # Start theme song
