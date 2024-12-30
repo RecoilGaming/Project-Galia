@@ -14,6 +14,7 @@ var coins: int = 40:
 var last_purchased: int = 0
 var is_polarizing: bool = false
 var is_summoning: bool = false
+var is_selling: bool = false
 
 # Units
 var units: Array[Unit] = []
@@ -35,7 +36,10 @@ var unit_price: Dictionary = {
 }
 
 # Waves
-var cur_wave: int = 0
+var cur_wave: int = 0:
+	set(value):
+		cur_wave = value
+		main.get_node("MainUI/WaveText").text = "Wave " + str(cur_wave+1)
 var wave_value: float = 25 # Determines amount spawned
 var wave_scaler: float = 1.2 # Amount of wave value increase
 var wave_yields: float = 1.2 # Amount of wave value given to player
@@ -49,6 +53,7 @@ func _ready():
 	# Spawn main menu
 	var menu: Control = load("res://%Project/%Levels/menu.tscn").instantiate()
 	main.add_child(menu)
+	#update_coins()
 
 ## =============== [ HELPERS ] ================ ##
 
