@@ -151,8 +151,10 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 		if GM.is_polarizing:
 			polarity = -polarity;
 		if GM.is_selling:
-			GM.coins += GM.unit_price[INDEX]/2
-			die()
+			GM.coins += GM.unit_price[INDEX]*7/10
+			GM.units.erase(self)
+			GM.clean_wave()
+			queue_free()
 
 # Updates healthbar
 func update_healthbar():
