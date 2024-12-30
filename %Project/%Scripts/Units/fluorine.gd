@@ -4,10 +4,6 @@ class_name Fluorine
 # Spawns an equal amount of electrons and neutrons
 @export var DEATH_BULLET_SPAWN := 20
 
-func _ready() -> void:
-	super()
-	DAMAGE = 0
-
 # Makes explosion boom spawning electrons and neutrons all around
 func die():
 	var neutron_path = "res://%Project/Characters/neutron.tscn"
