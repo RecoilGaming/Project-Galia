@@ -24,7 +24,7 @@ offset_bottom = 168.0
 grow_horizontal = 2
 scale = Vector2(1.01063, 0.973659)
 mouse_filter = 2
-color = Color(0.266667, 0.419608, 1, 0.87451)
+color = Color(0.647949, 0.00166571, 0.821352, 0.87451)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
 layout_mode = 0
