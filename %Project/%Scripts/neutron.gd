@@ -14,7 +14,6 @@ func _process(_delta: float) -> void:
 	if(global_position.x > 600 or global_position.x < -600 or global_position.y > 400 or global_position.y < -400):
 		queue_free()
 
-
 func _on_not_area_2d_body_entered(body: Node2D) -> void:
 	if(is_valid_target(body)):
 		body.take_damage(DAMAGE)

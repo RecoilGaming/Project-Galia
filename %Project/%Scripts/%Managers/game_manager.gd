@@ -155,15 +155,11 @@ func clean_wave() -> void:
 		wave_value *= wave_scaler
 		coins += wave_value * wave_yields
 		
-		print("=====")
-		print(wave_value)
-		print(wave_value * wave_yields)
-		print(coins)
-		
 		# Increment wave
 		cur_wave += 1
 		
 		# Prepare next wave
+		await get_tree().create_timer(0.5).timeout
 		prepare_wave()
 
 # Start theme song
