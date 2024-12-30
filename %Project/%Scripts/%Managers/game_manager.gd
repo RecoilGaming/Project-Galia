@@ -29,10 +29,10 @@ var unit_name: Dictionary = {
 
 var unit_price: Dictionary = {
 	0 : 10,
-	1 : 35,
-	2 : 30,
-	3 : 65,
-	4 : 100
+	1 : 45,
+	2 : 40,
+	3 : 80,
+	4 : 110
 }
 
 # Waves

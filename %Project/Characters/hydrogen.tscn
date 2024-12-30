@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Units/hydrogen.gd" id="1_op452"]
 [ext_resource type="SpriteFrames" uid="uid://21klnqkg875y" path="res://%Project/Characters/hydrogen_anim.tres" id="2_pvy7m"]
-[ext_resource type="Theme" uid="uid://cvajvxk7s5icf" path="res://%Project/Resources/green1.tres" id="3_6fjt1"]
+[ext_resource type="Theme" uid="uid://bikbjpumjkki1" path="res://%Project/Resources/green1.tres" id="3_6fjt1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lwi1o"]
 radius = 14.0
@@ -13,6 +13,7 @@ radius = 23.3452
 [node name="Hydrogen" type="CharacterBody2D"]
 input_pickable = true
 script = ExtResource("1_op452")
+DAMAGE = 20.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_pvy7m")
