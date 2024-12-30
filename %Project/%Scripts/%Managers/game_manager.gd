@@ -29,8 +29,8 @@ var unit_name: Dictionary = {
 
 var unit_price: Dictionary = {
 	0 : 10,
-	1 : 45,
-	2 : 40,
+	1 : 40,
+	2 : 35,
 	3 : 80,
 	4 : 110
 }
@@ -42,7 +42,8 @@ var cur_wave: int = 0:
 		main.get_node("MainUI/WaveText").text = "Wave " + str(cur_wave+1)
 var wave_value: float = 25 # Determines amount spawned
 var wave_scaler: float = 1.3 # Amount of wave value increase
-var wave_yields: float = 0.7 # Amount of wave value given to player
+var wave_yields: float = 0.8 # Amount of wave value given to player
+var is_cleaing: bool = false
 
 ## =============== [ METHODS ] ================ ##
 
@@ -143,13 +144,13 @@ func allies_alive() -> int:
 
 # Check / end wave
 func clean_wave() -> void:
-	await get_tree().create_timer(0.5).timeout
-	
 	# Check for surviving enemies
 	if enemies_alive():
 		# Lose condition
 		if !allies_alive() && coins < unit_price[0]:
-			get_tree().quit()
+			await get_tree().create_timer(0.5).timeout
+			if enemies_alive():
+				get_tree().quit()
 	
 	# End wave and pause game
 	else:
@@ -161,7 +162,9 @@ func clean_wave() -> void:
 		cur_wave += 1
 		
 		# Prepare next wave
+		await get_tree().create_timer(0.5).timeout
 		prepare_wave()
+	
 
 # Start theme song
 func play_theme() -> void:
