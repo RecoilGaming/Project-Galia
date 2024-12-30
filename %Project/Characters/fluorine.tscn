@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Units/fluorine.gd" id="1_c707q"]
 [ext_resource type="SpriteFrames" uid="uid://bfy2pobjyt62x" path="res://%Project/Characters/fluorine_anim.tres" id="2_b2owd"]
-[ext_resource type="Theme" uid="uid://v7u7ajl3cgy1" path="res://%Project/Resources/green1.tres" id="3_qj3fe"]
+[ext_resource type="Theme" uid="uid://bikbjpumjkki1" path="res://%Project/Resources/green1.tres" id="3_qj3fe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ms6eo"]
 radius = 14.0
@@ -13,7 +13,9 @@ radius = 54.7449
 [node name="Fluorine" type="CharacterBody2D"]
 input_pickable = true
 script = ExtResource("1_c707q")
-MAX_HEALTH = 20.0
+MAX_HEALTH = 25.0
+DAMAGE = 60.0
+SPEED = 250.0
 INDEX = 2
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

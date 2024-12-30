@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Nuetron
 
 var DAMAGE: int
-var IS_ENEMY: bool
+var is_enemy: bool
 var SPEED: int = 10
 
 # Called when the node enters the scene tree for the first time.
@@ -20,7 +20,7 @@ func _on_not_area_2d_body_entered(body: Node2D) -> void:
 		queue_free()
 
 func is_valid_target(unit: Node2D) -> bool:
-	return unit is Unit and unit.IS_ENEMY != self.IS_ENEMY
+	return unit is Unit and unit.is_enemy != self.is_enemy
 
 # Moves the unit
 func _physics_process(_delta: float) -> void:

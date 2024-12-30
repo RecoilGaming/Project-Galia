@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://%Project/%Scripts/Units/tungsten.gd" id="1_bg1ie"]
 [ext_resource type="SpriteFrames" uid="uid://crl1pvq7tbk72" path="res://%Project/Characters/tungsten_anim.tres" id="2_wf3bp"]
-[ext_resource type="Theme" uid="uid://v7u7ajl3cgy1" path="res://%Project/Resources/green1.tres" id="3_xxyn3"]
+[ext_resource type="Theme" uid="uid://bikbjpumjkki1" path="res://%Project/Resources/green1.tres" id="3_xxyn3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4nkcf"]
 radius = 15.0
@@ -13,6 +13,9 @@ radius = 25.0799
 [node name="Tungsten" type="CharacterBody2D"]
 input_pickable = true
 script = ExtResource("1_bg1ie")
+FRACTIONAL_ARMOR = 0.3
+DAMAGE = 25.0
+SPEED = 50.0
 INDEX = 4
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

@@ -4,10 +4,6 @@ class_name Fluorine
 # Spawns an equal amount of electrons and neutrons
 @export var DEATH_BULLET_SPAWN := 20
 
-func _ready() -> void:
-	super()
-	DAMAGE = 0
-
 # Makes explosion boom spawning electrons and neutrons all around
 func die():
 	var neutron_path = "res://%Project/Characters/neutron.tscn"
@@ -34,7 +30,7 @@ func do_exploding_attack(direction: Vector2, path: String):
 	
 	# Moves it to 20 pixels in front
 	bullet.global_position = global_position + 20 * (direction).normalized()
-	bullet.IS_ENEMY = self.IS_ENEMY
+	bullet.is_enemy = self.is_enemy
 	bullet.DAMAGE = DAMAGE
 	bullet.velocity = direction.normalized() * bullet.SPEED
 	

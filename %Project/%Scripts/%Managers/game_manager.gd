@@ -29,10 +29,10 @@ var unit_name: Dictionary = {
 
 var unit_price: Dictionary = {
 	0 : 10,
-	1 : 35,
-	2 : 30,
-	3 : 65,
-	4 : 100
+	1 : 40,
+	2 : 35,
+	3 : 80,
+	4 : 110
 }
 
 # Waves
@@ -42,7 +42,9 @@ var cur_wave: int = 0:
 		main.get_node("MainUI/WaveText").text = "Wave " + str(cur_wave+1)
 var wave_value: float = 25 # Determines amount spawned
 var wave_scaler: float = 1.3 # Amount of wave value increase
-var wave_yields: float = 0.7 # Amount of wave value given to player
+var wave_yields: float = 0.8 # Amount of wave value given to player
+var is_cleaing: bool = false
+var lose_timer: float = 10000000
 
 ## =============== [ METHODS ] ================ ##
 
@@ -54,6 +56,18 @@ func _ready():
 	var menu: Control = load("res://%Project/%Levels/menu.tscn").instantiate()
 	main.add_child(menu)
 	#update_coins()
+
+# Process
+func _process(delta: float) -> void:
+	# Update timers
+	lose_timer -= delta
+	
+	# Losing
+	if lose_timer < 0:
+		if enemies_alive() && !allies_alive() && coins < unit_price[0]:
+			get_tree().quit()
+		else:
+			lose_timer = 10000000
 
 ## =============== [ HELPERS ] ================ ##
 
@@ -89,7 +103,7 @@ func attempt_spawn(id: int, pos: Vector2, is_enemy: bool) -> bool:
 	var _unit: Unit = load("res://%Project/Characters/" + unit_name[id] + ".tscn").instantiate()
 	_unit.position = pos
 	_unit.polarity = randi_range(0, 1)*2 - 1
-	_unit.IS_ENEMY = is_enemy
+	_unit.is_enemy = is_enemy
 	
 	# Add instance
 	main.add_child.call_deferred(_unit)
@@ -129,7 +143,7 @@ func prepare_wave() -> void:
 func enemies_alive() -> int:
 	var amt: int = 0
 	for unit in units:
-		if unit.IS_ENEMY:
+		if unit.is_enemy:
 			amt += 1
 	return amt
 
@@ -137,19 +151,17 @@ func enemies_alive() -> int:
 func allies_alive() -> int:
 	var amt: int = 0
 	for unit in units:
-		if !unit.IS_ENEMY:
+		if !unit.is_enemy:
 			amt += 1
 	return amt
 
 # Check / end wave
 func clean_wave() -> void:
-	await get_tree().create_timer(0.5).timeout
-	
 	# Check for surviving enemies
 	if enemies_alive():
 		# Lose condition
 		if !allies_alive() && coins < unit_price[0]:
-			get_tree().quit()
+			lose_timer = 0.2
 	
 	# End wave and pause game
 	else:
@@ -161,7 +173,9 @@ func clean_wave() -> void:
 		cur_wave += 1
 		
 		# Prepare next wave
+		await get_tree().create_timer(0.5).timeout
 		prepare_wave()
+	
 
 # Start theme song
 func play_theme() -> void:
