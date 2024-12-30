@@ -164,7 +164,7 @@ func clean_wave() -> void:
 
 # Start theme song
 func play_theme() -> void:
-	main.get_node("Sounds").stream = load("res://%Project/Resources/Sounds/poland_theme.mp3")
+	main.get_node("Sounds").stream = load("res://%Project/Resources/Sounds/poland_theme_V2.mp3")
 	main.get_node("Sounds").play()
 
 ## =============== [ SIGNALS ] ================ ##
