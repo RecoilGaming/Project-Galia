@@ -46,31 +46,41 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.001
 anchor_bottom = -0.001
-offset_left = -220.0
+offset_left = -231.0
 offset_top = 125.36
-offset_right = 216.0
+offset_right = 226.0
 offset_bottom = 172.36
 grow_horizontal = 2
 scale = Vector2(1.01063, 0.973659)
 mouse_filter = 2
-color = Color(0.266667, 0.419608, 1, 0.87451)
+color = Color(2.83971e-06, 0.580732, 0.375063, 0.87451)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
 layout_mode = 0
 offset_left = 94.0007
-offset_top = 13.3517
+offset_top = 4.10822
 offset_right = 301.001
-offset_bottom = 56.3516
+offset_bottom = 47.1081
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("2_6v4k4")
 theme_override_font_sizes/normal_font_size = 28
-text = "Click to add unit:"
+text = "Click to place unit:"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/RichTextLabel"]
+offset_left = 32.653
+offset_top = 27.7305
+offset_right = 151.653
+offset_bottom = 48.7305
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_6v4k4")
+theme_override_font_sizes/normal_font_size = 16
+text = "See prices in info"
 
 [node name="UnitDropdown" type="OptionButton" parent="ColorRect"]
 layout_mode = 0
-offset_left = 279.034
+offset_left = 302.781
 offset_top = 4.10822
-offset_right = 573.034
+offset_right = 596.781
 offset_bottom = 84.1082
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("2_6v4k4")

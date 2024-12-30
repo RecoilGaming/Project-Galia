@@ -12,10 +12,12 @@ func _on_back_button_pressed():
 	queue_free()
 
 func _on_polarize_button_pressed():
+	if GM.is_polarizing: return
 	clear_popups()
 	get_parent().add_child(load("res://%Project/%Levels/polarize.tscn").instantiate())
 
 func _on_add_unit_button_pressed():
+	if GM.is_summoning: return
 	clear_popups()
 	get_parent().add_child(load("res://%Project/%Levels/add_unit.tscn").instantiate())
 
@@ -31,9 +33,11 @@ func _on_go_button_pressed() -> void:
 	GM._on_go_button_pressed()
 
 func _on_sell_unit_button_pressed() -> void:
+	if GM.is_selling: return
 	clear_popups()
 	get_parent().add_child(load("res://%Project/%Levels/sell_unit.tscn").instantiate())
 
 func _on_stats_button_pressed() -> void:
+	if GM.is_viewing_stats: return
 	clear_popups()
 	get_parent().add_child(load("res://%Project/%Levels/stats.tscn").instantiate())

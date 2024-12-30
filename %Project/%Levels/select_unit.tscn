@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpmbpj8po8oil"]
+[gd_scene load_steps=3 format=3 uid="uid://dqcb6bb2tff8v"]
 
-[ext_resource type="Script" path="res://%Project/%Scripts/UI/select_unit.gd" id="1_y3xdy"]
 [ext_resource type="FontFile" uid="uid://bcp7y8bedygee" path="res://%Project/UI/stepalange.otf" id="2_xy1b8"]
 [ext_resource type="Theme" uid="uid://bo8ub25x8am2v" path="res://%Project/UI/theme.tres" id="3_1v637"]
 
@@ -10,7 +9,6 @@ layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("1_y3xdy")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -24,7 +22,7 @@ offset_bottom = 168.0
 grow_horizontal = 2
 scale = Vector2(1.01063, 0.973659)
 mouse_filter = 2
-color = Color(0.266667, 0.419608, 1, 0.87451)
+color = Color(0.685246, 0.0147579, 1, 0.87451)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
 layout_mode = 0
@@ -44,7 +42,6 @@ offset_top = 7.94589
 offset_right = 326.021
 offset_bottom = 37.9459
 theme_override_font_sizes/font_size = 10
-script = ExtResource("1_y3xdy")
 
 [node name="x" type="RichTextLabel" parent="ColorRect/BackButton"]
 layout_mode = 0
@@ -59,5 +56,3 @@ text = "done"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 enabled = false
-
-[connection signal="pressed" from="ColorRect/BackButton" to="." method="_on_back_button_pressed"]
