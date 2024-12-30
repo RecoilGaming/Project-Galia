@@ -1,8 +1,7 @@
-extends Unit
+extends Hydrogen
 class_name Fluorine
 
-# Spawns an equal amount of electrons and neutrons
-@export var DEATH_BULLET_SPAWN := 20
+@export var DEATH_BULLET_SPAWN := 40
 
 # Makes explosion boom spawning electrons and neutrons all around
 func die():
@@ -18,7 +17,7 @@ func die():
 	
 	# Make exploision animation
 	var explosion = load("res://%Project/Resources/Effects/explosion.tscn").instantiate()
-	get_parent().add_child.call_deferred(explosion)
+	get_parent().add_child(explosion)
 	explosion.global_position = global_position
 	
 	super.die()
@@ -26,7 +25,7 @@ func die():
 # Shoots a bullet	
 func do_exploding_attack(direction: Vector2, path: String):
 	var bullet = load(path).instantiate()
-	get_parent().add_child.call_deferred(bullet)
+	get_parent().add_child(bullet)
 	
 	# Moves it to 20 pixels in front
 	bullet.global_position = global_position + 20 * (direction).normalized()
@@ -36,3 +35,26 @@ func do_exploding_attack(direction: Vector2, path: String):
 	
 	if bullet is Electron:
 		bullet.polarity = self.polarity
+
+func do_attack() -> void:
+	validate_units()
+	
+	# Reset cooldown
+	attack_cooldown = ATTACK_COOLDOWN
+	
+	if !units_to_attack.is_empty():
+		
+		# Picks random unit
+		var unit_to_attack = units_to_attack.pick_random()
+		
+		var attack_animation: Sprite2D = load("res://%Project/Resources/Effects/attack.tscn").instantiate()
+		attack_animation.rotation = (unit_to_attack.global_position - global_position).angle()
+		attack_animation.position += Vector2(32, 0).rotated(attack_animation.rotation)
+		add_child(attack_animation)
+		
+		# Deals damage to the unit equivilent to this unit's damage
+		unit_to_attack.take_damage(1)
+		
+		# If there's a collision it bounces it
+		if collision:
+			velocity = collision.get_collider_velocity().normalized() * KNOCKBACK

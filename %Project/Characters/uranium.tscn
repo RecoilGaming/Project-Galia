@@ -13,9 +13,10 @@ radius = 25.0799
 [node name="Uranium" type="CharacterBody2D"]
 input_pickable = true
 script = ExtResource("1_46yvj")
+MAX_HEALTH = 150.0
 DAMAGE = 40.0
 SPEED = 20.0
-ATTACK_COOLDOWN = 0.5
+ATTACK_COOLDOWN = 0.4
 INDEX = 3
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

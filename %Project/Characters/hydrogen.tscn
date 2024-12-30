@@ -14,6 +14,7 @@ radius = 23.3452
 input_pickable = true
 script = ExtResource("1_op452")
 DAMAGE = 20.0
+SPEED = 150.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_pvy7m")
