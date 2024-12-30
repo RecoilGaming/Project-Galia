@@ -1,5 +1,13 @@
 extends Control
 
+func clear_popups():
+	if get_parent().has_node("AddUnit"):
+		get_parent().get_node("AddUnit")._on_back_button_pressed()
+	if get_parent().has_node("SellUnit"):
+		get_parent().get_node("SellUnit")._on_back_button_pressed()
+	if get_parent().has_node("PolarizeUnit"):
+		get_parent().get_node("PolarizeUnit")._on_back_button_pressed()
+
 func _on_back_button_pressed():
 	queue_free()
 
@@ -26,10 +34,6 @@ func _on_sell_unit_button_pressed() -> void:
 	clear_popups()
 	get_parent().add_child(load("res://%Project/%Levels/sell_unit.tscn").instantiate())
 
-func clear_popups():
-	if get_parent().has_node("AddUnit"):
-		get_parent().get_node("AddUnit")._on_back_button_pressed()
-	if get_parent().has_node("SellUnit"):
-		get_parent().get_node("SellUnit")._on_back_button_pressed()
-	if get_parent().has_node("PolarizeUnit"):
-		get_parent().get_node("PolarizeUnit")._on_back_button_pressed()
+func _on_stats_button_pressed() -> void:
+	clear_popups()
+	get_parent().add_child(load("res://%Project/%Levels/stats.tscn").instantiate())

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://jlbt3tsevkp3"]
+[gd_scene load_steps=6 format=3 uid="uid://c8hap51pac2qp"]
 
 [ext_resource type="Texture2D" uid="uid://7kixe5t5to4d" path="res://%Project/Resources/Shop/c.png" id="5_1efst"]
 [ext_resource type="Theme" uid="uid://bo8ub25x8am2v" path="res://%Project/UI/theme.tres" id="5_hwxph"]
@@ -45,6 +45,16 @@ offset_bottom = -118.0
 theme = ExtResource("5_hwxph")
 theme_override_font_sizes/font_size = 30
 text = "Polarize"
+
+[node name="StatsButton" type="Button" parent="."]
+z_index = 3
+offset_left = -210.0
+offset_top = -170.0
+offset_right = -133.0
+offset_bottom = -121.0
+theme = ExtResource("5_hwxph")
+theme_override_font_sizes/font_size = 30
+text = "Stats"
 
 [node name="CoinText" type="Label" parent="."]
 z_index = 3
@@ -94,6 +104,7 @@ theme = ExtResource("5_hwxph")
 text = "Go!"
 
 [node name="Node2D" type="Node2D" parent="."]
+visible = false
 z_index = -2
 script = ExtResource("6_4725t")
 
@@ -108,5 +119,6 @@ shape = SubResource("RectangleShape2D_g5xos")
 [connection signal="pressed" from="AddUnitButton" to="." method="_on_add_unit_button_pressed"]
 [connection signal="pressed" from="SellUnitButton" to="." method="_on_sell_unit_button_pressed"]
 [connection signal="pressed" from="PolarizeButton" to="." method="_on_polarize_button_pressed"]
+[connection signal="pressed" from="StatsButton" to="." method="_on_stats_button_pressed"]
 [connection signal="pressed" from="GoButton" to="." method="_on_go_button_pressed"]
 [connection signal="input_event" from="Node2D/Area2D" to="Node2D" method="_on_area_2d_input_event"]
