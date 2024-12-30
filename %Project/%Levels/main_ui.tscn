@@ -48,6 +48,7 @@ text = "Polarize"
 
 [node name="StatsButton" type="Button" parent="."]
 z_index = 3
+layout_mode = 0
 offset_left = -210.0
 offset_top = -170.0
 offset_right = -133.0

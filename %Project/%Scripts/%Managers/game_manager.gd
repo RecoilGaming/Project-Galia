@@ -15,6 +15,7 @@ var last_purchased: int = 0
 var is_polarizing: bool = false
 var is_summoning: bool = false
 var is_selling: bool = false
+var is_viewing_stats: bool = false
 
 # Units
 var units: Array[Unit] = []
