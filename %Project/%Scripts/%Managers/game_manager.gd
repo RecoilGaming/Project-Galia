@@ -6,7 +6,7 @@ extends Node
 @onready var main: Node2D = get_tree().root.get_node("Main")
 
 # Shop
-var coins: int = 30:
+var coins: int = 40:
 	set(_coins):
 		coins = _coins
 		update_coins()
